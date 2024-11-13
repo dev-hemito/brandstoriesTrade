@@ -1,69 +1,46 @@
-import Header from '@/components/Header';
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
     return (
-        <div className="min-h-screen flex flex-col items-center relative overflow-hidden ">
-            {/* Main Content */}
-            <main className="flex flex-col items-center justify-center flex-1 text-center w-full md:scale-90 mt-20">
-                {/* Radial gradient background */}
+        <div className="relative h-screen w-full overflow-hidden">
+            {/* Video Background */}
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute top-0 left-0 w-full h-full object-cover"
+            >
+                <source src="/video.mp4" type="video/mp4" />
+            </video>
 
-                {/* Content */}
-                <div className="relative z-10 w-full hidden md:block ">
-                    <h2 className="text-white md:text-2xl text-sm">Creating Successful</h2>
-                    <h2 className="text-white md:text-2xl text-sm">Individual Entrepreneur Sagas</h2>
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/50" />
 
-                    <div className="relative md:w-full w-screen border border-transparent  md:object-contain object-cover"
-                        style={{
-                            backgroundImage: "url('main.png')",
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundSize: 'contain',
+            {/* Hero Content */}
 
-                        }}>
-                        {/* Brand Stories Text */}
-
-                        {/* Summit Logo */}
-                        <div className="w-full max-w-[200px] md:max-w-xs mx-auto mt-8 md:mt-16 lg:mt-24">
-                            <div className="relative w-full aspect-square">
-                                <Image
-                                    src="/traders.png"
-                                    fill
-                                    alt="traders summit"
-                                    className="object-contain mt-24"
-                                />
-                            </div>
+            <div className="relative h-full flex items-center justify-center px-4">
+                <div className="max-w-6xl w-full  absolute bottom-10">
+                    <div className="flex justify-center items-end gap-4">
+                        <div className="bg-gradient-to-tr text-center text-xl from bg-amber-500/80 to-amber-400/80 text-white h-24 flex justify-center items-center p-5 rounded-md">
+                            Hotel Gokulam Park. Kochi
                         </div>
-
-                        {/* Venue & Date */}
-                        <div className=" mt-7 mb-3 text-white">
-                            <p className="text-base md:text-xl">Hotel Gokulam Park, Kochi</p>
-                            <p className="text-sm md:text-base text-amber-500">On 8-9 January 2025</p>
+                        <div className="w-2/3 text-white text-center">
+                        <p className="mb-2">Edition 2</p>
+                            <Image src='/main.png' className="w-full h-auto" width={1000} height={1000} alt="brand stories"/>
                         </div>
-
-                        {/* CTA Button */}
-                        <button className="px-6 md:px-8 py-2 md:py-3 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full text-black font-bold hover:from-amber-600 hover:to-yellow-600 transition-all text-sm md:text-base">
+                        <div className="bg-gradient-to-tr text-center text-xl from bg-amber-500/80 to-amber-400/80 text-white h-24 flex justify-center items-center p-5 rounded-md">
+                            Hotel Gokulam Park. Kochi
+                        </div>
+                    </div>
+                    <div className="text-center mt-5">
+                        <Link href="/#tickets" className="bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-8 rounded-full transition-colors  mt-3">
                             Join Now
-                        </button>
+                        </Link>
                     </div>
                 </div>
-                <div className=' md:hidden'>
-                    <p className='text-amber-500 text-sm'>Creating Successful</p>
-                    <p className='text-amber-500 text-sm'>Individual Entrepreneur Sagas</p>
-                    <Image src={'/main.png'} width={500} height={500} alt='brand stories' className='' />
-                    <Image src={'/traders.png'} width={500} height={500} alt='traders summit' className='w-full max-w-[300px] md:max-w-xs mx-auto -mt-12  mb-0' />
-                    <div className=" mt-7 mb-3 text-white ">
-                        <p className="text-base md:text-xl">Hotel Gokulam Park, Kochi</p>
-                        <p className="text-sm md:text-base text-amber-500">On 8-9 January 2025</p>
-                    </div>
-
-                    {/* CTA Button */}
-                    <button className="px-6 md:px-8 py-2 md:py-3 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full text-black font-bold hover:from-amber-600 hover:to-yellow-600 transition-all text-sm md:text-base">
-                        Join Now
-                    </button>
-                </div>
-            </main>
+            </div>
         </div>
     );
 };

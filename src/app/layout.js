@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${besley.className} bg-black`}
+        className={`${besley.className} bg-white text-black`}
       >
         {children}
       </body>

@@ -1,45 +1,14 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import { 
-  TrendingUp, 
-  Users, 
-  Mic2, 
-  Users2, 
-  Gift, 
+import {
+  TrendingUp,
+  Users,
+  Mic2,
+  Users2,
+  Gift,
   GlassWater,
   ChevronDown
 } from 'lucide-react';
-
-const GridBackground = () => {
-  const [mounted, setMounted] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    setMounted(true);
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  if (!mounted) return null;
-
-  return (
-    <div className="fixed inset-0 grid grid-cols-12 grid-rows-12 opacity-20">
-      {[...Array(144)].map((_, i) => (
-        <div
-          key={i}
-          className="border border-white/10 backdrop-blur-sm transition-all duration-300"
-          style={{
-            transform: `scale(${1 + Math.sin(scrollPosition * 0.002 + i * 0.1) * 0.2})`,
-            opacity: 0.1 + Math.sin(scrollPosition * 0.002 + i * 0.1) * 0.1
-          }}
-        />
-      ))}
-    </div>
-  );
-};
 
 
 const FeatureCard = ({ feature, index }) => {
@@ -53,20 +22,20 @@ const FeatureCard = ({ feature, index }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity rounded-2xl`}
+        className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity rounded-2xl`}
       />
-      <div className="relative bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 transform transition-all duration-500 hover:scale-105 hover:border-white/20">
+      <div className="relative backdrop-blur-lg rounded-2xl p-4 md:p-8 border border-gray-700/50 transform transition-all duration-500 hover:scale-105 hover:border-gray-500/50">
         <div className="relative z-10">
-          <div className={`p-6 rounded-full bg-gradient-to-br ${feature.color} transform transition-transform group-hover:scale-110 group-hover:rotate-3`}>
-            <Icon size={32} className="text-white transform transition-transform group-hover:scale-110" />
+          <div className={`p-4 md:p-6 rounded-full bg-gradient-to-br ${feature.color} transform transition-transform group-hover:scale-110 group-hover:rotate-3`}>
+            <Icon size={24} className="md:w-8 md:h-8 text-white transform transition-transform group-hover:scale-110" />
           </div>
-          <h3 className="mt-6 text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-blue-400">
+          <h3 className="mt-4 md:mt-6 text-xl md:text-2xl font-bold text-black ">
             {feature.title}
           </h3>
-          <p className="mt-4 text-gray-400 group-hover:text-white transition-colors">
+          <p className="mt-2 md:mt-4 text-sm md:text-base text-blac">
             {feature.description}
           </p>
-          
+
           {isHovered && (
             <div className="absolute bottom-4 right-4 transition-opacity">
               <div className="flex space-x-1">
@@ -127,30 +96,27 @@ const FeatureSection = () => {
   ];
 
   return (
-    <div className="bg-black min-h-screen relative overflow-hidden">
+    <div className="  overflow-hidden">
 
-
-      <div className="relative z-10">
-        <div className="h-screen flex flex-col items-center justify-center px-4">
-          <h1 className="text-7xl md:text-9xl font-bold text-center">
+      <div className=" z-10">
+        <div className="mt-32 flex flex-col items-center justify-center px-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center">
             <span className="block transform transition-transform hover:scale-110 hover:-rotate-2">
-              <span className="bg-gradient-to-r from-white via-blue-400 to-purple-500 text-transparent bg-clip-text">
+              <span className="bg-gradient-to-r from-amber-500 via-amber-200 to-amber-500 text-transparent bg-clip-text animate-gradient">
                 Key
               </span>
             </span>
             <span className="block mt-2 transform transition-transform hover:scale-110 hover:rotate-2">
-              <span className="bg-gradient-to-r from-purple-500 via-blue-400 to-white text-transparent bg-clip-text">
+              <span className="bg-gradient-to-r from-amber-500 via-amber-200 to-amber-500 text-transparent bg-clip-text animate-gradient">
                 Features
               </span>
             </span>
           </h1>
-          <div className="mt-12 animate-bounce">
-            <ChevronDown size={48} className="text-white/50" />
-          </div>
+       
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 py-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {features.map((feature, index) => (
               <FeatureCard key={index} feature={feature} index={index} />
             ))}
@@ -159,6 +125,16 @@ const FeatureSection = () => {
       </div>
 
       <style jsx>{`
+        @keyframes gradientFlow {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradientFlow 8s ease infinite;
+        }
 
         ::-webkit-scrollbar {
           width: 8px;
