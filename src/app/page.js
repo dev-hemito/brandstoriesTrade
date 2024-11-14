@@ -14,7 +14,7 @@ import Footer from '@/components/Footer'
 
 const Page = () => {
   const words = "South Indias Biggest Traders and Investors Conclave".split(" ")
-  
+
   const container = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
@@ -48,11 +48,8 @@ const Page = () => {
 
   return (
     <div>
-      <Header />
-      <div className="absolute w-full h-[300px] md:h-[600px] bg-amber-500/10 blur-3xl rounded-full opacity-50 md:opacity-100"></div>
       <Hero />
-      
-      <motion.div 
+      <motion.div
         className='overflow-hidden relative z-10 md:py-32 py-16'
         initial="hidden"
         whileInView="visible"
@@ -87,14 +84,14 @@ const Page = () => {
           clip-path: polygon(0 0, 200% 0, 100% 100%, 0% 100%);
         }
       `}</style>
-      
+
       <AboutSection />
-      <FeatureSection/>
+      <FeatureSection />
       <TicketPlans />
-      <AttendeesShowcase/>
-      <SpeakersShowcase/>
-      <EventItinerary/>
-      <Footer/>
+      <AttendeesShowcase />
+      <SpeakersShowcase />
+      <EventItinerary />
+      <Footer />
     </div>
   )
 }

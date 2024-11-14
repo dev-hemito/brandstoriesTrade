@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import { Besley } from 'next/font/google';
 import "./globals.css";
+import Header from "@/components/Header";
 
 const besley = Besley({ subsets: ['latin'] });
 
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${besley.className} bg-white text-black`}
       >
+              <Header />
         {children}
       </body>
     </html>
