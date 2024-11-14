@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import { Twitter, Linkedin, Globe } from 'lucide-react';
+import Image from 'next/image';
 
 const SpeakersShowcase = () => {
   const speakers = [
@@ -67,9 +68,11 @@ const SpeakersShowcase = () => {
               {/* Image Container */}
               <div className="relative mb-4 overflow-hidden rounded-2xl aspect-square">
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <img
+                <Image
                   src={speaker.image}
                   alt={speaker.name}
+                  width={300}
+                  height={300}
                   className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                 />
                 {/* Social Links - Show on Hover */}

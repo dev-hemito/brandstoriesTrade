@@ -191,9 +191,11 @@ const Footer = () => {
                 onClick={() => setSelectedImage(image)}
               >
                 <div className="aspect-[4/3] relative">
-                  <img
+                  <Image
                     src={image.url}
-                    alt={image.title}
+                    width={300}
+                    height={300}
+                    alt={image.url}
                     className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -223,7 +225,7 @@ const Footer = () => {
                 alt="gallery"
                 className="w-full h-auto rounded-lg"
               />
-              
+
             </div>
           </div>
         )}
@@ -276,7 +278,7 @@ const Footer = () => {
               </ul>
             </div>
 
-  
+
 
             {/* Contact Info */}
             <div className="space-y-4">
@@ -291,7 +293,7 @@ const Footer = () => {
                   <span className="text-sm">+91 812 983 9102, 999 518 5190</span>
                 </div>
                 <div className="flex ">
-                 
+
                   <span className="text-sm ">2/306, G2, 6th Floor, Technoplaza, Nr.Sarovaram BTH, Kannadikadu, Maradu PO, Cochin 682304</span>
                 </div>
               </div>

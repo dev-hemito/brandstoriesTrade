@@ -6,36 +6,24 @@ const TicketPlans = () => {
         {
             id: 'starter',
             name: 'Starter Trader Pass',
-            price: 2999,
-            features: ['Access to Main Event Sessions',
-                'Trader Essentials Kit with basic resources',
-                'Group Networking with other attendees',
-                'Access to Post-Event Summary Notes',
-                'Discount on Future Events'],
+            price: 6999,
+            features:
+                ['Access to Two Day Session','Net Working Lunch', 'Running Tea Sessions'],
             bgcolor: 'bg-white'
         },
         {
             id: 'elite',
             name: 'Elite Trader Pass',
-            price: 10999,
-            features: ['Exclusive Networking Session with industry experts',
-                'VIP Seating for main events and seminars',
-                'Access to All Masterclasses and workshops',
-                'Personalized Trader Kit with premium resources',
-                'Recorded Sessions Access post- event for 1 year'],
+            price: 12999,
+            features: ['Access to Two Days Pass', 'Single Occupancy Sharing', 'Gala Dinner with Cocktail'],
             bgcolor: 'bg-amber-50'
         },
         {
             id: 'pro',
             name: 'Pro Trader Pass',
-            price: 6999,
-            features:
-                ['Access to Key Sessions and panel discussions',
-                    'Networking Lunch with fellow traders',
-                    'Pro Trader Kit with valuable resources',
-                    'Q&A Sessions with industry leaders',
-                    'Recorded Sessions Access for 6 months post-event'],
+            price: 9999,
 
+                features: ['Access to Two Days Pass', 'Double Occupancy Sharing', 'Lunch and Running Tea Session'],
             bgcolor: 'bg-white'
         },
     ];
