@@ -4,24 +4,38 @@ import { ArrowLeft, Check, Package, Loader, X, LucideTicket } from 'lucide-react
 const TicketPlans = () => {
     const packages = [
         {
-            id: 'basic',
-            name: 'Basic Pass',
-            price: 999,
-            features: ['Access to all sessions', 'Digital resources', 'Network access'],
+            id: 'starter',
+            name: 'Starter Trader Pass',
+            price: 2999,
+            features: ['Access to Main Event Sessions',
+                'Trader Essentials Kit with basic resources',
+                'Group Networking with other attendees',
+                'Access to Post-Event Summary Notes',
+                'Discount on Future Events'],
             bgcolor: 'bg-white'
         },
         {
-            id: 'vip',
-            name: 'VIP Pass',
-            price: 4999,
-            features: ['Premium Pass features', 'Exclusive dinner', 'Lifetime community access'],
+            id: 'elite',
+            name: 'Elite Trader Pass',
+            price: 10999,
+            features: ['Exclusive Networking Session with industry experts',
+                'VIP Seating for main events and seminars',
+                'Access to All Masterclasses and workshops',
+                'Personalized Trader Kit with premium resources',
+                'Recorded Sessions Access post- event for 1 year'],
             bgcolor: 'bg-amber-50'
         },
         {
-            id: 'premium',
-            name: 'Premium Pass',
-            price: 1999,
-            features: ['Basic Pass features', 'VIP seating', 'One-on-one mentoring'],
+            id: 'pro',
+            name: 'Pro Trader Pass',
+            price: 6999,
+            features:
+                ['Access to Key Sessions and panel discussions',
+                    'Networking Lunch with fellow traders',
+                    'Pro Trader Kit with valuable resources',
+                    'Q&A Sessions with industry leaders',
+                    'Recorded Sessions Access for 6 months post-event'],
+
             bgcolor: 'bg-white'
         },
     ];
@@ -217,7 +231,7 @@ const TicketPlans = () => {
             <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
             <div className="flex justify-center gap-5 items-center">
                 <h1 className='text-center text-5xl text-amber-500'>Get Your Ticket Now </h1>
-                <LucideTicket  className='w-12 h-12 text-amber-500 hidden md:block'/>
+                <LucideTicket className='w-12 h-12 text-amber-500 hidden md:block' />
             </div>
             <main className="max-w-7xl mx-auto px-4 py-12">
                 {/* Package Cards */}

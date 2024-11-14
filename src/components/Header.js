@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
+
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -20,17 +21,22 @@ const Header = () => {
         <header className="fixed w-full z-50 bg-white backdrop-blur-sm">
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between py-5">
-                    {/* Logo */}
+                    {/* Left Logo */}
                     <div className="flex-shrink-0">
-                        <Link href="/" >
-                            <Image src='/main.png' width={2000} height={2000} className="h-6 md:h-10 w-auto " alt="brand Stories" />
-
+                        <Link href="/">
+                            <Image 
+                                src='/main.png' 
+                                width={2000} 
+                                height={2000} 
+                                className="h-6 md:h-10 w-auto" 
+                                alt="brand Stories" 
+                            />
                         </Link>
                     </div>
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:block">
-                        <div className="ml-10 flex items-center space-x-4">
+                    {/* Desktop Navigation - Centered */}
+                    <div className="hidden md:flex flex-1 justify-center">
+                        <div className="flex items-center space-x-4">
                             {navItems.map((item) => (
                                 <Link
                                     key={item.name}
@@ -40,14 +46,29 @@ const Header = () => {
                                     {item.name}
                                 </Link>
                             ))}
-                            <Image src='/money.png' width={2000} height={2000} className="w-32 h-auto" alt="brand Stories" />
-
                         </div>
                     </div>
 
-                    {/* Mobile menu button */}
-                    <div className="md:hidden flex">
-                    <Image src='/money.png' width={2000} height={2000} className="w-28 h-auto md:w-32" alt="brand Stories" />
+                    {/* Right Logo - Desktop */}
+                    <div className="hidden md:block flex-shrink-0">
+                        <Image 
+                            src='/money.png' 
+                            width={2000} 
+                            height={2000} 
+                            className="w-auto h-12" 
+                            alt="brand Stories" 
+                        />
+                    </div>
+
+                    {/* Mobile menu button and Right Logo */}
+                    <div className="md:hidden flex items-center space-x-2">
+                        <Image 
+                            src='/money.png' 
+                            width={2000} 
+                            height={2000} 
+                            className="w-28 h-auto" 
+                            alt="brand Stories" 
+                        />
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="text-black hover:text-amber-500 p-2"
@@ -61,7 +82,6 @@ const Header = () => {
                 {isOpen && (
                     <div className="md:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                            
                             {navItems.map((item) => (
                                 <Link
                                     key={item.name}

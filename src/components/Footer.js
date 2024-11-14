@@ -148,23 +148,22 @@ const Footer = () => {
   ];
   const footerLinks = {
     company: [
-      { label: "About Us", href: "#" },
-      { label: "Our Team", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Contact", href: "#" }
+      { label: 'Home', href: '/' },
+      { label: 'About', href: '/#about' },
+      { label: 'Contact', href: '/#contact' },
+      { label: 'Tickets', href: '/#tickets' },
+      { label: 'Speakers', href: '/#speakers' },
+      { label: 'Itinerary', href: '/#itinerary' },
+      { label: 'Gallery', href: '/#gallery' },
     ],
-    resources: [
-      { label: "Blog", href: "#" },
-      { label: "Research", href: "#" },
-      { label: "Events", href: "#" },
-      { label: "Webinars", href: "#" }
-    ],
+
     legal: [
       { label: "Privacy Policy", href: "#" },
       { label: "Terms of Use", href: "#" },
       { label: "Cookie Policy", href: "#" }
     ]
   };
+
 
   return (
     <>
@@ -241,7 +240,7 @@ const Footer = () => {
               <p className="text-gray-400 text-sm">
                 Join us for the most innovative trading conference, bringing together experts and enthusiasts from around the world.
               </p>
-              <div className="flex space-x-4">
+              {/* <div className="flex space-x-4">
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <Twitter className="w-5 h-5" />
                 </a>
@@ -257,12 +256,12 @@ const Footer = () => {
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <Youtube className="w-5 h-5" />
                 </a>
-              </div>
+              </div> */}
             </div>
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-semibold mb-4">Company</h4>
+              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-3">
                 {footerLinks.company.map((link, index) => (
                   <li key={index}>
@@ -277,21 +276,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Resources</h4>
-              <ul className="space-y-3">
-                {footerLinks.resources.map((link, index) => (
-                  <li key={index}>
-                    <a
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+  
 
             {/* Contact Info */}
             <div className="space-y-4">
@@ -299,15 +284,15 @@ const Footer = () => {
               <div className="space-y-3 text-gray-400">
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5" />
-                  <span className="text-sm">contact@tradingconf.com</span>
+                  <span className="text-sm">brandstories21@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5" />
-                  <span className="text-sm">+1 (555) 123-4567</span>
+                  <span className="text-sm">+91 812 983 9102, 999 518 5190</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5" />
-                  <span className="text-sm">123 Trading St, New York, NY 10001</span>
+                <div className="flex ">
+                 
+                  <span className="text-sm ">2/306, G2, 6th Floor, Technoplaza, Nr.Sarovaram BTH, Kannadikadu, Maradu PO, Cochin 682304</span>
                 </div>
               </div>
             </div>
