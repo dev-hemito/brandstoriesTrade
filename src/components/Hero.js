@@ -54,7 +54,7 @@ const Hero = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <div className="text-center mt-4 md:mt-5">
+                    <div className="text-center mt-4 md:mt-5 mb-10">
                         <Link 
                             href="/#tickets" 
                             className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-6 md:px-8 rounded-full transition-colors text-sm md:text-base"
