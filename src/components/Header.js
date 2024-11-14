@@ -19,11 +19,11 @@ const Header = () => {
     return (
         <header className="fixed w-full z-50 bg-white backdrop-blur-sm">
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between ">
+                <div className="flex items-center justify-between py-5">
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <Link href="/" >
-                            <Image src='/traders.png' width={2000} height={2000} className="w-32 h-auto" alt="brand Stories" />
+                            <Image src='/main.png' width={2000} height={2000} className="h-6 md:h-10 w-auto " alt="brand Stories" />
 
                         </Link>
                     </div>
@@ -47,7 +47,7 @@ const Header = () => {
 
                     {/* Mobile menu button */}
                     <div className="md:hidden flex">
-                    <Image src='/money.png' width={2000} height={2000} className="w-32 h-auto" alt="brand Stories" />
+                    <Image src='/money.png' width={2000} height={2000} className="w-28 h-auto md:w-32" alt="brand Stories" />
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="text-black hover:text-amber-500 p-2"
