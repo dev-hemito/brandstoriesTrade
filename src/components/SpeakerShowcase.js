@@ -5,54 +5,42 @@ import { Twitter, Linkedin, Globe } from 'lucide-react';
 const SpeakersShowcase = () => {
   const speakers = [
     {
-      name: "Sarah Anderson",
-      role: "Chief Investment Strategist",
-      company: "Global Markets Institute",
-      image: "/speaker.jpg",
-      expertise: "Market Analysis & Strategy",
-      description: "15+ years experience in global market analysis and portfolio management",
-      social: {
-        twitter: "#",
-        linkedin: "#",
-        website: "#"
-      }
+      name: "Akshay Agarwal",
+      role: "Managing Director",
+      company: "Acumen Capital Market India Ltd.",
+      image: "/akshay.jpg"
     },
     {
-      name: "Michael Chen",
-      role: "Quantitative Trading Expert",
-      company: "QuantEdge Capital",
-      image: "/speaker.jpg",
-      expertise: "Algorithmic Trading",
-      description: "Pioneer in developing AI-driven trading strategies and risk management systems",
-      social: {
-        twitter: "#",
-        linkedin: "#"
-      }
+      name: "Sunil Mathai",
+      role: "Founder",
+      company: "TradeTalks",
+      image: "/sunil.jpg"
     },
     {
-      name: "Dr. Elena Rodriguez",
-      role: "Research Director",
-      company: "Financial Research Labs",
-      image: "/speaker.jpg",
-      expertise: "Behavioral Finance",
-      description: "Leading researcher in market psychology and behavioral economics",
-      social: {
-        linkedin: "#",
-        website: "#"
-      }
+      name: "Uthara Ramakrishnan",
+      role: "",
+      company: "Artha Financial Services",
+      image: "/uthara.jpg"
     },
     {
-      name: "James Williams",
-      role: "Senior Portfolio Manager",
-      company: "Apex Asset Management",
-      image: "/speaker.jpg",
-      expertise: "Portfolio Optimization",
-      description: "Specialist in alternative investments and portfolio diversification",
-      social: {
-        twitter: "#",
-        linkedin: "#"
-      }
-    }
+      name:"Kushal Jain",
+      role: "Co-founder",
+      company: "Algofox",
+      image: "/kushal.jpg"
+    },
+    {
+      name:"Nikhil Gopalakrishnan",
+      role: "CEO",
+      company: "Pentad Securities",
+      image: "/nikhil.jpg"
+    },
+    {
+      name:"Sharique Samsudheen",
+      role: "Founder & CEO",
+      company: "Marketfeed",
+      image: "/sharique.jpg"
+    },
+
   ];
 
   return (
@@ -86,21 +74,6 @@ const SpeakersShowcase = () => {
                 />
                 {/* Social Links - Show on Hover */}
                 <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {speaker.social.twitter && (
-                    <a href={speaker.social.twitter} className="p-2 bg-white/90 rounded-full hover:bg-blue-500 hover:text-white transition-colors duration-200">
-                      <Twitter className="w-5 h-5" />
-                    </a>
-                  )}
-                  {speaker.social.linkedin && (
-                    <a href={speaker.social.linkedin} className="p-2 bg-white/90 rounded-full hover:bg-blue-500 hover:text-white transition-colors duration-200">
-                      <Linkedin className="w-5 h-5" />
-                    </a>
-                  )}
-                  {speaker.social.website && (
-                    <a href={speaker.social.website} className="p-2 bg-white/90 rounded-full hover:bg-blue-500 hover:text-white transition-colors duration-200">
-                      <Globe className="w-5 h-5" />
-                    </a>
-                  )}
                 </div>
               </div>
 
@@ -109,12 +82,7 @@ const SpeakersShowcase = () => {
                 <h3 className="text-lg font-semibold text-gray-900">{speaker.name}</h3>
                 <p className="text-blue-600 font-medium text-sm">{speaker.role}</p>
                 <p className="text-gray-600 text-sm">{speaker.company}</p>
-                <div className="pt-2">
-                  <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-xs font-medium rounded-full">
-                    {speaker.expertise}
-                  </span>
-                </div>
-                <p className="text-gray-500 text-sm pt-2">{speaker.description}</p>
+               
               </div>
             </div>
           ))}

@@ -8,37 +8,144 @@ const Footer = () => {
 
   const galleryImages = [
     {
-      url: "/speaker.jpg",
-      title: "Keynote Session 2023",
-      category: "Presentations"
+      url: "/gallery/_AKH4977.JPG",
     },
     {
-      url: "/speaker.jpg",
-      title: "Workshop Interaction",
-      category: "Workshops"
+      url: "/gallery/_AKH5003.JPG",
     },
     {
-      url: "/speaker.jpg",
-      title: "Networking Event",
-      category: "Networking"
+      url: "/gallery/_AKH5024.JPG",
     },
     {
-      url: "/speaker.jpg",
-      title: "Panel Discussion",
-      category: "Panels"
+      url: "/gallery/_AKH5052.JPG",
     },
     {
-      url: "/speaker.jpg",
-      title: "Awards Ceremony",
-      category: "Events"
+      url: "/gallery/_AKH5198.JPG",
     },
     {
-      url: "/speaker.jpg",
-      title: "Interactive Session",
-      category: "Workshops"
+      url: "/gallery/_AKH5346.JPG",
+    },
+    {
+      url: "/gallery/_AKH5353.JPG",
+    },
+    {
+      url: "/gallery/_AKH5369.JPG",
+    },
+    {
+      url: "/gallery/_AKH5398.JPG",
+    },
+    {
+      url: "/gallery/_AKH5528.JPG",
+    },
+    {
+      url: "/gallery/_AKH5531.JPG",
+    },
+    {
+      url: "/gallery/_AKH5537.JPG",
+    },
+    {
+      url: "/gallery/_AKH5538.JPG",
+    },
+    {
+      url: "/gallery/_AKH5604.JPG",
+    },
+    {
+      url: "/gallery/_AKH5619.JPG",
+    },
+    {
+      url: "/gallery/_AKH5630.JPG",
+    },
+    {
+      url: "/gallery/_AKH5639.JPG",
+    },
+    {
+      url: "/gallery/_AKH5668.JPG",
+    },
+    {
+      url: "/gallery/_AKH5693.JPG",
+    },
+    {
+      url: "/gallery/_AKH5802.JPG",
+    },
+    {
+      url: "/gallery/_AKH5865.JPG",
+    },
+    {
+      url: "/gallery/_AKH5876.JPG",
+    },
+    {
+      url: "/gallery/_AKH5903.JPG",
+    },
+    {
+      url: "/gallery/_AKH5920.JPG",
+    },
+    {
+      url: "/gallery/_AKH5922.JPG",
+    },
+    {
+      url: "/gallery/_AKH5928.JPG",
+    },
+    {
+      url: "/gallery/_AKH5936.JPG",
+    },
+    {
+      url: "/gallery/_AKH5946.JPG",
+    },
+    {
+      url: "/gallery/_AKH5953.JPG",
+    },
+    {
+      url: "/gallery/_AKH5969.JPG",
+    },
+    {
+      url: "/gallery/_AKH5985.JPG",
+    },
+    {
+      url: "/gallery/_AKH5996.JPG",
+    },
+    {
+      url: "/gallery/_AKH6006.JPG",
+    },
+    {
+      url: "/gallery/_AKH6017.JPG",
+    },
+    {
+      url: "/gallery/_AKH6092.JPG",
+    },
+    {
+      url: "/gallery/_AKH6129.JPG",
+    },
+    {
+      url: "/gallery/_AKH6164.JPG",
+    },
+    {
+      url: "/gallery/_AKH6176.JPG",
+    },
+    {
+      url: "/gallery/_AKH6242.JPG",
+    },
+    {
+      url: "/gallery/_AKH6265.JPG",
+    },
+    {
+      url: "/gallery/_AKH6274.JPG",
+    },
+    {
+      url: "/gallery/_AKH6277.JPG",
+    },
+    {
+      url: "/gallery/_AKH6293.JPG",
+    },
+    {
+      url: "/gallery/_AKH6302.JPG",
+    },
+    {
+      url: "/gallery/_AKH6416.JPG",
+    },
+    {
+      url: "/gallery/_AKH6429.JPG",
     }
   ];
-
   const footerLinks = {
     company: [
       { label: "About Us", href: "#" },
@@ -114,13 +221,10 @@ const Footer = () => {
             <div className="relative max-w-4xl w-full">
               <img
                 src={selectedImage.url}
-                alt={selectedImage.title}
+                alt="gallery"
                 className="w-full h-auto rounded-lg"
               />
-              <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-xl font-semibold">{selectedImage.title}</h3>
-                <p className="text-gray-300">{selectedImage.category}</p>
-              </div>
+              
             </div>
           </div>
         )}
