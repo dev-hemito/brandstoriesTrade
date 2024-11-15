@@ -41,6 +41,12 @@ const SpeakersShowcase = () => {
       company: "Marketfeed",
       image: "/sharique.jpg"
     },
+    {
+      name:"Giby Mathew",
+      role: "Chief Business Officer",
+      company: "Muthoot Securities",
+      image: "/giby.jpg"
+    },
 
   ];
 

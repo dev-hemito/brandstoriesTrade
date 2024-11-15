@@ -8,7 +8,7 @@ const TicketPlans = () => {
             name: 'Starter Trader Pass',
             price: 6999,
             features:
-                ['Access to Two Day Session','Net Working Lunch', 'Running Tea Sessions'],
+                ['Access to Two Day Session','Networking Lunch', 'Running Tea Sessions'],
             bgcolor: 'bg-white'
         },
         {

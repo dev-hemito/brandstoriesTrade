@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, Instagram, Twitter, Linkedin, Facebook, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { X, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 
 const Footer = () => {
@@ -146,179 +146,160 @@ const Footer = () => {
       url: "/gallery/_AKH6429.JPG",
     }
   ];
-  const footerLinks = {
-    company: [
-      { label: 'Home', href: '/' },
-      { label: 'About', href: '/#about' },
-      { label: 'Contact', href: '/#contact' },
-      { label: 'Tickets', href: '/#tickets' },
-      { label: 'Speakers', href: '/#speakers' },
-      { label: 'Itinerary', href: '/#itinerary' },
-      { label: 'Gallery', href: '/#gallery' },
-    ],
-
-    legal: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Use", href: "#" },
-      { label: "Cookie Policy", href: "#" }
-    ]
-  };
-
 
   return (
     <>
       {/* Gallery Section */}
-      <section className="py-20 px-4 bg-white" id='gallery'>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white to-gray-50" id="gallery">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
             <span className="text-amber-500 font-semibold tracking-wide uppercase text-sm">
-              Event Highlights
+              Captured Moments
             </span>
-            <h2 className="text-4xl font-bold text-gray-900 mt-2 mb-4">
-              Gallery
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
+              Event Gallery
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore moments from our previous events and get a glimpse of what to expect
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Experience the energy and insights from our previous events
             </p>
           </div>
 
-          {/* Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {galleryImages.map((image, index) => (
               <div
                 key={index}
-                className="group relative cursor-pointer overflow-hidden rounded-xl"
+                className="group relative cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
                 onClick={() => setSelectedImage(image)}
               >
                 <div className="aspect-[4/3] relative">
                   <Image
                     src={image.url}
-                    width={300}
+                    alt="Gallery image"
+                    width={400}
                     height={300}
-                    alt={image.url}
-                    className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                      <h3 className="text-lg font-semibold">{image.title}</h3>
-                      <p className="text-sm text-gray-300">{image.category}</p>
-                    </div>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Image Modal */}
         {selectedImage && (
-          <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 text-white p-2 hover:bg-white/10 rounded-full"
+              className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-full transition-colors duration-200"
             >
-              <X className="w-6 h-6" />
+              <X className="w-8 h-8" />
             </button>
-            <div className="relative max-w-4xl w-full">
+            <div className="relative max-w-5xl w-full">
               <img
                 src={selectedImage.url}
-                alt="gallery"
-                className="w-full h-auto rounded-lg"
+                alt="Gallery preview"
+                className="w-full h-auto rounded-xl shadow-2xl"
               />
-
             </div>
           </div>
         )}
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white" id='contact'>
-        {/* Main Footer */}
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {/* Company Info */}
-            <div className="space-y-6">
-              <h3 className="text-xl font-bold"><Image src='/main.png' alt='brandstories' width={200} height={200} /></h3>
-              <p className="text-gray-400 text-sm">
-                Join us for the most innovative trading conference, bringing together experts and enthusiasts from around the world.
+      <footer className="relative overflow-hidden bg-gray-900 text-white" id="contact">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
+            {/* Brand Section */}
+            <div className="md:col-span-5 space-y-6">
+              <div className="w-48">
+                <Image 
+                  src="/main.png" 
+                  alt="Brand Stories" 
+                  width={200} 
+                  height={80}
+                  className="w-full h-auto"
+                />
+              </div>
+              <p className="text-gray-400 text-lg leading-relaxed">
+                Experience the future of trading at our innovative conference, where industry leaders and enthusiasts converge to share insights and opportunities.
               </p>
-              {/* <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <Twitter className="w-5 h-5" />
+              <div className="pt-4">
+                <a 
+                  href="/terms" 
+                  className="inline-flex items-center text-amber-400 hover:text-amber-300 transition-colors duration-200"
+                >
+                  <span className="mr-2">Terms and Conditions</span>
+                  <ExternalLink className="w-4 h-4" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <Youtube className="w-5 h-5" />
-                </a>
-              </div> */}
+              </div>
             </div>
 
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-3">
-                {footerLinks.company.map((link, index) => (
-                  <li key={index}>
+            {/* Navigation */}
+            <nav className="md:col-span-3">
+              <h4 className="text-xl font-semibold mb-6">Quick Links</h4>
+              <ul className="space-y-4">
+                {['Home', 'About', 'Tickets', 'Speakers', 'Itinerary', 'Gallery'].map((link) => (
+                  <li key={link}>
                     <a
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors text-sm"
+                      href={`/#${link.toLowerCase()}`}
+                      className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group"
                     >
-                      {link.label}
+                      <span className="w-0 group-hover:w-2 h-px bg-amber-400 mr-0 group-hover:mr-2 transition-all duration-200" />
+                      {link}
                     </a>
                   </li>
                 ))}
               </ul>
-            </div>
-
-
+            </nav>
 
             {/* Contact Info */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold">Contact Us</h4>
-              <div className="space-y-3 text-gray-400">
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5" />
-                  <span className="text-sm">brandstories21@gmail.com</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5" />
-                  <span className="text-sm">+91 812 983 9102, 999 518 5190</span>
-                </div>
-                <div className="flex ">
-
-                  <span className="text-sm ">2/306, G2, 6th Floor, Technoplaza, Nr.Sarovaram BTH, Kannadikadu, Maradu PO, Cochin 682304</span>
+            <div className="md:col-span-4">
+              <h4 className="text-xl font-semibold mb-6">Get in Touch</h4>
+              <div className="space-y-4">
+                <a 
+                  href="mailto:brandstories21@gmail.com" 
+                  className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-200 group"
+                >
+                  <Mail className="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform duration-200" />
+                  <span>brandstories21@gmail.com</span>
+                </a>
+                <a 
+                  href="tel:+918129839102" 
+                  className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-200 group"
+                >
+                  <Phone className="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform duration-200" />
+                  <span>+91 812 983 9102</span>
+                </a>
+                <a 
+                  href="tel:+919995185190" 
+                  className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-200 group"
+                >
+                  <Phone className="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform duration-200" />
+                  <span>+91 999 518 5190</span>
+                </a>
+                
+                <div className="flex items-start space-x-3 text-gray-400 group pt-2">
+                  <MapPin className="w-5 h-5 text-amber-400 flex-shrink-0 mt-1" />
+                  <address className="not-italic text-sm leading-relaxed">
+                    2/306, G2, 6th Floor, Technoplaza,<br />
+                    Nr.Sarovaram BTH, Kannadikadu,<br />
+                    Maradu PO, Cochin 682304
+                  </address>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800">
-          <div className="max-w-6xl mx-auto px-4 py-6">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="text-sm text-gray-400">
-                © {new Date().getFullYear()} Brand Stories. All rights reserved.
-              </div>
-              <div className="flex space-x-6">
-                {footerLinks.legal.map((link, index) => (
-                  <a
-                    key={index}
-                    href={link.href}
-                    className="text-sm text-gray-400 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
+          {/* Copyright */}
+          <div className="mt-16 pt-8 border-t border-gray-800/50">
+            <div className="text-center text-gray-400 text-sm">
+              © {new Date().getFullYear()} Brand Stories. All rights reserved.
             </div>
           </div>
         </div>

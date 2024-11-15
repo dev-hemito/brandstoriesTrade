@@ -169,24 +169,7 @@ const EventItinerary = () => {
           ))}
         </div>
 
-        {/* Legend */}
-        <div className="mt-12 bg-white rounded-lg p-6">
-          <h4 className="text-sm font-semibold text-gray-900 mb-4">Session Types</h4>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {[
-              { type: 'keynote', label: 'Keynote', color: 'bg-blue-500' },
-              { type: 'panel', label: 'Panel', color: 'bg-purple-500' },
-              { type: 'workshop', label: 'Workshop', color: 'bg-green-500' },
-              { type: 'break', label: 'Break', color: 'bg-orange-500' },
-              { type: 'closing', label: 'Closing', color: 'bg-red-500' }
-            ].map((item) => (
-              <div key={item.type} className="flex items-center gap-2">
-                <div className={`w-3 h-3 rounded-full ${item.color}`} />
-                <span className="text-sm text-gray-600">{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+
       </div>
     </div>
   );
