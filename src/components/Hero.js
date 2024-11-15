@@ -1,48 +1,61 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const Hero = () => {
     const [isMobile, setIsMobile] = useState(false);
     const [videoLoaded, setVideoLoaded] = useState(false);
-
-    useEffect(() => {
-        // Handle initial check and window resize
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 500);
-        };
-
-        handleResize(); // Initial check
-        window.addEventListener('resize', handleResize);
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    const [currentVideoSrc, setCurrentVideoSrc] = useState('');
 
     // Video sources
     const videoSources = {
-        mobile: "/mobile.mp4", // Your mobile-optimized video
+        mobile: "/mobile.mp4",
         desktop: "/lap.mp4"
     };
+
+    // Memoize the resize handler to prevent recreating it on every render
+    const handleResize = useCallback(() => {
+        const mobile = window.innerWidth < 500;
+        setIsMobile(mobile);
+        setCurrentVideoSrc(mobile ? videoSources.mobile : videoSources.desktop);
+    }, []);
+
+    useEffect(() => {
+        // Handle initial check
+        handleResize();
+
+        // Add resize listener
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [handleResize]);
 
     return (
         <div className="relative w-full overflow-hidden mt-24 bg-black" style={{ height: 'calc(100vh - 100px)' }}>
             {/* Video Background */}
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    videoLoaded ? 'opacity-100' : 'opacity-0'
-                }`}
-                onLoadedData={() => setVideoLoaded(true)}
-                poster="/video-poster.jpg" // Add a poster image for better loading experience
-            >
-                <source 
-                    src={isMobile ? videoSources.mobile : videoSources.desktop}
-                    type="video/mp4"
-                />
-            </video>
+            {currentVideoSrc && (
+                <video
+                    key={currentVideoSrc} // Add key to force remount when source changes
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className={`absolute top-0 left-0 w-full h-full md:object-fill object-fill transition-opacity duration-500 ${
+                        videoLoaded ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    onLoadedData={() => setVideoLoaded(true)}
+                    poster="/video-poster.jpg"
+                >
+                    <source 
+                        src={currentVideoSrc}
+                        type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                </video>
+            )}
 
             {/* Loading state */}
             {!videoLoaded && (
@@ -58,7 +71,7 @@ const Hero = () => {
             <div className="relative min-h-[calc(100vh-6rem)] flex items-center justify-center px-4">
                 <div className="w-full max-w-6xl absolute bottom-10 md:bottom-10 sm:bottom-5">
                     <div className="flex flex-col md:flex-row justify-center items-center md:items-end gap-4 px-2">
-                        {/* Left Hotel Info - Hidden on mobile, shown from medium screens */}
+                        {/* Left Hotel Info */}
                         <div className="hidden w-full md:flex bg-gradient-to-tr text-center text-base lg:text-xl from-amber-500/80 to-amber-400/80 text-white h-16 md:h-24 justify-center items-center p-3 md:p-5 rounded-md md:w-auto">
                             Hotel Gokulam Park. Kochi
                         </div>
@@ -78,12 +91,12 @@ const Hero = () => {
                             </div>
                         </div>
 
-                        {/* Right Hotel Info - Hidden on mobile, shown from medium screens */}
+                        {/* Right Hotel Info */}
                         <div className="hidden md:flex bg-gradient-to-tr text-center text-base lg:text-xl from-amber-500/80 to-amber-400/80 text-white h-16 md:h-24 justify-center items-center p-3 md:p-5 rounded-md w-full md:w-auto">
                             8th and 9th of January 2025
                         </div>
 
-                        {/* Mobile Hotel Info - Shown only on mobile */}
+                        {/* Mobile Hotel Info */}
                         <div className="md:hidden bg-gradient-to-tr text-center text-base from-amber-500/80 to-amber-400/80 text-white h-16 flex justify-center items-center p-3 rounded-md w-full">
                             Hotel Gokulam Park. Kochi <br/> 8th and 9th of January 2025
                         </div>
