@@ -47,6 +47,12 @@ const SpeakersShowcase = () => {
       company: "Muthoot Securities",
       image: "/giby.jpg"
     },
+    {
+      name:"Hari Prasad",
+      role: "Founder & CEO",
+      company: "LiveLong Wealth",
+      image: "/hari.jpg"
+    },
 
   ];
 

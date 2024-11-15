@@ -11,7 +11,7 @@ const Header = () => {
     const navItems = [
         { name: 'Home', href: '/' },
         { name: 'About', href: '/#about' },
-        { name: 'Tickets', href: '/#tickets' },
+
         { name: 'Speakers', href: '/#speakers' },
         { name: 'Itinerary', href: '/#itinerary' },
         { name: 'Gallery', href: '/#gallery' },
@@ -25,12 +25,12 @@ const Header = () => {
                     {/* Left Logo */}
                     <div className="flex-shrink-0">
                         <Link href="/">
-                            <Image 
-                                src='/main.png' 
-                                width={2000} 
-                                height={2000} 
-                                className="h-6 md:h-10 w-auto" 
-                                alt="brand Stories" 
+                            <Image
+                                src='/traders.png'
+                                width={2000}
+                                height={2000}
+                                className="w-32 md:w-32 h-auto"
+                                alt="brand Stories"
                             />
                         </Link>
                     </div>
@@ -51,7 +51,10 @@ const Header = () => {
                     </div>
 
                     {/* Right Logo - Desktop */}
-                    <div className="hidden md:block flex-shrink-0">
+                    <Link href="/#tickets" className="hidden md:block flex-shrink-0 bg-amber-400 p-3 rounded">
+                        Get Tickets
+                    </Link>
+                    {/* <div className="hidden md:block flex-shrink-0">
                         <Image 
                             src='/money.png' 
                             width={2000} 
@@ -59,17 +62,20 @@ const Header = () => {
                             className="w-auto h-12" 
                             alt="brand Stories" 
                         />
-                    </div>
+                    </div> */}
 
                     {/* Mobile menu button and Right Logo */}
                     <div className="md:hidden flex items-center space-x-2">
-                        <Image 
+                        <Link href="/#tickets" className=" flex-shrink-0 bg-amber-400 p-3 rounded-lg">
+                            Get Tickets
+                        </Link>
+                        {/* <Image 
                             src='/money.png' 
                             width={2000} 
                             height={2000} 
                             className="w-28 h-auto" 
                             alt="brand Stories" 
-                        />
+                        /> */}
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="text-black hover:text-amber-500 p-2"
