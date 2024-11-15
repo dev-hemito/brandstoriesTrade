@@ -6,7 +6,7 @@ const TicketPlans = () => {
         {
             id: 'starter',
             name: 'Starter Trader Pass',
-            price: 6999,
+            price: 5999,
             features:
                 ['Access to Two Day Session','Networking Lunch', 'Running Tea Sessions'],
             bgcolor: 'bg-white'
@@ -14,14 +14,14 @@ const TicketPlans = () => {
         {
             id: 'elite',
             name: 'Elite Trader Pass',
-            price: 12999,
+            price: 11999,
             features: ['Access to Two Days Pass', 'Single Occupancy Sharing', 'Gala Dinner with Cocktail'],
             bgcolor: 'bg-amber-50'
         },
         {
             id: 'pro',
             name: 'Pro Trader Pass',
-            price: 9999,
+            price: 8999,
 
                 features: ['Access to Two Days Pass', 'Double Occupancy Sharing', 'Lunch and Running Tea Session'],
             bgcolor: 'bg-white'

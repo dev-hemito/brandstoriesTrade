@@ -13,7 +13,7 @@ import EventItinerary from '@/components/Intinerary'
 import Footer from '@/components/Footer'
 
 const Page = () => {
-  const words = "South Indias Biggest Traders and Investors Conclave".split(" ")
+  const words = "South India's Biggest Traders and Investors Conclave".split(" ")
 
   const container = {
     hidden: { opacity: 0 },
