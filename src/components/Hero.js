@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -25,7 +26,7 @@ const Hero = () => {
   }, [handleResize]);
 
   return (
-    <section className="relative w-full overflow-hidden bg-black min-h-screen">
+    <section className="relative w-full overflow-hidden bg-black mt-24 pt-3" style={{height:"calc(90vh-100px)"}}>
       {/* Video Background */}
       {currentVideoSrc && (
         <video
@@ -34,7 +35,7 @@ const Hero = () => {
           loop
           muted
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+          className={`absolute inset-0 w-full h-full object-fill transition-opacity duration-700 ${
             videoLoaded ? "opacity-100" : "opacity-0"
           }`}
           onLoadedData={() => setVideoLoaded(true)}
@@ -56,14 +57,14 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
 
       {/* Content Container */}
-      <div className="relative min-h-screen flex items-end md:pb-32 pb-12 justify-center px-4">
+      <div className="relative min-h-screen flex items-top md:pb-32 pb-12 justify-center px-4">
         <div className="w-full max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center md:gap-8 px-4">
+          <div className="flex  justify-between items-center md:gap-8 px-4">
             {/* Left Logo */}
-            <div className="md:w-1/3 transform hover:scale-105 transition-transform duration-300">
+            <div className="md:w-1/3  flex justify-center transform hover:scale-105 transition-transform duration-300">
               <Image
                 src="/main.png"
-                className="h-16 md:h-24 w-auto object-contain"
+                className="md:h-10 h-7 w-auto object-contain"
                 width={300}
                 height={300}
                 alt="Brand Stories"
@@ -72,7 +73,7 @@ const Hero = () => {
             </div>
 
             {/* Center Content */}
-            <div className="md:w-1/3 text-center py-4 ">
+            {/* <div className="md:w-1/3 text-center py-4 ">
               <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight">
                 Kerala Traders & Investors Conclave
               </h1>
@@ -82,13 +83,13 @@ const Hero = () => {
               <div className="text-white text-lg">
                 8th and 9th of January 2025
               </div>
-            </div>
+            </div> */}
 
             {/* Right Logo */}
-            <div className="md:w-1/3 transform hover:scale-105 transition-transform duration-300">
+            <div className="md:w-1/3  flex justify-center transform hover:scale-105 transition-transform duration-300">
               <Image
                 src="/money.png"
-                className="h-16 md:h-24 w-auto object-contain"
+                className="md:h-10 h-7 w-auto object-contain"
                 width={5000}
                 height={5000}
                 alt="Money Icon"
@@ -98,15 +99,16 @@ const Hero = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="text-center mt-5">
+         
+        </div>
+        <div className="text-center mt-5 absolute bottom-1/3">
             <Link
               href="/#tickets"
-              className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-lg"
+              className=" flex gap-3 items-center bg-white hover:bg-yellow-400 text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-lg"
             >
-              Join Now
+              Join Now <ArrowRight/>
             </Link>
           </div>
-        </div>
       </div>
     </section>
   );

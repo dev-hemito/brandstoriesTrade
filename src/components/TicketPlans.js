@@ -8,7 +8,15 @@ const TicketPlans = () => {
             name: 'Starter Trader Pass',
             price: 5999,
             features:
-                ['Access to Two Day Session','Networking Lunch', 'Running Tea Sessions'],
+                ['Access to Two Day Session', 'Networking Lunch', 'Running Tea Sessions'],
+            bgcolor: 'bg-white'
+        },
+        {
+            id: 'pro',
+            name: 'Pro Trader Pass',
+            price: 8999,
+
+            features: ['Access to Two Days Pass', 'Double Occupancy Sharing', 'Lunch and Running Tea Session'],
             bgcolor: 'bg-white'
         },
         {
@@ -18,14 +26,7 @@ const TicketPlans = () => {
             features: ['Access to Two Days Pass', 'Single Occupancy Sharing', 'Gala Dinner with Cocktail'],
             bgcolor: 'bg-amber-50'
         },
-        {
-            id: 'pro',
-            name: 'Pro Trader Pass',
-            price: 8999,
 
-                features: ['Access to Two Days Pass', 'Double Occupancy Sharing', 'Lunch and Running Tea Session'],
-            bgcolor: 'bg-white'
-        },
     ];
 
     const [selectedPackage, setSelectedPackage] = useState(null);
