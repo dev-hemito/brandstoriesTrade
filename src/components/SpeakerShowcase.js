@@ -35,12 +35,12 @@ const SpeakersShowcase = () => {
       company: "Pentad Securities",
       image: "/nikhil.jpg"
     },
-    {
-      name:"Sharique Samsudheen",
-      role: "Founder & CEO",
-      company: "Marketfeed",
-      image: "/sharique.jpg"
-    },
+    // {
+    //   name:"Sharique Samsudheen",
+    //   role: "Founder & CEO",
+    //   company: "Marketfeed",
+    //   image: "/sharique.jpg"
+    // },
     {
       name:"Giby Mathew",
       role: "Chief Business Officer",

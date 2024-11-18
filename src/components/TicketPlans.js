@@ -4,26 +4,26 @@ import { ArrowLeft, Check, Package, Loader, X, LucideTicket } from 'lucide-react
 const TicketPlans = () => {
     const packages = [
         {
-            id: 'starter',
-            name: 'Starter Trader Pass',
+            id: 'silver',
+            name: 'Silver Tickets',
             price: 5999,
             features:
-                ['Access to Two Day Session', 'Networking Lunch', 'Running Tea Sessions'],
+                ['2 Days'],
             bgcolor: 'bg-white'
         },
         {
-            id: 'pro',
-            name: 'Pro Trader Pass',
+            id: 'golden',
+            name: 'Golden Tickets',
             price: 8999,
 
-            features: ['Access to Two Days Pass', 'Double Occupancy Sharing', 'Lunch and Running Tea Session'],
+            features: ['2 Days', '1 Night Stay','Double Occupancy'],
             bgcolor: 'bg-white'
         },
         {
-            id: 'elite',
-            name: 'Elite Trader Pass',
+            id: 'vip',
+            name: 'VIP Tickets',
             price: 11999,
-            features: ['Access to Two Days Pass', 'Single Occupancy Sharing', 'Gala Dinner with Cocktail'],
+            features: ['2 Days', '1 Night Stay', 'Networking Gala Dinner', 'Single Occupancy'],
             bgcolor: 'bg-amber-50'
         },
 
