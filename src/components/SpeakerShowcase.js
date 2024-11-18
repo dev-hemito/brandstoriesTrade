@@ -49,6 +49,13 @@ const SpeakersShowcase = () => {
       company: "Pentad Securities",
       image: "/nikhil.jpg"
     },
+
+    {
+      name:"Santosh Kumar Pasi",
+      role: "Founder",
+      company: "Pasi Technologies",
+      image: "/santosh.png"
+    },
     // {
     //   name:"Sharique Samsudheen",
     //   role: "Founder & CEO",
