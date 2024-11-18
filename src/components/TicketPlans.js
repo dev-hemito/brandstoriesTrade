@@ -238,7 +238,7 @@ const TicketPlans = () => {
                             key={pkg.id}
                             className={`${pkg.bgcolor} rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1`}
                         >
-                            <div className="p-6 md:p-8">
+                            <div className="p-6 md:p-8 border">
                                 <div className="flex items-center justify-between mb-6">
                                     <Package className="w-8 h-8 text-amber-500" />
                                     <span className="text-xs font-semibold px-3 py-1 bg-white text-amber-700 rounded-full">
@@ -266,12 +266,12 @@ const TicketPlans = () => {
                                 >
                                     Select Package
                                 </button> */}
-                                 <Link href={pkg.href}
-                                    onClick={() => handlePackageSelect(pkg)}
-                                    className="w-full py-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transform transition-all duration-300 hover:scale-[1.02] focus:ring-2 focus:ring-amber-300 focus:outline-none"
+                                 <button onClick={()=>{window.location.href=pkg.href}}
+                                   
+                                    className=" w-full p-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transform transition-all duration-300 hover:scale-[1.02] focus:ring-2 focus:ring-amber-300 focus:outline-none"
                                 >
                                     Select Package
-                                </Link >
+                                </button >
 
                             </div>
                         </div>
