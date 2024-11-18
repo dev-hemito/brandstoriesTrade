@@ -6,19 +6,39 @@ import { getSheet } from '../sheets';
 
 // Initialize Email Transporter
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.NEXT_PUBLIC_SMTP_EMAIL,
-    pass: process.env.NEXT_PUBLIC_SMTP_PASSWORD,
-  },
+    host: 'smtp.zoho.in', // Changed to .in domain
+    port: 465,
+    secure: true,
+    auth: {
+        user: process.env.NEXT_PUBLIC_SMTP_EMAIL?.trim(), // Trim any whitespace
+        pass: process.env.NEXT_PUBLIC_SMTP_PASSWORD?.trim(), // Trim any whitespace
+    },
+    debug: true,
+    logger: true
 });
 
+
+const testTransporter = async () => {
+    try {
+        const verified = await transporter.verify();
+        console.log('SMTP connection verified:', verified);
+        return verified;
+    } catch (error) {
+        console.error('SMTP verification failed:', {
+            error: error.message,
+            user: process.env.NEXT_PUBLIC_SMTP_EMAIL,
+            // Don't log the actual password
+            hasPassword: !!process.env.NEXT_PUBLIC_SMTP_PASSWORD
+        });
+        return false;
+    }
+};
 export async function POST(request) {
     console.log('Verifying payment and saving registration...');
     try {
-        const { 
-            razorpay_order_id, 
-            razorpay_payment_id, 
+        const {
+            razorpay_order_id,
+            razorpay_payment_id,
             razorpay_signature,
             userData
         } = await request.json();
@@ -67,8 +87,11 @@ export async function POST(request) {
 
         // Send confirmation email
         try {
-            await transporter.sendMail({
-                from: process.env.NEXT_PUBLIC_SMTP_EMAIL,
+            const mailOptions = {
+                from: {
+                    name: 'The Brand Stories',
+                    address: process.env.NEXT_PUBLIC_SMTP_EMAIL
+                },
                 to: userData.email,
                 subject: 'Registration Successful - Trading Summit',
                 html: `
@@ -77,12 +100,25 @@ export async function POST(request) {
                     <p>Thank you for registering for the Trading Summit.</p>
                     <p>Your ticket number is: <strong>${ticketNumber}</strong></p>
                     <p>Please keep this number for future reference.</p>
-                `,
+                `
+            };
+
+            console.log('Sending email with configuration:', {
+                host: transporter.options.host,
+                port: transporter.options.port,
+                secure: transporter.options.secure,
+                user: process.env.NEXT_PUBLIC_SMTP_EMAIL
             });
-            console.log('Confirmation email sent');
+
+            const info = await transporter.sendMail(mailOptions);
+            console.log('Email sent successfully:', info.messageId);
         } catch (emailError) {
-            console.error('Error sending confirmation email:', emailError);
-            // Continue with success response even if email fails
+            console.error('Email sending failed:', {
+                error: emailError.message,
+                code: emailError.code,
+                response: emailError.response,
+                command: emailError.command
+            });
         }
 
         return NextResponse.json({
