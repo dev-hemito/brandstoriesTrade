@@ -6,10 +6,22 @@ import Image from 'next/image';
 const SpeakersShowcase = () => {
   const speakers = [
     {
-      name: "Akshay Agarwal",
-      role: "Managing Director",
-      company: "Acumen Capital Market India Ltd.",
-      image: "/akshay.jpg"
+      name:"Hari Prasad",
+      role: "Founder & CEO",
+      company: "LiveLong Wealth",
+      image: "/hari.jpg"
+    },
+    {
+      name:"Kushal Jain",
+      role: "Co-founder",
+      company: "Algofox",
+      image: "/kushal.jpg"
+    },
+    {
+      name:"Giby Mathew",
+      role: "Chief Business Officer",
+      company: "Muthoot Securities",
+      image: "/giby.jpg"
     },
     {
       name: "Sunil Mathai",
@@ -18,17 +30,19 @@ const SpeakersShowcase = () => {
       image: "/sunil.jpg"
     },
     {
+      name: "Akshay Agarwal",
+      role: "Managing Director",
+      company: "Acumen Capital Market India Ltd.",
+      image: "/akshay.jpg"
+    },
+
+    {
       name: "Uthara Ramakrishnan",
       role: "",
       company: "Artha Financial Services",
       image: "/uthara.jpg"
     },
-    {
-      name:"Kushal Jain",
-      role: "Co-founder",
-      company: "Algofox",
-      image: "/kushal.jpg"
-    },
+
     {
       name:"Nikhil Gopalakrishnan",
       role: "CEO",
@@ -41,18 +55,8 @@ const SpeakersShowcase = () => {
     //   company: "Marketfeed",
     //   image: "/sharique.jpg"
     // },
-    {
-      name:"Giby Mathew",
-      role: "Chief Business Officer",
-      company: "Muthoot Securities",
-      image: "/giby.jpg"
-    },
-    {
-      name:"Hari Prasad",
-      role: "Founder & CEO",
-      company: "LiveLong Wealth",
-      image: "/hari.jpg"
-    },
+
+
 
   ];
 
@@ -83,8 +87,8 @@ const SpeakersShowcase = () => {
                 <Image
                   src={speaker.image}
                   alt={speaker.name}
-                  width={300}
-                  height={300}
+                  width={500}
+                  height={500}
                   className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                 />
                 {/* Social Links - Show on Hover */}
