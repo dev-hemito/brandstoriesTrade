@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, Check, Package, Loader, X, LucideTicket } from 'lucide-react';
+import Link from 'next/link';
 
 const TicketPlans = () => {
     const packages = [
@@ -8,21 +9,24 @@ const TicketPlans = () => {
             name: 'Silver Tickets',
             price: 5999,
             features: ['2 Days'],
-            bgcolor: 'bg-gradient-to-br from-gray-50 to-gray-100'
+            bgcolor: 'bg-gradient-to-br from-gray-50 to-gray-100',
+            href:'https://rzp.io/rzp/4TFIoAnZ',
         },
         {
             id: 'golden',
             name: 'Golden Tickets',
             price: 8999,
             features: ['2 Days', '1 Night Stay', 'Double Occupancy'],
-            bgcolor: 'bg-gradient-to-br from-amber-50 to-amber-100'
+            bgcolor: 'bg-gradient-to-br from-amber-50 to-amber-100',
+            href:'https://rzp.io/rzp/2YlYmRz',
         },
         {
             id: 'vip',
             name: 'VIP Tickets',
             price: 11999,
             features: ['2 Days', '1 Night Stay', 'Networking Gala Dinner', 'Single Occupancy'],
-            bgcolor: 'bg-gradient-to-br from-amber-100 to-amber-200'
+            bgcolor: 'bg-gradient-to-br from-amber-100 to-amber-200',
+            href:'https://rzp.io/rzp/soVOoJY',
         },
     ];
 
@@ -256,12 +260,19 @@ const TicketPlans = () => {
                                     ))}
                                 </ul>
                                 
-                                <button
+                                {/* <button
                                     onClick={() => handlePackageSelect(pkg)}
                                     className="w-full py-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transform transition-all duration-300 hover:scale-[1.02] focus:ring-2 focus:ring-amber-300 focus:outline-none"
                                 >
                                     Select Package
-                                </button>
+                                </button> */}
+                                 <Link href={pkg.href}
+                                    onClick={() => handlePackageSelect(pkg)}
+                                    className="w-full py-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transform transition-all duration-300 hover:scale-[1.02] focus:ring-2 focus:ring-amber-300 focus:outline-none"
+                                >
+                                    Select Package
+                                </Link >
+
                             </div>
                         </div>
                     ))}
