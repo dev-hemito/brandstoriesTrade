@@ -7,26 +7,23 @@ const TicketPlans = () => {
             id: 'silver',
             name: 'Silver Tickets',
             price: 5999,
-            features:
-                ['2 Days'],
-            bgcolor: 'bg-white'
+            features: ['2 Days'],
+            bgcolor: 'bg-gradient-to-br from-gray-50 to-gray-100'
         },
         {
             id: 'golden',
             name: 'Golden Tickets',
             price: 8999,
-
-            features: ['2 Days', '1 Night Stay','Double Occupancy'],
-            bgcolor: 'bg-white'
+            features: ['2 Days', '1 Night Stay', 'Double Occupancy'],
+            bgcolor: 'bg-gradient-to-br from-amber-50 to-amber-100'
         },
         {
             id: 'vip',
             name: 'VIP Tickets',
             price: 11999,
             features: ['2 Days', '1 Night Stay', 'Networking Gala Dinner', 'Single Occupancy'],
-            bgcolor: 'bg-amber-50'
+            bgcolor: 'bg-gradient-to-br from-amber-100 to-amber-200'
         },
-
     ];
 
     const [selectedPackage, setSelectedPackage] = useState(null);
@@ -42,6 +39,7 @@ const TicketPlans = () => {
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 
+    // Existing validation and handler functions remain the same
     const validateForm = () => {
         const newErrors = {};
         if (!formData.name) newErrors.name = 'Name is required';
@@ -66,11 +64,7 @@ const TicketPlans = () => {
     };
 
     const resetForm = () => {
-        setFormData({
-            name: '',
-            email: '',
-            phone: ''
-        });
+        setFormData({ name: '', email: '', phone: '' });
         setErrors({});
         setProcessingState('');
         setLoading(false);
@@ -80,6 +74,7 @@ const TicketPlans = () => {
         setVerificationData(null);
     };
 
+    // Existing API functions remain the same
     const checkDuplicate = async () => {
         setProcessingState('Checking registration status...');
         try {
@@ -91,7 +86,6 @@ const TicketPlans = () => {
                     phone: formData.phone
                 })
             });
-
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const data = await response.json();
             return data.isDuplicate;
@@ -111,7 +105,6 @@ const TicketPlans = () => {
                     amount: selectedPackage.price
                 })
             });
-
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             return await response.json();
         } catch (error) {
@@ -131,7 +124,6 @@ const TicketPlans = () => {
                     userData: { ...formData, package: selectedPackage.name }
                 })
             });
-
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             return await response.json();
         } catch (error) {
@@ -216,34 +208,57 @@ const TicketPlans = () => {
     };
 
     return (
-        <div className=" mb-16" id='tickets'>
+        <div className="min-h-screen  py-16 px-4" id="tickets">
             <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-            <div className="flex justify-center gap-5 items-center">
-                <h1 className='text-center text-5xl text-amber-500'>Get Your Ticket Now </h1>
-                <LucideTicket className='w-12 h-12 text-amber-500 hidden md:block' />
+            
+            {/* Header Section */}
+            <div className="max-w-7xl mx-auto mb-12">
+                <div className="flex flex-col items-center space-y-4">
+                    <div className="flex items-center gap-3">
+                        <h1 className="text-4xl md:text-5xl font-bold text-amber-500 text-center">
+                            Get Your Ticket Now
+                        </h1>
+                        <LucideTicket className="w-8 h-8 md:w-12 md:h-12 text-amber-500 hidden sm:block" />
+                    </div>
+                    <p className="text-gray-600 text-center max-w-2xl">
+                        Join us for an incredible trading summit experience. Choose the package that best suits your needs.
+                    </p>
+                </div>
             </div>
-            <main className="max-w-7xl mx-auto px-4 py-12">
-                {/* Package Cards */}
-                <div className="grid md:grid-cols-3 gap-8">
-                    {packages.map((pkg) => (
-                        <div key={pkg.id}
-                            className={`${pkg.bgcolor} rounded-lg border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300`}>
 
-                            <div className="p-6">
-                                <Package />
-                                <h3 className="text-2xl font-bold text-gray-800 flex item-center gap-2">{pkg.name}</h3>
-                                <p className="text-4xl font-bold text-amber-500 mt-2">₹{pkg.price.toLocaleString()}</p>
-                                <ul className="space-y-4 mt-6">
+            {/* Package Cards */}
+            <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    {packages.map((pkg) => (
+                        <div
+                            key={pkg.id}
+                            className={`${pkg.bgcolor} rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1`}
+                        >
+                            <div className="p-6 md:p-8">
+                                <div className="flex items-center justify-between mb-6">
+                                    <Package className="w-8 h-8 text-amber-500" />
+                                    <span className="text-xs font-semibold px-3 py-1 bg-white text-amber-700 rounded-full">
+                                        {pkg.id === 'vip' ? 'Most Popular' : ''}
+                                    </span>
+                                </div>
+                                
+                                <h3 className="text-2xl font-bold text-gray-800 mb-2">{pkg.name}</h3>
+                                <p className="text-4xl font-bold text-amber-500 mb-6">
+                                    ₹{pkg.price.toLocaleString()}
+                                </p>
+                                
+                                <ul className="space-y-4 mb-8 md:min-h-36">
                                     {pkg.features.map((feature, index) => (
                                         <li key={index} className="flex items-center text-gray-600">
-                                            <Check className="w-5 h-5 mr-2 text-amber-500" />
-                                            {feature}
+                                            <Check className="w-5 h-5 mr-3 text-amber-500 flex-shrink-0" />
+                                            <span>{feature}</span>
                                         </li>
                                     ))}
                                 </ul>
+                                
                                 <button
                                     onClick={() => handlePackageSelect(pkg)}
-                                    className="w-full mt-6 bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors duration-300"
+                                    className="w-full py-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transform transition-all duration-300 hover:scale-[1.02] focus:ring-2 focus:ring-amber-300 focus:outline-none"
                                 >
                                     Select Package
                                 </button>
@@ -251,111 +266,157 @@ const TicketPlans = () => {
                         </div>
                     ))}
                 </div>
+            </div>
 
-                {/* Registration Modal */}
-                {showRegistrationModal && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                        <div className="bg-white rounded-lg max-w-2xl w-full mx-4 relative">
+            {/* Registration Modal */}
+            {showRegistrationModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                    <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                        <div className="relative p-6 md:p-8">
                             <button
                                 onClick={() => setShowRegistrationModal(false)}
-                                className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
+                                className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
                             >
-                                <X className="w-6 h-6" />
+                                <X className="w-6 h-6 text-gray-500" />
                             </button>
 
-                            <div className="p-6">
-                                <div className="flex items-center justify-between mb-6 border-b pb-4">
-                                    <h2 className="text-2xl font-bold text-gray-800">Complete Registration</h2>
-                                    <div className="text-right">
-                                        <p className="text-amber-500">{selectedPackage?.name}</p>
-                                        <p className="text-gray-800 text-xl font-bold">₹{selectedPackage?.price.toLocaleString()}</p>
-                                    </div>
+                            <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 pb-4 border-b">
+                                <div>
+                                    <h2 className="text-2xl font-bold text-gray-800 mb-1">Complete Registration</h2>
+                                    <p className="text-gray-500">Fill in your details to proceed</p>
                                 </div>
+                                <div className="mt-4 md:mt-0 text-right">
+                                    <p className="text-amber-500 font-medium">{selectedPackage?.name}</p>
+                                    <p className="text-2xl font-bold text-gray-800">₹{selectedPackage?.price.toLocaleString()}</p>
+                                </div>
+                            </div>
 
-                                {processingState && (
-                                    <div className="mb-6 flex items-center justify-center text-amber-500 space-x-2">
-                                        <Loader className="w-5 h-5 animate-spin" />
-                                        <span>{processingState}</span>
+                            {processingState && (
+                                <div className="mb-6 flex items-center justify-center text-amber-500 space-x-3 bg-amber-50 p-4 rounded-lg">
+                                    <Loader className="w-5 h-5 animate-spin" />
+                                    <span className="font-medium">{processingState}</span>
+                                </div>
+                            )}
+
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                {['name', 'email', 'phone'].map((field) => (
+                                    <div key={field}>
+                                        <label className="block text-gray-700 font-medium mb-2 capitalize">
+                                            {field} <span className="text-amber-500">*</span>
+                                        </label>
+                                        <input
+                                            type={field === 'email' ? 'email' : 'text'}
+                                            name={field}
+                                            value={formData[field]}
+                                            onChange={handleInputChange}
+                                            className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl text-gray-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all"
+                                            placeholder={`Enter your ${field}`}
+                                        />
+                                        {errors[field] && (
+                                            <p className="text-red-500 text-sm mt-2 flex items-center">
+                                                <X className="w-4 h-4 mr-1" />
+                                                {errors[field]}
+                                            </p>
+                                        )}
+                                    </div>
+                                ))}
+
+                                {errors.general && (
+                                    <div className="p-4 bg-red-50 rounded-lg text-red-500 text-center">
+                                        {errors.general}
                                     </div>
                                 )}
 
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    {['name', 'email', 'phone'].map((field) => (
-                                        <div key={field}>
-                                            <label className="block text-gray-700 mb-2 capitalize">
-                                                {field} *
-                                            </label>
-                                            <input
-                                                type={field === 'email' ? 'email' : 'text'}
-                                                name={field}
-                                                value={formData[field]}
-                                                onChange={handleInputChange}
-                                                className="w-full p-3 bg-white border border-gray-300 rounded-lg text-gray-800 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none"
-                                            />
-                                            {errors[field] && (
-                                                <p className="text-red-500 text-sm mt-1">{errors[field]}</p>
-                                            )}
-                                        </div>
-                                    ))}
-
-                                    {errors.general && (
-                                        <p className="text-red-500 text-center">{errors.general}</p>
+                                <button
+                                    type="submit"
+                                    disabled={loading}
+                                    className="w-full py-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 focus:ring-2 focus:ring-amber-300 focus:outline-none"
+                                >
+                                    {loading ? (
+                                        <span className="flex items-center justify-center space-x-2">
+                                            <Loader className="w-5 h-5 animate-spin" />
+                                            <span>Processing...</span>
+                                        </span>
+                                    ) : (
+                                        'Proceed to Payment'
                                     )}
-
-                                    <button
-                                        type="submit"
-                                        disabled={loading}
-                                        className="w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
-                                    >
-                                        {loading ? 'Processing...' : 'Proceed to Payment'}
-                                    </button>
-                                </form>
-                            </div>
+                                </button>
+                            </form>
                         </div>
                     </div>
-                )}
+                </div>
+            )}
 
-                {/* Success Modal */}
-                {showSuccessModal && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                        <div className="bg-white rounded-lg max-w-2xl w-full mx-4">
-                            <div className="text-center p-12">
-                                <div className="w-20 h-20 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <Check className="w-10 h-10 text-white" />
-                                </div>
-                                <h2 className="text-3xl font-bold text-gray-800 mb-4">Registration Successful!</h2>
-                                <p className="text-gray-600 mb-4">
-                                    Thank you for registering for the Trading Summit! We have sent a confirmation email to your registered email address.
-                                    {verificationDatatickets && (
-                                        <span className="block mt-2 font-semibold">
-                                            Booking Ticket Token: {verificationDatatickets}
-                                        </span>
-                                    )}
-                                </p>
+            {/* Success Modal */}
+            {showSuccessModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                    <div className="bg-white rounded-2xl max-w-2xl w-full shadow-xl transform animate-fadeIn">
+                        <div className="text-center p-8 md:p-12">
+                            <div className="w-20 h-20 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
+                                <Check className="w-10 h-10 text-white" />
+                            </div>
+                            
+                            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+                                Registration Successful!
+                            </h2>
+                            
+                            <div className="space-y-4 mb-8">
                                 <p className="text-gray-600">
-                                    Please check your email for your ticket details and further instructions.
+                                    Thank you for registering for the Trading Summit! We have sent a confirmation email to your registered email address.
                                 </p>
+                                
+                                {verificationDatatickets && (
+                                    <div className="bg-amber-50 p-4 rounded-lg inline-block">
+                                        <p className="text-amber-700 font-medium">
+                                            Booking Ticket Token:
+                                        </p>
+                                        <p className="font-mono text-lg text-amber-800 mt-1">
+                                            {verificationDatatickets}
+                                        </p>
+                                    </div>
+                                )}
+                                
+                                <div className="bg-blue-50 p-4 rounded-lg">
+                                    <p className="text-blue-700">
+                                        Please check your email for your ticket details and further instructions.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <button
                                     onClick={resetForm}
-                                    className="mt-8 bg-amber-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-amber-600 transition-colors duration-300"
+                                    className="px-8 py-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transition-all duration-300 focus:ring-2 focus:ring-amber-300 focus:outline-none transform hover:scale-[1.02]"
                                 >
                                     Register Another Ticket
+                                </button>
+                                
+                                <button
+                                    onClick={() => window.location.href = '#tickets'}
+                                    className="px-8 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300 focus:ring-2 focus:ring-gray-300 focus:outline-none"
+                                >
+                                    Back to Packages
                                 </button>
                             </div>
                         </div>
                     </div>
-                )}
+                </div>
+            )}
 
-                {/* Processing Overlay */}
-                {processingState && !showRegistrationModal && !showSuccessModal && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                        <div className="bg-white rounded-lg p-6 flex items-center space-x-4">
-                            <Loader className="w-6 h-6 animate-spin text-amber-500" />
-                            <span className="text-gray-800">{processingState}</span>
+            {/* Processing Overlay */}
+            {processingState && !showRegistrationModal && !showSuccessModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-2xl p-8 shadow-xl flex items-center space-x-4 transform animate-fadeIn">
+                        <div className="relative">
+                            <div className="w-12 h-12 border-4 border-amber-200 border-t-amber-500 rounded-full animate-spin"></div>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-6 h-6 bg-white rounded-full"></div>
+                            </div>
                         </div>
+                        <span className="text-lg text-gray-700 font-medium">{processingState}</span>
                     </div>
-                )}
-            </main>
+                </div>
+            )}
         </div>
     );
 };
