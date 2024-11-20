@@ -263,11 +263,11 @@ const Footer = () => {
               <h4 className="text-xl font-semibold mb-6">Get in Touch</h4>
               <div className="space-y-4">
                 <a 
-                  href="mailto:brandstories21@gmail.com" 
+                  href="mailto:info@thebrandstories.co.in" 
                   className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-200 group"
                 >
                   <Mail className="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform duration-200" />
-                  <span>brandstories21@gmail.com</span>
+                  <span>info@thebrandstories.co.in</span>
                 </a>
                 <a 
                   href="tel:+918129839102" 
