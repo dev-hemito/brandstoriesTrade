@@ -8,73 +8,105 @@ const EventItinerary = () => {
   const schedule = {
     day1: [
       {
-        time: "09:00 AM",
-        title: "Registration & Welcome Coffee",
-        description: "Check-in and networking opportunity",
-        duration: "60 min",
-        icon: <Coffee className="w-5 h-5" />,
+        time: "08:00 AM - 10:00 AM",
+        title: "BREAKFAST ",
+        description: "",
+        duration: "",
+        icon: '',
         type: "break"
       },
       {
         time: "10:00 AM",
-        title: "Opening Keynote: Future of Trading",
-        description: "Dr. Elena Rodriguez discusses emerging market trends",
-        duration: "90 min",
-        icon: <Presentation className="w-5 h-5" />,
+        title: "INAUGURATION ",
+        description: "",
+        duration: "",
+        icon: '',
         type: "keynote"
       },
       {
-        time: "11:45 AM",
-        title: "Panel Discussion: Market Dynamics",
-        description: "Expert panel on global market influences",
-        duration: "75 min",
-        icon: <Users className="w-5 h-5" />,
+        time: "",
+        title: "RUNNING COFFEE AND TEA",
+        description: "",
+        duration: "",
+        icon: '',
         type: "panel"
       },
       {
-        time: "01:00 PM",
-        title: "Networking Lunch",
-        description: "Catered lunch and networking session",
-        duration: "60 min",
-        icon: <Coffee className="w-5 h-5" />,
+        time: "01:45 PM",
+        title: "LUNCH ",
+        description: " ",
+        duration: " ",
+        icon: '',
         type: "break"
       },
       {
-        time: "02:00 PM",
-        title: "Workshop: Trading Strategies",
-        description: "Interactive session on advanced trading techniques",
-        duration: "120 min",
-        icon: <MessageSquare className="w-5 h-5" />,
-        type: "workshop"
+        time: "",
+        title: "RUNNING COFFEE AND TEA",
+        description: "",
+        duration: "",
+        icon: '',
+        type: "panel"
       },
       {
-        time: "04:30 PM",
-        title: "Closing Remarks & Awards",
-        description: "Day 1 summary and excellence awards",
-        duration: "45 min",
-        icon: <Award className="w-5 h-5" />,
+        time: "08:00 PM",
+        title: "GALA DINNER",
+        description: " ",
+        duration: " ",
+        icon: '',
         type: "closing"
       }
     ],
     day2: [
       {
-        time: "09:30 AM",
-        title: "Day 2 Opening",
-        description: "Brief overview of day's agenda",
-        duration: "30 min",
-        icon: <Coffee className="w-5 h-5" />,
+        time: "08:00 AM - 10:00 AM",
+        title: "BREAKFAST ",
+        description: "",
+        duration: "",
+        icon: '',
         type: "break"
       },
       {
-        time: "10:00 AM",
-        title: "Algorithmic Trading Masterclass",
-        description: "Deep dive into automated trading systems",
-        duration: "120 min",
-        icon: <Presentation className="w-5 h-5" />,
-        type: "keynote"
+        time: "",
+        title: "RUNNING COFFEE AND TEA",
+        description: "",
+        duration: "",
+        icon: '',
+        type: "panel"
+      },
+          
+      {
+        time: "01:30 PM - 03:00 PM",
+        title: "LUNCH ",
+        description: " ",
+        duration: " ",
+        icon: '',
+        type: "break"
+      },
+      {
+        time: "02:00 PM - 03:00 PM",
+        title: "AWARD CEREMONY ",
+        description: " ",
+        duration: " ",
+        icon: '',
+        type: "panel"
+      },
+      {
+        time: "",
+        title: "RUNNING COFFEE AND TEA",
+        description: "",
+        duration: "",
+        icon: '',
+        type: "panel"
+      },
+      {
+        time: "05:00 PM",
+        title: "EVENT SIGNOFF",
+        description: " ",
+        duration: " ",
+        icon: '',
+        type: "closing"
       }
-      // Add more day 2 events as needed
-    ]
+    ],
   };
 
   const getTypeStyles = (type) => {
@@ -142,7 +174,7 @@ const EventItinerary = () => {
                 {/* Time Column */}
                 <div className="flex-shrink-0 w-32">
                   <div className="flex items-center gap-2 text-gray-600">
-                    <Clock className="w-4 h-4" />
+                    {event.time?<><Clock className="w-4 h-4" /></>:''}
                     <span className="text-sm font-medium">{event.time}</span>
                   </div>
                   <div className="mt-1 text-xs text-gray-500">
