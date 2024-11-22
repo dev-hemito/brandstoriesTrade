@@ -244,7 +244,7 @@ const Footer = () => {
                   href="/refund" 
                   className="inline-flex items-center text-amber-400 hover:text-amber-300 transition-colors duration-200"
                 >
-                  <span className="mr-2">Refund Policy</span>
+                  <span className="mr-2">Refund</span>
                   <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
