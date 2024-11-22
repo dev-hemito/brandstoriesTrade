@@ -230,7 +230,7 @@ const Footer = () => {
                 Experience the future of trading at our innovative conference, where industry leaders and enthusiasts converge to share insights and opportunities.
               </p>
               <div className="pt-4">
-                <a 
+              <a 
                   href="/terms" 
                   className="inline-flex items-center text-amber-400 hover:text-amber-300 transition-colors duration-200"
                 >
@@ -238,6 +238,34 @@ const Footer = () => {
                   <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
+              <div className="">
+              <a 
+                  href="/return" 
+                  className="inline-flex items-center text-amber-400 hover:text-amber-300 transition-colors duration-200"
+                >
+                  <span className="mr-2">Return Policy</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+              <div className="">
+              <a 
+                  href="/refund" 
+                  className="inline-flex items-center text-amber-400 hover:text-amber-300 transition-colors duration-200"
+                >
+                  <span className="mr-2">Refund Policy</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+              <div className="">
+              <a 
+                  href="/shipping" 
+                  className="inline-flex items-center text-amber-400 hover:text-amber-300 transition-colors duration-200"
+                >
+                  <span className="mr-2">Shipping</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+
             </div>
 
             {/* Navigation */}
