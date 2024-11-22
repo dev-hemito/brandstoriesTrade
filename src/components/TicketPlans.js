@@ -10,7 +10,6 @@ const TicketPlans = () => {
             price: 5999,
             features: ['2 Days'],
             bgcolor: 'bg-gradient-to-br from-gray-50 to-gray-100',
-            href:'https://rzp.io/rzp/4TFIoAnZ',
         },
         {
             id: 'golden',
@@ -18,7 +17,6 @@ const TicketPlans = () => {
             price: 8999,
             features: ['2 Days', '1 Night Stay', 'Double Occupancy'],
             bgcolor: 'bg-gradient-to-br from-amber-50 to-amber-100',
-            href:'https://rzp.io/rzp/2YlYmRz',
         },
         {
             id: 'vip',
@@ -26,7 +24,6 @@ const TicketPlans = () => {
             price: 11999,
             features: ['2 Days', '1 Night Stay', 'Networking Gala Dinner', 'Single Occupancy'],
             bgcolor: 'bg-gradient-to-br from-amber-100 to-amber-200',
-            href:'https://rzp.io/rzp/soVOoJY',
         },
     ];
 
@@ -94,7 +91,7 @@ const TicketPlans = () => {
             const data = await response.json();
             return data.isDuplicate;
         } catch (error) {
-            console.error('Error checking duplicate:', error);
+            console.log('Error checking duplicate:', error);
             throw error;
         }
     };
@@ -112,7 +109,7 @@ const TicketPlans = () => {
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             return await response.json();
         } catch (error) {
-            console.error('Error creating order:', error);
+            console.log('Error creating order:', error);
             throw error;
         }
     };
@@ -131,7 +128,7 @@ const TicketPlans = () => {
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             return await response.json();
         } catch (error) {
-            console.error('Error verifying payment:', error);
+            console.log('Error verifying payment:', error);
             throw error;
         } finally {
             setProcessingState('');
@@ -158,63 +155,39 @@ const TicketPlans = () => {
                 return;
             }
 
-            const orderData = await createOrder();
-
-            const options = {
-                key: process.env.NEXT_PUBLIC_NEXT_PUBLIC_RAZORPAY_KEY_ID,
-                amount: orderData.amount,
-                currency: "INR",
-                name: "Trading Summit",
-                description: `${selectedPackage.name} Registration`,
-                order_id: orderData.id,
-                handler: async function (response) {
-                    try {
-                        const verificationData = await verifyPayment({
-                            razorpay_order_id: response.razorpay_order_id,
-                            razorpay_payment_id: response.razorpay_payment_id,
-                            razorpay_signature: response.razorpay_signature
-                        });
-
-                        if (verificationData.success) {
-                            setVerificationData(verificationData.ticketNumber);
-                            setShowRegistrationModal(false);
-                            setShowSuccessModal(true);
-                        } else {
-                            throw new Error('Payment verification failed');
-                        }
-                    } catch (error) {
-                        alert('Payment verification failed. Please try again.');
-                        resetForm();
-                    } finally {
-                        setProcessingState('');
-                        setLoading(false);
+            // Create PhonePe payment
+            const response = await fetch('/api/create-phonepe-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    amount: selectedPackage.price,
+                    userData: {
+                        name: formData.name,
+                        email: formData.email,
+                        phone: formData.phone,
+                        package: selectedPackage.name
                     }
-                },
-                prefill: {
-                    name: formData.name,
-                    email: formData.email,
-                    contact: formData.phone
-                },
-                modal: {
-                    ondismiss: function () {
-                        setLoading(false);
-                        setProcessingState('');
-                    }
-                }
-            };
+                })
+            });
 
-            const paymentObject = new window.Razorpay(options);
-            paymentObject.open();
+            const data = await response.json();
+            
+            if (data.success) {
+                // Redirect to PhonePe payment page
+                window.location.href = data.redirectUrl;
+            } else {
+                throw new Error('Failed to create payment');
+            }
+
         } catch (error) {
             setErrors({ general: 'Something went wrong. Please try again.' });
             setLoading(false);
         }
     };
-
     return (
         <div className="min-h-screen  py-16 px-4" id="tickets">
             <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-            
+
             {/* Header Section */}
             <div className="max-w-7xl mx-auto mb-12">
                 <div className="flex flex-col items-center space-y-4">
@@ -245,12 +218,12 @@ const TicketPlans = () => {
                                         {pkg.id === 'vip' ? 'Most Popular' : ''}
                                     </span>
                                 </div>
-                                
+
                                 <h3 className="text-2xl font-bold text-gray-800 mb-2">{pkg.name}</h3>
                                 <p className="text-4xl font-bold text-amber-500 mb-6">
                                     ₹{pkg.price.toLocaleString()}
                                 </p>
-                                
+
                                 <ul className="space-y-4 mb-8 md:min-h-36">
                                     {pkg.features.map((feature, index) => (
                                         <li key={index} className="flex items-center text-gray-600">
@@ -259,19 +232,14 @@ const TicketPlans = () => {
                                         </li>
                                     ))}
                                 </ul>
-                                
-                                {/* <button
+
+                                <button
                                     onClick={() => handlePackageSelect(pkg)}
                                     className="w-full py-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transform transition-all duration-300 hover:scale-[1.02] focus:ring-2 focus:ring-amber-300 focus:outline-none"
                                 >
                                     Select Package
-                                </button> */}
-                                 <button onClick={()=>{window.location.href=pkg.href}}
-                                   
-                                    className=" w-full p-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transform transition-all duration-300 hover:scale-[1.02] focus:ring-2 focus:ring-amber-300 focus:outline-none"
-                                >
-                                    Select Package
-                                </button >
+                                </button>
+
 
                             </div>
                         </div>
@@ -366,16 +334,16 @@ const TicketPlans = () => {
                             <div className="w-20 h-20 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
                                 <Check className="w-10 h-10 text-white" />
                             </div>
-                            
+
                             <h2 className="text-3xl font-bold text-gray-800 mb-4">
                                 Registration Successful!
                             </h2>
-                            
+
                             <div className="space-y-4 mb-8">
                                 <p className="text-gray-600">
                                     Thank you for registering for the Trading Summit! We have sent a confirmation email to your registered email address.
                                 </p>
-                                
+
                                 {verificationDatatickets && (
                                     <div className="bg-amber-50 p-4 rounded-lg inline-block">
                                         <p className="text-amber-700 font-medium">
@@ -386,14 +354,14 @@ const TicketPlans = () => {
                                         </p>
                                     </div>
                                 )}
-                                
+
                                 <div className="bg-blue-50 p-4 rounded-lg">
                                     <p className="text-blue-700">
                                         Please check your email for your ticket details and further instructions.
                                     </p>
                                 </div>
                             </div>
-                            
+
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <button
                                     onClick={resetForm}
@@ -401,7 +369,7 @@ const TicketPlans = () => {
                                 >
                                     Register Another Ticket
                                 </button>
-                                
+
                                 <button
                                     onClick={() => window.location.href = '#tickets'}
                                     className="px-8 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300 focus:ring-2 focus:ring-gray-300 focus:outline-none"
