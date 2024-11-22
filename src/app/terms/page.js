@@ -9,7 +9,7 @@ const Page = () => {
       <section className="mb-8">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">1. Services Overview</h2>
         <p className="text-gray-700">
-          Sens Promos Private Limited, through its product Brand Stories, provides digital branding, marketing, and storytelling solutions. All services are delivered online, and no physical goods are involved.
+          Sens Promos Private Limited, through its Service Brand Stories, provides digital branding, marketing, and storytelling solutions. All services are delivered online, and no physical goods are involved.
         </p>
       </section>
 

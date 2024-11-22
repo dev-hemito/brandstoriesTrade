@@ -8,7 +8,7 @@ const page = () => {
 
             <section className="mb-8">
                 <p className="text-gray-700">
-                    All payments made to Sens Promos Private Limited and its product, Brand Stories, are final and non-refundable.
+                    All payments made to Sens Promos Private Limited and its Service, Brand Stories, are final and non-refundable.
                 </p>
                 <p className="text-gray-700 mt-4">
                     <strong>Exceptions:</strong> There are no exceptions to this policy. Once the payment is made, it is non-refundable under any circumstances.
