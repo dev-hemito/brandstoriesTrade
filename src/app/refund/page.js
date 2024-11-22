@@ -2,8 +2,8 @@ import React from 'react'
 
 const page = () => {
     return (
-        <div>
-            <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6  mt-24">Refund Policy</h1>
+        <div  className='max-w-3xl mx-auto px-6 py-8  mt-24'>
+            <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6 ">Refund Policy</h1>
             <h3 className="text-lg text-center text-gray-600 mb-12">Effective Date: 21 November 2024</h3>
 
             <section className="mb-8">
