@@ -14,7 +14,7 @@ const AboutSection = () => {
             <p className="text-black leading-relaxed">
               In a first-of-its-kind initiative, stage has been set for the
               two-day long Kerala Traders and Investors Conclave.
-              Brand Stories, the organizer of the event, aims to create
+              Sens Promos Private Limited, Brand Stories, the organizer of the event, aims to create
               investment-friendly communities comprising regular
               stock traders, beginners as well as long-term investors.
               The conclave will encompass live training, special
