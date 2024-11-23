@@ -8,7 +8,7 @@ class PhonePeClient {
     this.merchantId = "M222SS2TMFN4X";
     this.saltKey = "a1412432-d03f-4913-be4c-60e00d78865e";
     this.saltIndex = 1;
-    this.apiUrl = "https://api-preprod.phonepe.com/apis/hermes/pg/v1";
+    this.apiUrl = "https://api.phonepe.com/apis/hermes";
     this.maxRetries = 3;
     this.baseDelay = 1000;
   }
@@ -102,9 +102,9 @@ class PhonePeClient {
         merchantTransactionId: paymentData.orderId.substring(0, 35), // Ensure within length limit
         merchantUserId: paymentData.email.substring(0, 50), // Ensure within length limit
         amount: amountInPaise,
-        redirectUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/payment/success`,
+        redirectUrl: `https://www.thebrandstories.co.in/payment/success`,
         redirectMode: "POST",
-        callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/api/payment-webhook`,
+        callbackUrl: `https://www.thebrandstories.co.in/api/payment-webhook`,
         mobileNumber: phoneNumber,
         paymentInstrument: {
           type: "PAY_PAGE"
