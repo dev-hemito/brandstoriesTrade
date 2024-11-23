@@ -5,10 +5,10 @@ import { NextResponse } from 'next/server';
 
 class PhonePeClient {
   constructor() {
-    this.merchantId = "PGTESTPAYUAT86";
+    this.merchantId = "M222SS2TMFN4X";
     this.saltKey = "a1412432-d03f-4913-be4c-60e00d78865e";
     this.saltIndex = 1;
-    this.apiUrl = "https://api-preprod.phonepe.com/apis/hermes/pg/v1";
+    this.apiUrl = "https://api.phonepe.com/apis/hermes/pg/v1";
     this.maxRetries = 3;
     this.baseDelay = 1000;
   }
