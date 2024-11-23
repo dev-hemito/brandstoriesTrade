@@ -11,6 +11,7 @@ import { motion } from 'framer-motion'
 import SpeakersShowcase from '@/components/SpeakerShowcase'
 import EventItinerary from '@/components/Intinerary'
 import Footer from '@/components/Footer'
+import PlansPayments from '@/components/PlansPayment'
 
 const Page = () => {
   const words = "South India's Biggest Traders and Investors Conclave".split(" ")
@@ -87,7 +88,7 @@ const Page = () => {
 
       <AboutSection />
       <FeatureSection />
-      <TicketPlans />
+      <PlansPayments />
       <AttendeesShowcase />
       <SpeakersShowcase />
       <EventItinerary />
