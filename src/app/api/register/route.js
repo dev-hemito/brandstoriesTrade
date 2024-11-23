@@ -102,9 +102,9 @@ class PhonePeClient {
         merchantTransactionId: paymentData.orderId.substring(0, 35), // Ensure within length limit
         merchantUserId: paymentData.email.substring(0, 50), // Ensure within length limit
         amount: amountInPaise,
-        redirectUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/payment/success`,
+        redirectUrl: `https://thebrandstories.co.in/payment/success`,
         redirectMode: "POST",
-        callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/api/payment-webhook`,
+        callbackUrl: `https://thebrandstories.co.in/api/payment-webhook`,
         mobileNumber: phoneNumber,
         paymentInstrument: {
           type: "PAY_PAGE"
