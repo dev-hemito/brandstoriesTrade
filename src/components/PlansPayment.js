@@ -47,7 +47,7 @@ export default function RegistrationForm() {
     setLoading(true);
     try {
       // Check if already registered
-      const checkResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/check-registration`, {
+      const checkResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/check-registration`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -65,7 +65,7 @@ export default function RegistrationForm() {
       }
 
       // If not registered, proceed with registration and payment
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/register`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
