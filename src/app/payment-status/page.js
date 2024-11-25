@@ -35,7 +35,7 @@ export default function PaymentStatus() {
           return;
         }
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/payment-status`, {
+        const response = await fetch('/api/payment-status', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
