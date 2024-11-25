@@ -14,7 +14,7 @@ export default function RegistrationForm() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const packages = [
-    { id: 1, name: 'Basic Package', amount: 1000, features: ['Basic Features', 'Email Support', 'Documentation'] },
+    { id: 1, name: 'Basic Package', amount: 1, features: ['Basic Features', 'Email Support', 'Documentation'] },
     { id: 2, name: 'Standard Package', amount: 2000, features: ['All Basic Features', 'Phone Support', 'Live Sessions'] },
     { id: 3, name: 'Premium Package', amount: 5000, features: ['All Standard Features', '24/7 Support', 'VIP Access'] }
   ];
