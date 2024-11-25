@@ -1,135 +1,86 @@
-// /app/api/verify-payment/route.js
+// api/verify-payment/route.js
+
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
-import nodemailer from 'nodemailer';
-import { getSheet } from '../sheets';
 
-// Initialize Email Transporter
-const transporter = nodemailer.createTransport({
-    host: 'smtp.zoho.in', // Changed to .in domain
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.NEXT_PUBLIC_SMTP_EMAIL?.trim(), // Trim any whitespace
-        pass: process.env.NEXT_PUBLIC_SMTP_PASSWORD?.trim(), // Trim any whitespace
-    },
-    debug: true,
-    logger: true
-});
+class PhonePeClient {
+  constructor() {
+    this.merchantId = "M222SS2TMFN4X";
+    this.saltKey = "a1412432-d03f-4913-be4c-60e00d78865e";
+    this.saltIndex = 1;
+    this.apiUrl = "https://api.phonepe.com/apis/hermes/pg/v1";
+  }
 
-
-const testTransporter = async () => {
+  generateChecksum(payload, apiEndpoint) {
     try {
-        const verified = await transporter.verify();
-        console.log('SMTP connection verified:', verified);
-        return verified;
+      const payloadString = typeof payload === 'string'
+        ? payload
+        : JSON.stringify(payload);
+
+      const base64Payload = Buffer.from(payloadString).toString('base64');
+      const string = `${base64Payload}${apiEndpoint}${this.saltKey}`;
+      const sha256 = crypto.createHash('sha256').update(string).digest('hex');
+      return `${sha256}###${this.saltIndex}`;
     } catch (error) {
-        console.error('SMTP verification failed:', {
-            error: error.message,
-            user: process.env.NEXT_PUBLIC_SMTP_EMAIL,
-            // Don't log the actual password
-            hasPassword: !!process.env.NEXT_PUBLIC_SMTP_PASSWORD
-        });
-        return false;
+      console.error('Checksum generation error:', error);
+      throw new Error('Failed to generate checksum');
     }
-};
+  }
+}
+
 export async function POST(request) {
-    console.log('Verifying payment and saving registration...');
-    try {
-        const {
-            razorpay_order_id,
-            razorpay_payment_id,
-            razorpay_signature,
-            userData
-        } = await request.json();
-
-        console.log('Payment verification data:', {
-            orderId: razorpay_order_id,
-            paymentId: razorpay_payment_id,
-            userData
-        });
-
-        // Verify payment signature
-        const generatedSignature = crypto
-            .createHmac('sha256', process.env.NEXT_PUBLIC_RAZORPAY_SECRET)
-            .update(`${razorpay_order_id}|${razorpay_payment_id}`)
-            .digest('hex');
-
-        const isAuthentic = generatedSignature === razorpay_signature;
-        console.log('Payment verification result:', isAuthentic);
-
-        if (!isAuthentic) {
-            console.log('Payment verification failed');
-            return NextResponse.json({
-                success: false,
-                message: 'Payment verification failed'
-            });
-        }
-
-        // Generate ticket number
-        const ticketNumber = `BSKTIC25${Math.floor(10000 + Math.random() * 90000)}`;
-
-        // Save to Google Sheets
-        const sheet = await getSheet();
-        await sheet.addRow({
-            name: userData.name,
-            email: userData.email,
-            phone: userData.phone,
-            address: userData.address,
-            package: userData.package,
-            paymentStatus: 'Success',
-            paymentId: razorpay_payment_id,
-            ticketNumber: ticketNumber,
-            timestamp: new Date().toISOString(),
-        });
-
-        console.log('Registration saved to sheets');
-
-        // Send confirmation email
-        try {
-            const mailOptions = {
-                from: {
-                    name: 'The Brand Stories',
-                    address: process.env.NEXT_PUBLIC_SMTP_EMAIL
-                },
-                to: userData.email,
-                subject: 'Registration Successful - Trading Summit',
-                html: `
-                    <h1>Registration Successful!</h1>
-                    <p>Dear ${userData.name},</p>
-                    <p>Thank you for registering for the Trading Summit.</p>
-                    <p>Your ticket number is: <strong>${ticketNumber}</strong></p>
-                    <p>Please keep this number for future reference.</p>
-                `
-            };
-
-            console.log('Sending email with configuration:', {
-                host: transporter.options.host,
-                port: transporter.options.port,
-                secure: transporter.options.secure,
-                user: process.env.NEXT_PUBLIC_SMTP_EMAIL
-            });
-
-            const info = await transporter.sendMail(mailOptions);
-            console.log('Email sent successfully:', info.messageId);
-        } catch (emailError) {
-            console.error('Email sending failed:', {
-                error: emailError.message,
-                code: emailError.code,
-                response: emailError.response,
-                command: emailError.command
-            });
-        }
-
-        return NextResponse.json({
-            success: true,
-            ticketNumber
-        });
-    } catch (error) {
-        console.error('Payment verification error:', error);
-        return NextResponse.json(
-            { success: false, message: 'Error processing payment verification', error: error.message }, 
-            { status: 500 }
-        );
+  try {
+    const { orderId, transactionId } = await request.json();
+    
+    if (!orderId || !transactionId) {
+      return NextResponse.json(
+        { error: 'Order ID and transaction ID are required' },
+        { status: 400 }
+      );
     }
+
+    const phonePe = new PhonePeClient();
+    const merchantTransactionId = orderId.substring(0, 35);
+    
+    // Generate checksum for status check
+    const checksum = phonePe.generateChecksum(
+      merchantTransactionId,
+      `/pg/v1/status/${phonePe.merchantId}/${merchantTransactionId}`
+    );
+
+    // Call PhonePe status API
+    const response = await fetch(
+      `${phonePe.apiUrl}/status/${phonePe.merchantId}/${merchantTransactionId}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-VERIFY': checksum,
+          'X-MERCHANT-ID': phonePe.merchantId
+        }
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok || !data.success) {
+      throw new Error(data.message || 'Payment verification failed');
+    }
+
+    // Check the actual payment status
+    const paymentStatus = data.code === 'PAYMENT_SUCCESS' ? 'success' : 'failed';
+
+    return NextResponse.json({
+      success: true,
+      status: paymentStatus,
+      details: data
+    });
+
+  } catch (error) {
+    console.error('Payment verification error:', error);
+    return NextResponse.json(
+      { error: 'Failed to verify payment status' },
+      { status: 500 }
+    );
+  }
 }

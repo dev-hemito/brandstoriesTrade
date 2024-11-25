@@ -1,3 +1,5 @@
+//api/register/route.js
+
 import nodemailer from 'nodemailer';
 import { getSheet } from '../sheets';
 import crypto from 'crypto';
