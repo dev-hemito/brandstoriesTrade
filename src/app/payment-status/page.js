@@ -12,17 +12,20 @@ export default function PaymentStatus() {
   useEffect(() => {
     const verifyPayment = async () => {
       try {
-        let orderId;
+        // Handle both form data and URL params
+        let orderId = null;
 
-        // Check for POST form data
-        const form = document.querySelector('form');
-        if (form) {
-          const formData = new FormData(form);
-          orderId = formData.get('merchantTransactionId');
+        // Safely check for form data
+        if (typeof document !== 'undefined') {
+          const form = document.querySelector('form');
+          if (form) {
+            const formData = new FormData(form);
+            orderId = formData.get('merchantTransactionId');
+          }
         }
 
-        // Fallback to URL params if no form data
-        if (!orderId) {
+        // Safely check URL params
+        if (!orderId && searchParams) {
           orderId = searchParams.get('orderId');
         }
 
@@ -32,7 +35,7 @@ export default function PaymentStatus() {
           return;
         }
 
-        const response = await fetch('/api/payment-status', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/payment-status`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -49,8 +52,8 @@ export default function PaymentStatus() {
 
         if (data.status === 'success') {
           setStatus('success');
-          // Clear URL parameters after successful verification
-          if (window.history.replaceState) {
+          // Safely clear URL parameters
+          if (typeof window !== 'undefined' && window.history.replaceState) {
             window.history.replaceState({}, '', window.location.pathname);
           }
         } else {
@@ -60,19 +63,21 @@ export default function PaymentStatus() {
       } catch (error) {
         console.error('Payment verification error:', error);
         setStatus('error');
-        setError(error.message || 'An unexpected error occurred');
+        setError(error instanceof Error ? error.message : 'An unexpected error occurred');
       }
     };
 
+    // Only run verification if we're in the browser
     if (typeof window !== 'undefined') {
       verifyPayment();
     }
-  }, [searchParams]);
+  }, [searchParams]); // Only re-run when searchParams changes
 
   const handleContinue = () => {
     router.push('/');
   };
 
+  // Render loading state by default (this will be the initial server-rendered content)
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-amber-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full">
