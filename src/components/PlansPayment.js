@@ -1,376 +1,203 @@
-import { useState, useEffect } from 'react';
-import { Check, Star, Crown, Loader2, AlertCircle } from 'lucide-react';
+import { useState } from 'react';
+import { XCircle } from 'lucide-react';
 
-const plans = [
-  {
-    id: 1,
-    name: 'Basic Package',
-    amount: 1,
-    features: ['Feature 1', 'Feature 2', 'Feature 3'],
-    color: 'bg-white',
-    scale: 'hover:scale-105',
-    recommended: false,
-    borderColor: 'border-gray-200'
-  },
-  {
-    id: 2,
-    name: 'Standard Package',
-    amount: 200,
-    features: ['All Basic Features', 'Feature 4', 'Feature 5'],
-    color: 'bg-gradient-to-b from-amber-50 to-white',
-    scale: 'hover:scale-105',
-    recommended: false,
-    borderColor: 'border-amber-200'
-  },
-  {
-    id: 3,
-    name: 'Premium Package',
-    amount: 500,
-    features: ['All Standard Features', 'Feature 6', 'Feature 7'],
-    color: 'bg-gradient-to-b from-amber-100 to-white',
-    scale: 'hover:scale-105 scale-105',
-    recommended: true,
-    borderColor: 'border-amber-300'
-  }
-];
-
-export default function PlansPayments() {
-  const [selectedPlan, setSelectedPlan] = useState(null);
+export default function RegistrationForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     address: '',
   });
+  const [selectedPackage, setSelectedPackage] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  const [showForm, setShowForm] = useState(false);
-  const [showStatusModal, setShowStatusModal] = useState(false);
-  const [paymentStatus, setPaymentStatus] = useState(null);
-  const [registrationDetails, setRegistrationDetails] = useState(null);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  // Check for payment status on component mount
-  useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const orderId = queryParams.get('orderId');
-    
-    if (orderId) {
-      checkPaymentStatus(orderId);
-    }
-  }, []);
+  const packages = [
+    { id: 1, name: 'Basic Package', amount: 1000, features: ['Basic Features', 'Email Support', 'Documentation'] },
+    { id: 2, name: 'Standard Package', amount: 2000, features: ['All Basic Features', 'Phone Support', 'Live Sessions'] },
+    { id: 3, name: 'Premium Package', amount: 5000, features: ['All Standard Features', '24/7 Support', 'VIP Access'] }
+  ];
 
-  const checkPaymentStatus = async (orderId) => {
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/check-payment-status`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ orderId }),
-      });
-
-      const data = await response.json();
-      setPaymentStatus(data.status);
-      setShowStatusModal(true);
-      
-      // Clear URL parameters
-      window.history.replaceState({}, '', window.location.pathname);
-      
-      if (data.status === 'success') {
-        setSuccess('Registration successful! Please check your email for details.');
-        setRegistrationDetails(data.details);
-      } else {
-        setError('Payment failed. Please try again.');
-      }
-    } catch (error) {
-      setError('Failed to verify payment status');
-    }
-  };
-
-  const validateForm = () => {
-    if (!formData.phone.match(/^\d{10}$/)) {
-      setError('Please enter a valid 10-digit phone number');
-      return false;
-    }
-    if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-      setError('Please enter a valid email address');
-      return false;
-    }
-    return true;
-  };
-
-  const handlePlanSelect = (plan) => {
-    setSelectedPlan(plan);
-    setShowForm(true);
-    setError('');
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    setLoading(true);
-    setError('');
-    setSuccess('');
-
-    try {
-      // First check if email/phone is already registered
-      const checkResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/check-registration`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          phone: formData.phone,
-        }),
-      });
-
-      const checkData = await checkResponse.json();
-      
-      if (!checkResponse.ok) {
-        throw new Error(checkData.message || 'Registration check failed');
-      }
-
-      // If not registered, initialize payment
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/initialize-payment`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          amount: selectedPlan.amount,
-          package: selectedPlan.name
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Payment initialization failed');
-      }
-
-      if (data.paymentUrl) {
-        window.location.href = data.paymentUrl;
-      } else {
-        throw new Error('Payment URL not received');
-      }
-
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleBackToPlans = () => {
-    setShowForm(false);
-    setSelectedPlan(null);
-    setError('');
-  };
-
-  const StatusModal = () => (
+  const ErrorModal = () => (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg p-6 max-w-md w-full">
+      <div className="bg-white rounded-lg p-6 max-w-sm w-full relative">
+        <button 
+          onClick={() => setShowError(false)}
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+        >
+          <XCircle className="w-6 h-6" />
+        </button>
         <div className="text-center">
-          {paymentStatus === 'success' ? (
-            <div className="text-green-600 mb-4">
-              <Check className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="text-lg font-bold">Registration Successful!</h3>
-              <p className="mt-2">Please check your email for registration details.</p>
-            </div>
-          ) : (
-            <div className="text-red-600 mb-4">
-              <AlertCircle className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="text-lg font-bold">Payment Failed</h3>
-              <p className="mt-2">Please try again or contact support.</p>
-            </div>
-          )}
-          <button
-            onClick={() => setShowStatusModal(false)}
-            className="mt-4 bg-gray-100 px-4 py-2 rounded-lg hover:bg-gray-200"
-          >
-            Close
-          </button>
+          <h3 className="text-lg font-semibold text-red-600 mb-2">Registration Error</h3>
+          <p className="text-gray-600">{errorMessage}</p>
         </div>
       </div>
     </div>
   );
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-amber-50 py-12 px-4">
-      {showStatusModal && <StatusModal />}
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!selectedPackage) {
+      setErrorMessage('Please select a package');
+      setShowError(true);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      // Check if already registered
+      const checkResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/check-registration`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.email,
+          phone: formData.phone
+        })
+      });
+
+      const checkData = await checkResponse.json();
       
-      <div className="max-w-6xl mx-auto">
-        {/* Rest of your existing JSX remains the same */}
-        {/* Header Section */}
+      if (!checkResponse.ok) {
+        setErrorMessage(checkData.message || 'Already registered');
+        setShowError(true);
+        return;
+      }
+
+      // If not registered, proceed with registration and payment
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          amount: selectedPackage.amount,
+          packageType: selectedPackage.name
+        })
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.message || 'Registration failed');
+      }
+
+      // Redirect to payment page
+      if (data.paymentUrl) {
+        window.location.href = data.paymentUrl;
+      }
+
+    } catch (error) {
+      setErrorMessage(error.message || 'Something went wrong');
+      setShowError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      {showError && <ErrorModal />}
+      
+      <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <div className="flex justify-center mb-4">
-            <Crown className="w-12 h-12 text-amber-500" />
-          </div>
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
-            Trading Summit Registration
-          </h1>
-          <p className="text-lg text-gray-600">Elevate your trading journey with our premium packages</p>
+          <h2 className="text-3xl font-bold text-gray-900">Trading Summit Registration</h2>
+          <p className="mt-2 text-gray-600">Choose your package and complete registration</p>
         </div>
 
-        {/* Success Message */}
-        {success && (
-          <div className="max-w-2xl mx-auto mb-6 bg-green-50 border border-green-200 rounded-lg p-4">
-            <p className="text-green-700">{success}</p>
-          </div>
-        )}
+        {/* Package Selection */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          {packages.map((pkg) => (
+            <div
+              key={pkg.id}
+              onClick={() => setSelectedPackage(pkg)}
+              className={`${
+                selectedPackage?.id === pkg.id
+                  ? 'ring-2 ring-blue-500 bg-blue-50'
+                  : 'bg-white hover:bg-gray-50'
+              } cursor-pointer rounded-lg p-6 shadow-sm border transition-all duration-200`}
+            >
+              <h3 className="text-lg font-semibold text-gray-900">{pkg.name}</h3>
+              <p className="mt-2 text-2xl font-bold text-gray-900">₹{pkg.amount}</p>
+              <ul className="mt-4 space-y-2">
+                {pkg.features.map((feature, index) => (
+                  <li key={index} className="text-sm text-gray-600">
+                    • {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
 
-        {/* Error Message */}
-        {error && (
-          <div className="max-w-2xl mx-auto mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
-            <p className="text-red-700">{error}</p>
-          </div>
-        )}
-
-        {/* Plans Selection View */}
-        {!showForm ? (
-          <div className="grid md:grid-cols-3 gap-8 mx-auto max-w-5xl">
-            {plans.map((plan) => (
-              <div
-                key={plan.id}
-                className={`relative ${plan.color} rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 ${plan.scale} border-2 ${plan.borderColor}`}
-              >
-                {plan.recommended && (
-                  <div className="absolute top-0 right-0 mt-4 mr-4">
-                    <div className="bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
-                      <Star className="w-4 h-4 mr-1" /> Premium
-                    </div>
-                  </div>
-                )}
-
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                  <div className="flex items-baseline mb-6">
-                    <span className="text-4xl font-extrabold text-amber-600">₹{plan.amount}</span>
-                    <span className="ml-2 text-gray-500">/person</span>
-                  </div>
-
-                  <ul className="mb-8 space-y-4">
-                    {plan.features.map((feature, index) => (
-                      <li key={index} className="flex items-center text-gray-600">
-                        <Check className="w-5 h-5 mr-3 text-amber-500" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <button
-                    onClick={() => handlePlanSelect(plan)}
-                    className={`w-full py-3 px-6 rounded-lg font-semibold transition duration-200 
-                      ${plan.recommended
-                        ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-white hover:from-amber-600 hover:to-yellow-600 shadow-lg'
-                        : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
-                  >
-                    {plan.recommended ? 'Get Started Now' : 'Select Plan'}
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto border-2 border-amber-200">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-bold text-amber-700">Registration Form</h2>
-              <button
-                onClick={handleBackToPlans}
-                className="flex items-center text-amber-600 hover:text-amber-700 font-medium"
-              >
-                ← Back to Plans
-              </button>
+        {/* Registration Form */}
+        <form onSubmit={handleSubmit} className="bg-white shadow-sm rounded-lg p-8">
+          <div className="grid grid-cols-1 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Full Name
+              </label>
+              <input
+                type="text"
+                required
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              />
             </div>
 
-            <div className="mb-8 p-4 bg-amber-50 rounded-lg border border-amber-200">
-              <h3 className="text-lg font-medium mb-2 text-amber-700">Selected Plan:</h3>
-              <p className="text-amber-600 text-xl font-bold">{selectedPlan.name} - ₹{selectedPlan.amount}</p>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Email
+              </label>
+              <input
+                type="email"
+                required
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your full name"
-                  required
-                  className="w-full p-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                />
-              </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                required
+                pattern="[0-9]{10}"
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              />
+            </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  required
-                  className="w-full p-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                />
-              </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Address
+              </label>
+              <textarea
+                required
+                rows={3}
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                value={formData.address}
+                onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+              />
+            </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  placeholder="Enter 10-digit phone number"
-                  required
-                  pattern="[0-9]{10}"
-                  className="w-full p-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Address
-                </label>
-                <textarea
-                  placeholder="Enter your full address"
-                  required
-                  className="w-full p-3 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
-                  rows="3"
-                  value={formData.address}
-                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className={`w-full py-4 px-6 rounded-lg text-white font-semibold text-lg
-                  ${loading
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 shadow-lg'
-                  } transition duration-200`}
-              >
-                {loading ? (
-                  <span className="flex items-center justify-center">
-                    <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                    Processing...
-                  </span>
-                ) : (
-                  'Proceed to Payment'
-                )}
-              </button>
-            </form>
+            <button
+              type="submit"
+              disabled={loading || !selectedPackage}
+              className={`w-full py-3 px-4 rounded-md text-white font-medium ${
+                loading || !selectedPackage
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-blue-600 hover:bg-blue-700'
+              } transition-colors duration-200`}
+            >
+              {loading ? 'Processing...' : 'Proceed to Payment'}
+            </button>
           </div>
-        )}
+        </form>
       </div>
     </div>
   );
