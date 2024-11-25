@@ -15,7 +15,6 @@ class PhonePeClient {
 
   generateChecksum(payload, apiEndpoint) {
     try {
-      // Ensure the payload is a string before base64 encoding
       const payloadString = typeof payload === 'string'
         ? payload
         : JSON.stringify(payload);
@@ -26,7 +25,7 @@ class PhonePeClient {
       return `${sha256}###${this.saltIndex}`;
     } catch (error) {
       console.error('Checksum generation error:', error);
-      console.log('Failed to generate checksum');
+      throw new Error('Failed to generate checksum');
     }
   }
 
@@ -60,7 +59,7 @@ class PhonePeClient {
           await this.delay(delayTime);
           return this.makeRequest(url, options, retryCount + 1);
         }
-        console.log(errorMessage);
+        throw new Error(errorMessage);
       }
 
       return data;
@@ -77,32 +76,29 @@ class PhonePeClient {
 
   async initiatePayment(paymentData) {
     try {
-      // Validate required fields
-      const requiredFields = ['orderId', 'email', 'amount', 'phone'];
+      const requiredFields = ['orderId', 'email', 'amount', 'phone', 'ticketNumber'];
       for (const field of requiredFields) {
         if (!paymentData[field]) {
-          console.log(`Missing required field: ${field}`);
+          throw new Error(`Missing required field: ${field}`);
         }
       }
 
-      // Ensure amount is a valid number and convert to paise
       const amountInPaise = Math.round(parseFloat(paymentData.amount) * 100);
       if (isNaN(amountInPaise) || amountInPaise <= 0) {
-        console.log('Invalid amount');
+        throw new Error('Invalid amount');
       }
 
-      // Validate phone number format
       const phoneNumber = paymentData.phone.replace(/\D/g, '');
       if (phoneNumber.length !== 10) {
-        console.log('Invalid phone number format');
+        throw new Error('Invalid phone number format');
       }
 
       const payload = {
         merchantId: this.merchantId,
-        merchantTransactionId: paymentData.orderId.substring(0, 35), // Ensure within length limit
-        merchantUserId: paymentData.email.substring(0, 50), // Ensure within length limit
+        merchantTransactionId: paymentData.orderId.substring(0, 35),
+        merchantUserId: paymentData.email.substring(0, 50),
         amount: amountInPaise,
-        redirectUrl: `https://thebrandstories.co.in/payment/success?orderId=${orderId}&ticketNumber=${ticketNumber}`,
+        redirectUrl: `https://thebrandstories.co.in/payment/success?orderId=${paymentData.orderId}&ticketNumber=${paymentData.ticketNumber}`,
         redirectMode: "POST",
         callbackUrl: `https://thebrandstories.co.in/api/payment-webhook`,
         mobileNumber: phoneNumber,
@@ -113,7 +109,6 @@ class PhonePeClient {
 
       console.log('Payment payload:', JSON.stringify(payload, null, 2));
 
-      // Base64 encode the payload first
       const base64Payload = Buffer.from(JSON.stringify(payload)).toString('base64');
       const checksum = this.generateChecksum(payload, "/pg/v1/pay");
 
@@ -129,7 +124,7 @@ class PhonePeClient {
 
       const response = await this.makeRequest(`${this.apiUrl}/pay`, options);
       if (!response.success) {
-        console.log(response.message || 'Payment initialization failed');
+        throw new Error(response.message || 'Payment initialization failed');
       }
       return response;
     } catch (error) {
@@ -138,32 +133,33 @@ class PhonePeClient {
     }
   }
 }
+
 export async function POST(request) {
   try {
     const body = await request.json();
     const { name, email, phone, amount, address, package: packageType } = body;
-    // Input validation
+
     if (!name || !email || !phone || !amount || !address || !packageType) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
       );
     }
-    // Validate email format
+
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
         { error: 'Invalid email format' },
         { status: 400 }
       );
     }
-    // Validate phone number
+
     if (!/^\d{10}$/.test(phone.replace(/\D/g, ''))) {
       return NextResponse.json(
         { error: 'Invalid phone number format' },
         { status: 400 }
       );
     }
-    // Validate amount
+
     const numAmount = parseFloat(amount);
     if (isNaN(numAmount) || numAmount <= 0) {
       return NextResponse.json(
@@ -171,27 +167,33 @@ export async function POST(request) {
         { status: 400 }
       );
     }
+
     const sheet = await getSheet();
     const rows = await sheet.getRows();
     const isDuplicate = rows.some(row =>
       row.get('email') === email || row.get('phone') === phone
     );
+
     if (isDuplicate) {
       return NextResponse.json(
         { error: 'Email or phone number already registered' },
         { status: 400 }
       );
     }
+
     const randomNum = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
     const ticketNumber = `BSKTETC24${randomNum}`;
     const orderId = `ORDER_${Date.now()}_${randomNum}`;
+
     const phonePe = new PhonePeClient();
     const paymentResponse = await phonePe.initiatePayment({
       orderId,
       email,
       amount: numAmount,
-      phone
+      phone,
+      ticketNumber
     });
+
     await sheet.addRow({
       name,
       email,
@@ -203,6 +205,7 @@ export async function POST(request) {
       ticketNumber,
       timestamp: new Date().toISOString()
     });
+
     const transporter = nodemailer.createTransport({
       host: 'smtp.zoho.in',
       port: 465,
@@ -212,6 +215,7 @@ export async function POST(request) {
         pass: process.env.NEXT_PUBLIC_SMTP_PASSWORD?.trim(),
       }
     });
+
     await transporter.sendMail({
       from: {
         name: 'The Brand Stories',
@@ -228,6 +232,7 @@ export async function POST(request) {
         <p>This ticket number will be activated after successful payment.</p>
       `
     });
+
     return NextResponse.json({
       success: true,
       paymentUrl: paymentResponse?.data?.instrumentResponse.redirectInfo.url,
