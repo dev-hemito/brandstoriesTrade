@@ -34,7 +34,7 @@ const TicketPlans = () => {
     name: '',
     email: '',
     phone: '',
-    address: '' // Added address field
+
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -47,7 +47,7 @@ const TicketPlans = () => {
     if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Invalid email format';
     if (!formData.phone) newErrors.phone = 'Phone is required';
     if (!/^\d{10}$/.test(formData.phone)) newErrors.phone = 'Invalid phone number';
-    if (!formData.address) newErrors.address = 'Address is required';
+   
     return newErrors;
   };
 
@@ -65,7 +65,7 @@ const TicketPlans = () => {
   };
 
   const resetForm = () => {
-    setFormData({ name: '', email: '', phone: '', address: '' });
+    setFormData({ name: '', email: '', phone: '' });
     setErrors({});
     setProcessingState('');
     setLoading(false);
@@ -228,7 +228,7 @@ const TicketPlans = () => {
                 </div>
               )}
               <form onSubmit={handleSubmit} className="space-y-6">
-                {['name', 'email', 'phone', 'address'].map((field) => (
+                {['name', 'email', 'phone'].map((field) => (
                   <div key={field}>
                     <label className="block text-gray-700 font-medium mb-2 capitalize">
                       {field} <span className="text-amber-500">*</span>
