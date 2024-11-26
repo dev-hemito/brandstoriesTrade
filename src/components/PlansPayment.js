@@ -7,7 +7,7 @@ const TicketPlans = () => {
     {
       id: 'silver',
       name: 'Silver Tickets',
-      price: 5999,
+      price: 1,
       features: ['2 Days'],
       bgcolor: 'bg-gradient-to-br from-gray-50 to-gray-100',
     },
