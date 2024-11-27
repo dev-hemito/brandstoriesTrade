@@ -16,6 +16,7 @@ const Header = () => {
         { name: 'Itinerary', href: '/#itinerary' },
         { name: 'Gallery', href: '/#gallery' },
         { name: 'Contact Us', href: '/#contact' },
+        { name: 'Tickets', href: '/#tickets' },
     ];
 
     return (
@@ -51,9 +52,14 @@ const Header = () => {
                     </div>
 
                     {/* Right Logo - Desktop */}
-                    <Link href="/#tickets" className="hidden md:block flex-shrink-0 bg-amber-400 p-3 rounded">
-                        Get Tickets
-                    </Link>
+                    <Image
+                        src="/money.png"
+                        className="md:h-10 h-7 w-auto object-contain hidden md:block"
+                        width={5000}
+                        height={5000}
+                        alt="Money Icon"
+                        priority
+                    />
                     {/* <div className="hidden md:block flex-shrink-0">
                         <Image 
                             src='/money.png' 
@@ -66,9 +72,15 @@ const Header = () => {
 
                     {/* Mobile menu button and Right Logo */}
                     <div className="md:hidden flex items-center space-x-2">
-                        <Link href="/#tickets" className=" flex-shrink-0 bg-amber-400 p-3 rounded-lg">
-                            Get Tickets
-                        </Link>
+
+                        <Image
+                            src="/money.png"
+                            className="md:h-10 h-7 w-auto object-contain"
+                            width={5000}
+                            height={5000}
+                            alt="Money Icon"
+                            priority
+                        />
                         {/* <Image 
                             src='/money.png' 
                             width={2000} 

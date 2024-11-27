@@ -59,12 +59,12 @@ const Hero = () => {
       {/* Content Container */}
       <div className="relative min-h-screen flex items-top md:pb-32 pb-12 justify-center px-4">
         <div className="w-full max-w-7xl mx-auto">
-          <div className="flex  justify-between items-center md:gap-8 px-4">
+          <div className="md:flex  justify-between items-center md:gap-8 px-4 flex-wrap">
             {/* Left Logo */}
             <div className="md:w-1/3  flex justify-center transform hover:scale-105 transition-transform duration-300">
               <Image
                 src="/main.png"
-                className="md:h-10 h-7 w-auto object-contain"
+                className="md:h-10 h-10 w-auto object-contain"
                 width={300}
                 height={300}
                 alt="Brand Stories"
@@ -86,15 +86,9 @@ const Hero = () => {
             </div> */}
 
             {/* Right Logo */}
-            <div className="md:w-1/3  flex justify-center transform hover:scale-105 transition-transform duration-300">
-              <Image
-                src="/money.png"
-                className="md:h-10 h-7 w-auto object-contain"
-                width={5000}
-                height={5000}
-                alt="Money Icon"
-                priority
-              />
+            <div className="md:w-1/3 mt-3 md:mt-0 text-white font-bold text-center transform hover:scale-105 transition-transform duration-300">
+            <span className="text-lg">8th and 9th of January 2025</span>  <br/>
+            <span className="text-sm text-amber-200">Hotel Gokulam Park, Kochi</span>
             </div>
           </div>
 
@@ -106,7 +100,7 @@ const Hero = () => {
               href="/#tickets"
               className=" flex gap-3 items-center bg-white hover:bg-yellow-400 text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-lg"
             >
-              Join Now <ArrowRight/>
+              Book Now <ArrowRight/>
             </Link>
           </div>
       </div>
