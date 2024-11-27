@@ -49,6 +49,12 @@ const SpeakersShowcase = () => {
       company: "Pentad Securities",
       image: "/nikhil.jpg"
     },
+    {
+      name:"Nikhil Mathew",
+      role: "Founder",
+      company: "Oharipadanam",
+      image: "/nikhilmathew.jpg"
+    },
 
     {
       name:"Santosh Kumar Pasi",

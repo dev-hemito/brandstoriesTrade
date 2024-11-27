@@ -9,100 +9,205 @@ const EventItinerary = () => {
     day1: [
       {
         time: "08:00 AM - 10:00 AM",
-        title: "BREAKFAST ",
+        title: "Registration ",
         description: "",
-        duration: "",
+        duration: "90 min",
         icon: '',
         type: "break"
       },
       {
-        time: "10:00 AM",
-        title: "INAUGURATION ",
+        time: "10:00 AM - 10:30 AM",
+        title: "Lightening the Lamp & Keynote Session ",
         description: "",
-        duration: "",
+        duration: "30 min",
         icon: '',
         type: "keynote"
       },
       {
-        time: "",
-        title: "RUNNING COFFEE AND TEA",
-        description: "",
-        duration: "",
+        time: "10:30 AM - 11:00 AM",
+        title: "Welcome Speach",
+        description: "Speaker: Mr. Sami K Haridas",
+        duration: "30 min",
         icon: '',
         type: "panel"
       },
       {
-        time: "01:45 PM",
-        title: "LUNCH ",
-        description: " ",
-        duration: " ",
+        time: "11:00 AM - 12:00 PM",
+        title: "Live Trading Session",
+        description: "Speaker: Mr. Shijimon",
+        duration: "60 min",
+        icon: '',
+        type: "break"
+      },
+      {
+        time: "12:00 PM - 12:40 PM",
+        title: "Strategy to Trading Stock option with 82% Accuracy, Algo Trading",
+        description: "Speaker: Mr. Kushal Jain",
+        duration: "40 min",
+        icon: '',
+        type: "panel"
+      },
+      {
+        time: "12:40 PM - 01:20 PM",
+        title: "Momentum Investing",
+        description: "Speaker: Mr. Hariprasad",
+        duration: "40 min",
+        icon: '',
+        type: "closing"
+      },
+      {
+        time: "01:20 PM - 03:00 PM",
+        title: "Lunch Break",
+        description: "",
+        duration: "",
+        icon: '',
+        type: "break"
+      },
+      {
+        time: "03:00 PM - 03:20 PM",
+        title: "Sponsor Session",
+        description: "Title Sponsor",
+        duration: "20 min",
+        icon: '',
+        type: "panel"
+      },
+          
+      {
+        time: "03:20 PM - 04:00 PM",
+        title: "Oppurtunities & Challenges in Emerging Market Investing",
+        description: "Speaker: Uthara Ramakrishnan",
+        duration: "40 min",
+        icon: '',
+        type: "break"
+      },
+      {
+        time: "04:00 PM - 05:00 PM",
+        title: "Decoding the Indian Stock Market: Key Strategies for Sustainable Growth",
+        description: "Panel Discussion",
+        duration: "60 min",
+        icon: '',
+        type: "keynote"
+      },
+      {
+        time: "05:00 PM - 05:20 PM",
+        title: "Sponsor Session",
+        description: "Powered by Sponsor",
+        duration: "20 min",
+        icon: '',
+        type: "panel"
+      },
+      {
+        time: "05:20 PM - 06:00 PM",
+        title: "Navigating Global Economic Trends: Impact on Indian Markets",
+        description: "Speaker: Mr. Milan Parik",
+        duration: "40 min",
         icon: '',
         type: "break"
       },
       {
         time: "",
-        title: "RUNNING COFFEE AND TEA",
-        description: "",
+        title: "End of Day 1 with Cocktail Gala Dinner",
+        description: "Guests, Mentors and VIP Pass Holders",
         duration: "",
-        icon: '',
-        type: "panel"
-      },
-      {
-        time: "08:00 PM",
-        title: "GALA DINNER",
-        description: " ",
-        duration: " ",
         icon: '',
         type: "closing"
       }
     ],
     day2: [
       {
-        time: "08:00 AM - 10:00 AM",
-        title: "BREAKFAST ",
+        time: "10:00 AM - 10:40 AM",
+        title: "Options and Futures: Strategies for Hedging and Speculative Gains",
+        description: "Speaker: Mr. Praful Kulkarni",
+        duration: "40 min",
+        icon: '',
+        type: "break"
+      },
+      {
+        time: "10:40 AM - 10:55 AM",
+        title: "Sponsor Session",
+        description: "Co-powered by",
+        duration: "15 min",
+        icon: '',
+        type: "keynote"
+      },
+      {
+        time: "11:00 AM - 11:30 AM",
+        title: "Speaker Session",
+        description: "Speaker: Mr. Nikhil Gopalakrishnan",
+        duration: "30 min",
+        icon: '',
+        type: "panel"
+      },
+      {
+        time: "11:30 AM - 12:00 PM",
+        title: "Options adjustment in real time applications",
+        description: "Speaker: Mr. Santhosh Pasi",
+        duration: "30 min",
+        icon: '',
+        type: "break"
+      },
+      {
+        time: "12:00 PM - 12:40 PM",
+        title: "Speaker Session",
+        description: "Speaker: Mr. Sunil Mathai",
+        duration: "40 min",
+        icon: '',
+        type: "panel"
+      },
+      {
+        time: "12:40 PM - 01:00 PM",
+        title: "Sponsor Session",
+        description: "Tradejini Financial Services",
+        duration: "20 min",
+        icon: '',
+        type: "closing"
+      },
+      {
+        time: "01:00 PM - 02:30 PM",
+        title: "Lunch Break",
         description: "",
         duration: "",
         icon: '',
         type: "break"
       },
       {
-        time: "",
-        title: "RUNNING COFFEE AND TEA",
-        description: "",
-        duration: "",
+        time: "02:30 PM - 03:30 PM",
+        title: "Panel Session",
+        description: "Sponsors and Speakers",
+        duration: "60 min",
         icon: '',
         type: "panel"
       },
           
       {
-        time: "01:30 PM - 03:00 PM",
-        title: "LUNCH ",
-        description: " ",
-        duration: " ",
+        time: "03:30 PM - 04:00 PM",
+        title: "Dividend Investing: Building Wealth with consistent Returns",
+        description: "Speaker: Mr. Akshay Agarwal",
+        duration: "30 min",
         icon: '',
         type: "break"
       },
       {
-        time: "02:00 PM - 03:00 PM",
-        title: "AWARD CEREMONY ",
-        description: " ",
-        duration: " ",
+        time: "04:00 PM - 04:30 PM",
+        title: "Speaker Session",
+        description: "",
+        duration: "30 min",
+        icon: '',
+        type: "keynote"
+      },
+      {
+        time: "04:30 PM - 05:15 PM",
+        title: "Windup with Vote of Thanks",
+        description: "Speaker: Mr. Sujeesh K.S",
+        duration: "45 min",
         icon: '',
         type: "panel"
       },
       {
         time: "",
-        title: "RUNNING COFFEE AND TEA",
+        title: "End of Day 2 ",
         description: "",
         duration: "",
-        icon: '',
-        type: "panel"
-      },
-      {
-        time: "05:00 PM",
-        title: "EVENT SIGNOFF",
-        description: " ",
-        duration: " ",
         icon: '',
         type: "closing"
       }
@@ -172,12 +277,12 @@ const EventItinerary = () => {
 
               <div className="flex items-start gap-4">
                 {/* Time Column */}
-                <div className="flex-shrink-0 w-32">
+                <div className="flex-shrink-0 ">
                   <div className="flex items-center gap-2 text-gray-600">
                     {event.time?<><Clock className="w-4 h-4" /></>:''}
                     <span className="text-sm font-medium">{event.time}</span>
                   </div>
-                  <div className="mt-1 text-xs text-gray-500">
+                  <div className="mt-1 flex justify-center text-xs text-gray-500">
                     {event.duration}
                   </div>
                 </div>
@@ -185,9 +290,7 @@ const EventItinerary = () => {
                 {/* Content Column */}
                 <div className="flex-grow">
                   <div className="flex items-center gap-3 mb-1">
-                    <div className="p-2 bg-gray-100 rounded-lg text-gray-600">
-                      {event.icon}
-                    </div>
+                   
                     <h3 className="text-lg font-semibold text-gray-900">
                       {event.title}
                     </h3>
