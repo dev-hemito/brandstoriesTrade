@@ -5,37 +5,44 @@ import Image from 'next/image';
 
 const SpeakersShowcase = () => {
   const speakers = [
+
     {
-      name:"Hari Prasad",
-      role: "Founder & CEO",
-      company: "LiveLong Wealth",
-      image: "/hari.jpg"
+      name: "Santosh Kumar Pasi",
+      role: "Founder",
+      company: "Pasi Technologies",
+      image: "/santosh.png"
     },
     {
-      name:"Kushal Jain",
+      name: "Praful Kulkarni",
+      role: "Founder",
+      company: "AlphaLeo Capital",
+      image: "/praful.jpg"
+    },
+    {
+      name: "Kushal Jain",
       role: "Co-founder",
       company: "Algofox",
       image: "/kushal.jpg"
     },
     {
-      name:"Giby Mathew",
-      role: "Chief Business Officer",
-      company: "Muthoot Securities",
-      image: "/giby.jpg"
+      name: "Nikhil Gopalakrishnan",
+      role: "CEO",
+      company: "Pentad Securities",
+      image: "/nikhil.jpg"
     },
+    {
+      name: "Hari Prasad",
+      role: "Founder & CEO",
+      company: "LiveLong Wealth",
+      image: "/hari.jpg"
+    },
+
     {
       name: "Sunil Mathai",
       role: "Founder",
       company: "TradeTalks",
       image: "/sunil.jpg"
     },
-    {
-      name: "Akshay Agarwal",
-      role: "Managing Director",
-      company: "Acumen Capital Market India Ltd.",
-      image: "/akshay.jpg"
-    },
-
     {
       name: "Uthara Ramakrishnan",
       role: "",
@@ -44,24 +51,29 @@ const SpeakersShowcase = () => {
     },
 
     {
-      name:"Nikhil Gopalakrishnan",
-      role: "CEO",
-      company: "Pentad Securities",
-      image: "/nikhil.jpg"
+      name: "Giby Mathew",
+      role: "Chief Business Officer",
+      company: "Muthoot Securities",
+      image: "/giby.jpg"
     },
+
     {
-      name:"Nikhil Mathew",
+      name: "Akshay Agarwal",
+      role: "Managing Director",
+      company: "Acumen Capital Market India Ltd.",
+      image: "/akshay.jpg"
+    },
+
+
+
+
+    {
+      name: "Nikhil Mathew",
       role: "Founder",
       company: "Oharipadanam",
       image: "/nikhilmathew.jpg"
     },
 
-    {
-      name:"Santosh Kumar Pasi",
-      role: "Founder",
-      company: "Pasi Technologies",
-      image: "/santosh.png"
-    },
     // {
     //   name:"Sharique Samsudheen",
     //   role: "Founder & CEO",
@@ -114,7 +126,7 @@ const SpeakersShowcase = () => {
                 <h3 className="text-lg font-semibold text-gray-900">{speaker.name}</h3>
                 <p className="text-blue-600 font-medium text-sm">{speaker.role}</p>
                 <p className="text-gray-600 text-sm">{speaker.company}</p>
-               
+
               </div>
             </div>
           ))}

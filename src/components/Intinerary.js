@@ -196,10 +196,10 @@ const EventItinerary = () => {
         type: "keynote"
       },
       {
-        time: "04:30 PM - 05:15 PM",
+        time: "04:30 PM - 04:45 PM",
         title: "Windup with Vote of Thanks",
         description: "Speaker: Mr. Sujeesh K.S",
-        duration: "45 min",
+        duration: "15 min",
         icon: '',
         type: "panel"
       },

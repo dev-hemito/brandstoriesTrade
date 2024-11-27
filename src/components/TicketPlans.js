@@ -15,7 +15,7 @@ const TicketPlans = () => {
             id: 'golden',
             name: 'Golden Tickets',
             price: 8999,
-            features: ['2 Days', '1 Night Stay', 'Double Occupancy'],
+            features: ['2 Days', '1 Night Stay', 'Double Sharing'],
             bgcolor: 'bg-gradient-to-br from-amber-50 to-amber-100',
         },
         {
