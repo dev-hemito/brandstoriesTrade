@@ -43,6 +43,13 @@ const SpeakersShowcase = () => {
       company: "TradeTalks",
       image: "/sunil.jpg"
     },
+    
+    {
+      name: "Milan Parikh",
+      role: "Co-Founder & MD",
+      company: "Jainam",
+      image: "/milan.jpg"
+    },
     {
       name: "Uthara Ramakrishnan",
       role: "",
