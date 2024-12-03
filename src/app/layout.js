@@ -66,7 +66,7 @@ const RootLayout = ({ children }) => {
           />
         </noscript>
 
-        <Header />
+ 
         <main className="flex-grow">
           {children}
         </main>
