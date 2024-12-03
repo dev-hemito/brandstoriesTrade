@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Footer from '@/components/FooterSingle';
 import Link from 'next/link';
 import AnimatedHeroSection from '@/components/GoldenAnimation';
+import TicketPlans from '@/components/ShivKheraPlans';
 export default function MotivationalEventPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -72,16 +73,16 @@ export default function MotivationalEventPage() {
       </nav>
 
       {/* Hero Section */}
-<AnimatedHeroSection/>
+      <AnimatedHeroSection />
 
       {/* Speaker Section */}
       <section id="speakers" className="py-20 bg-black">
         <div className="container mx-auto px-4 text-center">
           <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-12">
             <div className="w-64 h-64 bg-amber-400 rounded-full overflow-hidden border-4 border-black">
-              <img 
-                src="/Shiv-Khera.png" 
-                alt="Shiv Khera" 
+              <img
+                src="/Shiv-Khera.png"
+                alt="Shiv Khera"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -101,34 +102,7 @@ export default function MotivationalEventPage() {
 
       {/* Ticket Section */}
       <section id="tickets" className="py-20 bg-black">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-amber-400 mb-12">Event Tickets</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {ticketPlans.map((plan, index) => (
-              <div 
-                key={plan.name} 
-                className={`
-                  bg-gray-900 p-8 rounded-xl shadow-2xl transform transition 
-                  ${plan.recommended ? 'border-4 border-gold scale-105' : 'hover:scale-105'}
-                `}
-              >
-                <h3 className="text-2xl text-amber-400 mb-4">{plan.name}</h3>
-                <p className="text-4xl text-white font-bold mb-6">₹{plan.price}</p>
-                <ul className="text-white mb-8 space-y-2">
-                  {plan.features.map(feature => (
-                    <li key={feature} className="flex items-center">
-                      <ArrowRight className="text-amber-400 mr-2" size={20} />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <button className="w-full bg-gold text-black py-3 rounded-full font-bold hover:bg-yellow-600 transition">
-                  Select {plan.name}
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
+        <TicketPlans />
       </section>
 
       {/* Contact Section */}
@@ -165,7 +139,7 @@ export default function MotivationalEventPage() {
       {/* <footer className="bg-black py-8 text-center">
         <p className="text-amber-400">© 2024 Success Summit. All Rights Reserved.</p>
       </footer> */}
-      <Footer/>
+      <Footer />
     </div>
   );
 }
