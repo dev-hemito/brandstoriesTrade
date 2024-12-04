@@ -202,10 +202,10 @@ const Footer = () => {
             <nav className="md:col-span-3">
               <h4 className="text-xl font-semibold mb-6">Quick Links</h4>
               <ul className="space-y-4">
-                {['Home', 'About', 'Tickets', 'Speakers', 'Itinerary', 'Gallery'].map((link) => (
+                {['Home', 'Tickets', 'Speakers'].map((link) => (
                   <li key={link}>
                     <a
-                      href={`/#${link.toLowerCase()}`}
+                      href={`/evolve25#${link.toLowerCase()}`}
                       className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group"
                     >
                       <span className="w-0 group-hover:w-2 h-px bg-amber-400 mr-0 group-hover:mr-2 transition-all duration-200" />
