@@ -56,6 +56,12 @@ const SpeakersShowcase = () => {
       company: "Artha Financial Services",
       image: "/uthara.jpg"
     },
+    {
+      name: "Silby Poulose",
+      role: "Founder",
+      company: "Fintalks",
+      image: "/silby.jpg"
+    },
 
     {
       name: "Giby Mathew",
@@ -71,15 +77,27 @@ const SpeakersShowcase = () => {
       image: "/akshay.jpg"
     },
 
-
-
+    {
+      name: "Ajay Suresh Kedia",
+      role: "Director",
+      company: "Kedia Advisory",
+      image: "/Ajay.jpg"
+    },
 
     {
-      name: "Nikhil Mathew",
+      name: "Sivakumar Jayachandran",
       role: "Founder",
-      company: "Oharipadanam",
-      image: "/nikhilmathew.jpg"
+      company: "Oi Pulse & 1Cliq",
+      image: "/sivkumar.jpg"
     },
+
+
+    // {
+    //   name: "Nikhil Mathew",
+    //   role: "Founder",
+    //   company: "Oharipadanam",
+    //   image: "/nikhilmathew.jpg"
+    // },
 
     // {
     //   name:"Sharique Samsudheen",

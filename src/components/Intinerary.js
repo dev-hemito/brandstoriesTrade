@@ -34,7 +34,7 @@ const EventItinerary = () => {
       {
         time: "11:00 AM - 12:00 PM",
         title: "Live Trading Session",
-        description: "Speaker: Mr. Shijimon",
+        description: "Speaker: Mr. Shijimon Antony",
         duration: "60 min",
         icon: '',
         type: "break"
