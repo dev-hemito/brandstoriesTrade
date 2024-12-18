@@ -63,11 +63,24 @@ const SpeakersShowcase = () => {
       image: "/silby.jpg"
     },
 
+
     {
       name: "Giby Mathew",
       role: "Chief Business Officer",
       company: "Muthoot Securities",
       image: "/giby.jpg"
+    },
+    {
+      name: "Anil Kumar K A",
+      role: "Asst. Vice President",
+      company: "Aliceblue",
+      image: "/anilkumar.jpg"
+    },
+    {
+      name: "Siyad Ellickal",
+      role: "Founder & CEO",
+      company: "Bizmate Trading",
+      image: "/siyad.jpg"
     },
 
     {
