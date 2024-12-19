@@ -70,18 +70,6 @@ const SpeakersShowcase = () => {
       company: "Muthoot Securities",
       image: "/giby.jpg"
     },
-    {
-      name: "Anil Kumar K A",
-      role: "Asst. Vice President",
-      company: "Aliceblue",
-      image: "/anilkumar.jpg"
-    },
-    {
-      name: "Siyad Ellickal",
-      role: "Founder & CEO",
-      company: "Bizmate Trading",
-      image: "/siyad.jpg"
-    },
 
     {
       name: "Akshay Agarwal",
@@ -103,6 +91,20 @@ const SpeakersShowcase = () => {
       company: "Oi Pulse & 1Cliq",
       image: "/sivkumar.jpg"
     },
+    {
+      name: "Anil Kumar K A",
+      role: "Asst. Vice President",
+      company: "Aliceblue",
+      image: "/anilkumar.jpg"
+    },
+
+    {
+      name: "Siyad Ellickal",
+      role: "Founder & CEO",
+      company: "Bizmate Trading",
+      image: "/siyad.jpg"
+    },
+
 
 
     // {
