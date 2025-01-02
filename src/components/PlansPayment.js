@@ -5,13 +5,7 @@ import Link from 'next/link';
 const TicketPlans = () => {
   const packages = [
 
-     {
-      id: 'base',
-      name: 'base',
-      price: 1,
-      features: [''],
-      bgcolor: 'bg-gradient-to-br from-gray-50 to-gray-100',
-    },
+     
      {
       id: 'silver',
       name: 'Silver Tickets',
