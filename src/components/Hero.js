@@ -26,7 +26,7 @@ const Hero = () => {
   }, [handleResize]);
 
   return (
-    <section className="relative w-full overflow-hidden bg-black mt-24 pt-3" style={{height:"calc(90vh-100px)"}}>
+    <section className="relative w-full overflow-hidden bg-black mt-24 pt-3" style={{ height: "calc(90vh-100px)" }}>
       {/* Video Background */}
       {currentVideoSrc && (
         <video
@@ -35,9 +35,8 @@ const Hero = () => {
           loop
           muted
           playsInline
-          className={`absolute inset-0 w-full h-full object-fill transition-opacity duration-700 ${
-            videoLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full object-fill transition-opacity duration-700 ${videoLoaded ? "opacity-100" : "opacity-0"
+            }`}
           onLoadedData={() => setVideoLoaded(true)}
           poster="/video-poster.jpg"
         >
@@ -87,22 +86,25 @@ const Hero = () => {
 
             {/* Right Logo */}
             <div className="md:w-1/3 mt-3 md:mt-0 text-white font-bold text-center transform hover:scale-105 transition-transform duration-300">
-            <span className="text-lg">8th and 9th of January 2025</span>  <br/>
-            <span className="text-sm text-amber-200">Hotel Gokulam Park, Kochi</span>
+              <span className="text-lg">8th and 9th of January 2025</span>  <br />
+              <span className="text-sm text-amber-200">Hotel Gokulam Park, Kochi</span>
             </div>
           </div>
 
           {/* CTA Button */}
-         
+
         </div>
-        <div className="text-center mt-5 absolute bottom-1/3">
-            <Link
-              href="/#tickets"
-              className=" flex gap-3 items-center bg-white hover:bg-yellow-400 text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-lg"
-            >
-              Book Now <ArrowRight/>
-            </Link>
-          </div>
+        <div className="text-center mt-5 absolute bottom-1/3 items-center text-white">
+
+          <Link
+            href="/#tickets"
+            className=" flex gap-3 items-center justify-around bg-white hover:bg-yellow-400 text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-lg"
+          >
+            Book Now <ArrowRight />
+          </Link>
+          Powered by <Image src="/coindcx.png" className="bg-white h-24 w-auto mt-5" width={500} height={500} alt="coindcx" />
+
+        </div>
       </div>
     </section>
   );
