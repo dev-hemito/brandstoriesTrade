@@ -94,15 +94,23 @@ const Hero = () => {
           {/* CTA Button */}
 
         </div>
-        <div className="text-center mt-5 absolute bottom-1/3 items-center text-white">
+        <div className="text-center mt-5 absolute bottom-1/3 items-center text-white max-w-7xl mx-auto">
 
+
+          Powered by
+          <div className="grid grid-cols-3 justify-center items-center  md:grid-cols-5 gap-4 p-5">
+            <Image src="/coindcx.png" className=" bg-white p-2 h-full object-contain w-auto mt-5" width={500} height={500} alt="coindcx" />
+            <Image src="/JAINAM.png" className=" bg-white p-2 h-full object-contain w-auto mt-5" width={500} height={500} alt="coindcx" />
+            <Image src="/ALICE BLUE.png" className=" bg-white p-2 h-full object-contain w-auto mt-5" width={500} height={500} alt="coindcx" />
+            <Image src="/ACUMEN.png" className=" bg-white p-2 h-full object-contain w-auto mt-5" width={500} height={500} alt="coindcx" />
+            <Image src="/TRADE JINI.png" className=" bg-white p-2 h-full object-contain w-auto mt-5" width={500} height={500} alt="coindcx" />
+          </div>
           <Link
             href="/#tickets"
-            className=" flex gap-3 items-center justify-around bg-white hover:bg-yellow-400 text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-lg"
+            className=" flex gap-3 w-52 mx-auto items-center justify-around bg-white hover:bg-yellow-400 text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-lg"
           >
             Book Now <ArrowRight />
           </Link>
-          Powered by <Image src="/coindcx.png" className="bg-white h-24 w-auto mt-5" width={500} height={500} alt="coindcx" />
 
         </div>
       </div>
