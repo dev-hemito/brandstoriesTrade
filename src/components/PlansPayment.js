@@ -7,7 +7,7 @@ const TicketPlans = () => {
     {
       id: 'base',
       name: 'Single Day Pass',
-      price: 3500,
+      price: 3000,
       features: ['Lunch', 'Tea & Coffee'],
       bgcolor: 'bg-gradient-to-br from-gray-50 to-gray-100',
       soldOut: false
