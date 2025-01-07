@@ -4,14 +4,13 @@ import Link from 'next/link';
 
 const TicketPlans = () => {
   const packages = [
-
-     
     {
       id: 'base',
       name: 'Single Day Pass',
-      price: 2500,
+      price: 3500,
       features: ['Lunch', 'Tea & Coffee'],
       bgcolor: 'bg-gradient-to-br from-gray-50 to-gray-100',
+      soldOut: false
     },
     {
       id: 'silver',
@@ -19,6 +18,7 @@ const TicketPlans = () => {
       price: 5999,
       features: ['2 Days'],
       bgcolor: 'bg-gradient-to-br from-gray-50 to-gray-100',
+      soldOut: false
     },
     {
       id: 'golden',
@@ -26,6 +26,7 @@ const TicketPlans = () => {
       price: 8999,
       features: ['2 Days', '1 Night Stay', 'Double Occupancy'],
       bgcolor: 'bg-gradient-to-br from-amber-50 to-amber-100',
+      soldOut: true
     },
     {
       id: 'vip',
@@ -33,6 +34,7 @@ const TicketPlans = () => {
       price: 11999,
       features: ['2 Days', '1 Night Stay', 'Networking Gala Dinner', 'Single Occupancy'],
       bgcolor: 'bg-gradient-to-br from-amber-100 to-amber-200',
+      soldOut: true
     },
   ];
 
@@ -56,11 +58,12 @@ const TicketPlans = () => {
     if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Invalid email format';
     if (!formData.phone) newErrors.phone = 'Phone is required';
     if (!/^\d{10}$/.test(formData.phone)) newErrors.phone = 'Invalid phone number';
-   
+
     return newErrors;
   };
 
   const handlePackageSelect = (pkg) => {
+    if (pkg.soldOut) return;
     setSelectedPackage(pkg);
     setShowRegistrationModal(true);
   };
@@ -143,6 +146,8 @@ const TicketPlans = () => {
     }
   };
 
+
+
   return (
     <div className="min-h-screen py-16 px-4" id="tickets">
       {/* Header Section (unchanged) */}
@@ -166,8 +171,22 @@ const TicketPlans = () => {
           {packages.map((pkg) => (
             <div
               key={pkg.id}
-              className={`${pkg.bgcolor} rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1`}
+              className={`${pkg.bgcolor} rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 relative ${pkg.soldOut ? 'opacity-85' : 'hover:shadow-xl hover:-translate-y-1'
+                }`}
             >
+              {pkg.soldOut && (
+                <>
+                  {/* Sold Out Ribbon */}
+                  <div className="absolute -right-12 top-6 rotate-45 z-10">
+                    <div className="bg-red-500 text-white py-1 w-40 text-center transform">
+                      <span className="font-bold text-sm">SOLD OUT</span>
+                    </div>
+                  </div>
+                  {/* Semi-transparent overlay */}
+                  <div className="absolute inset-0 bg-gray-900 bg-opacity-10 pointer-events-none" />
+                </>
+              )}
+
               <div className="p-6 md:p-8 border">
                 <div className="flex items-center justify-between mb-6">
                   <Package className="w-8 h-8 text-amber-500" />
@@ -190,18 +209,23 @@ const TicketPlans = () => {
                   ))}
                 </ul>
 
-                <button
-                  onClick={() => handlePackageSelect(pkg)}
-                  className="w-full py-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transform transition-all duration-300 hover:scale-[1.02] focus:ring-2 focus:ring-amber-300 focus:outline-none"
-                >
-                  Select Package
-                </button>
+                {pkg.soldOut ? (
+                  <div className="w-full py-4 bg-gray-300 text-gray-500 rounded-xl font-semibold text-center cursor-not-allowed select-none">
+                    Tickets Not Available
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => handlePackageSelect(pkg)}
+                    className="w-full py-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transform transition-all duration-300 hover:scale-[1.02] focus:ring-2 focus:ring-amber-300 focus:outline-none"
+                  >
+                    Select Package
+                  </button>
+                )}
               </div>
             </div>
           ))}
         </div>
       </div>
-
       {/* Registration Modal */}
       {showRegistrationModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
