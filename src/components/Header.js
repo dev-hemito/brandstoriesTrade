@@ -16,11 +16,12 @@ const Header = () => {
         { name: 'Itinerary', href: '/#itinerary' },
         { name: 'Gallery', href: '/#gallery' },
         { name: 'Contact Us', href: '/#contact' },
+        { name: 'Traders Conclave', href: '/tradersconclave' },
         { name: 'Tickets', href: '/#tickets' },
     ];
 
     return (
-        <header className="fixed top-0 w-full z-50 bg-white  shadow-md">
+        <header className="fixed  top-0 w-full z-50 bg-white  shadow-md">
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-24">
                     {/* Left Logo */}

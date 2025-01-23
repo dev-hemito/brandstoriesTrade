@@ -49,7 +49,7 @@ const Page = () => {
 
   return (
     <div>
-             <Header />
+      <Header />
       <Hero />
       <motion.div
         className='overflow-hidden relative z-10 md:py-32 py-16'
