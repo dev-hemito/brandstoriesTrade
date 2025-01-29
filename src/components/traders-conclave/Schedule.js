@@ -40,7 +40,7 @@ const Schedule = ({ day1, day2 }) => {
   );
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50" id='itinerary'>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

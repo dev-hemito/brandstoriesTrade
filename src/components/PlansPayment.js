@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, Check, Package, Loader, X, LucideTicket } from 'lucide-react';
-import Link from 'next/link';
+import { ArrowLeft, Check, Package, Loader, X, LucideTicket, Clock, Users, Coffee } from 'lucide-react';
 
 const TicketPlans = () => {
   const packages = [
@@ -8,34 +7,17 @@ const TicketPlans = () => {
       id: 'base',
       name: 'Single Day Pass',
       price: 3000,
-      features: ['Lunch', 'Tea & Coffee'],
-      bgcolor: 'bg-gradient-to-br from-gray-50 to-gray-100',
-      soldOut: false
-    },
-    {
-      id: 'silver',
-      name: 'Silver Tickets',
-      price: 5999,
-      features: ['2 Days'],
-      bgcolor: 'bg-gradient-to-br from-gray-50 to-gray-100',
-      soldOut: false
-    },
-    {
-      id: 'golden',
-      name: 'Golden Tickets',
-      price: 8999,
-      features: ['2 Days', '1 Night Stay', 'Double Occupancy'],
+      description: 'Perfect for individuals looking to experience our premier trading summit',
+      features: [
+        { icon: Clock, text: 'Full day access to all sessions' },
+        { icon: Coffee, text: 'Lunch, Tea & Coffee included' },
+        { icon: Users, text: 'Networking opportunities' }
+      ],
+      highlight: 'Limited Time Offer',
       bgcolor: 'bg-gradient-to-br from-amber-50 to-amber-100',
-      soldOut: true
-    },
-    {
-      id: 'vip',
-      name: 'VIP Tickets',
-      price: 11999,
-      features: ['2 Days', '1 Night Stay', 'Networking Gala Dinner', 'Single Occupancy'],
-      bgcolor: 'bg-gradient-to-br from-amber-100 to-amber-200',
-      soldOut: true
-    },
+      borderColor: 'border-amber-200',
+      soldOut: false
+    }
   ];
 
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -44,8 +26,7 @@ const TicketPlans = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-
+    phone: ''
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -58,7 +39,6 @@ const TicketPlans = () => {
     if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Invalid email format';
     if (!formData.phone) newErrors.phone = 'Phone is required';
     if (!/^\d{10}$/.test(formData.phone)) newErrors.phone = 'Invalid phone number';
-
     return newErrors;
   };
 
@@ -132,7 +112,6 @@ const TicketPlans = () => {
       const registrationData = await registrationResponse.json();
 
       if (registrationData.success) {
-        // Redirect to payment URL
         setTicketNumber(registrationData.ticketNumber);
         window.location.href = registrationData.paymentUrl;
       } else {
@@ -140,92 +119,98 @@ const TicketPlans = () => {
       }
 
     } catch (error) {
-      console.log('Registration error:', error);
+      console.error('Registration error:', error);
       setErrors({ general: error.message || 'Something went wrong. Please try again.' });
       setLoading(false);
     }
   };
 
-
-
   return (
-    <div className="min-h-screen py-16 px-4" id="tickets">
-      {/* Header Section (unchanged) */}
-      <div className="max-w-7xl mx-auto mb-12">
-        <div className="flex flex-col items-center space-y-4">
-          <div className="flex items-center gap-3">
-            <h1 className="text-4xl md:text-5xl font-bold text-amber-500 text-center">
-              Get Your Ticket Now
-            </h1>
-            <LucideTicket className="w-8 h-8 md:w-12 md:h-12 text-amber-500 hidden sm:block" />
+    <div className="min-h-screen py-16 px-4 bg-gradient-to-b from-white to-amber-50" id="tickets">
+      {/* Enhanced Header Section */}
+      <div className="max-w-7xl mx-auto mb-16">
+        <div className="flex flex-col items-center space-y-6">
+          <div className="relative">
+            <div className="absolute -inset-1 bg-amber-500/30 blur-xl rounded-full"></div>
+            <div className="relative flex items-center gap-4">
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 text-center">
+                Get Your Ticket
+              </h1>
+              <LucideTicket className="w-10 h-10 md:w-14 md:h-14 text-amber-500 hidden sm:block animate-pulse" />
+            </div>
           </div>
-          <p className="text-gray-600 text-center max-w-2xl">
-            Join us for an incredible trading summit experience. Choose the package that best suits your needs.
+          <p className="text-lg text-gray-600 text-center max-w-2xl">
+            Secure your spot at the most anticipated trading summit of the year
           </p>
         </div>
       </div>
 
-      {/* Package Cards (mostly unchanged) */}
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {/* Enhanced Package Cards */}
+      <div className="max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 gap-8">
           {packages.map((pkg) => (
             <div
               key={pkg.id}
-              className={`${pkg.bgcolor} rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 relative ${pkg.soldOut ? 'opacity-85' : 'hover:shadow-xl hover:-translate-y-1'
-                }`}
+              className={`transform transition-all duration-500 hover:scale-[1.02]`}
             >
-              {pkg.soldOut && (
-                <>
-                  {/* Sold Out Ribbon */}
-                  <div className="absolute -right-12 top-6 rotate-45 z-10">
-                    <div className="bg-red-500 text-white py-1 w-40 text-center transform">
-                      <span className="font-bold text-sm">SOLD OUT</span>
+              <div className={`${pkg.bgcolor} border-2 ${pkg.borderColor} rounded-2xl overflow-hidden shadow-lg`}>
+                <div className="p-8">
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {/* Left side - Package Info */}
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-4">
+                        <Package className="w-10 h-10 text-amber-500" />
+                        {pkg.highlight && (
+                          <span className="px-4 py-1 bg-amber-500 text-white text-sm font-medium rounded-full">
+                            {pkg.highlight}
+                          </span>
+                        )}
+                      </div>
+                      <div>
+                        <h3 className="text-3xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
+                        <p className="text-gray-600">{pkg.description}</p>
+                      </div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-4xl font-bold text-amber-500">₹{pkg.price.toLocaleString()}</span>
+                        <span className="text-gray-500">/person</span>
+                      </div>
+                    </div>
+
+                    {/* Right side - Features & Button */}
+                    <div className="space-y-6">
+                      <ul className="space-y-4">
+                        {pkg.features.map((feature, index) => (
+                          <li key={index} className="flex items-center gap-3">
+                            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
+                              <feature.icon className="w-4 h-4 text-amber-600" />
+                            </div>
+                            <span className="text-gray-700">{feature.text}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      
+                      {pkg.soldOut ? (
+                        <div className="w-full py-4 bg-gray-300 text-gray-500 rounded-xl font-semibold text-center cursor-not-allowed">
+                          Tickets Not Available
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => handlePackageSelect(pkg)}
+                          className="w-full py-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 
+                          transform transition-all duration-300 hover:shadow-lg focus:ring-2 focus:ring-amber-300 focus:outline-none"
+                        >
+                          Book Now
+                        </button>
+                      )}
                     </div>
                   </div>
-                  {/* Semi-transparent overlay */}
-                  <div className="absolute inset-0 bg-gray-900 bg-opacity-10 pointer-events-none" />
-                </>
-              )}
-
-              <div className="p-6 md:p-8 border">
-                <div className="flex items-center justify-between mb-6">
-                  <Package className="w-8 h-8 text-amber-500" />
-                  <span className="text-xs font-semibold px-3 py-1 bg-white text-amber-700 rounded-full">
-                    {pkg.id === 'vip' ? 'Most Popular' : ''}
-                  </span>
                 </div>
-
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">{pkg.name}</h3>
-                <p className="text-4xl font-bold text-amber-500 mb-6">
-                  ₹{pkg.price.toLocaleString()}
-                </p>
-
-                <ul className="space-y-4 mb-8 md:min-h-36">
-                  {pkg.features.map((feature, index) => (
-                    <li key={index} className="flex items-center text-gray-600">
-                      <Check className="w-5 h-5 mr-3 text-amber-500 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {pkg.soldOut ? (
-                  <div className="w-full py-4 bg-gray-300 text-gray-500 rounded-xl font-semibold text-center cursor-not-allowed select-none">
-                    Tickets Not Available
-                  </div>
-                ) : (
-                  <button
-                    onClick={() => handlePackageSelect(pkg)}
-                    className="w-full py-4 bg-amber-500 text-white rounded-xl font-semibold hover:bg-amber-600 transform transition-all duration-300 hover:scale-[1.02] focus:ring-2 focus:ring-amber-300 focus:outline-none"
-                  >
-                    Select Package
-                  </button>
-                )}
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* Registration Modal */}
       {showRegistrationModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
@@ -255,11 +240,13 @@ const TicketPlans = () => {
                   <span className="font-medium">{processingState}</span>
                 </div>
               )}
+
               {errors.general && (
-                <div className="p-4 bg-red-50 rounded-lg text-red-500 text-center">
+                <div className="p-4 bg-red-50 rounded-lg text-red-500 text-center mb-6">
                   {errors.general}
                 </div>
               )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 {['name', 'email', 'phone'].map((field) => (
                   <div key={field}>
@@ -282,8 +269,6 @@ const TicketPlans = () => {
                     )}
                   </div>
                 ))}
-
-
 
                 <button
                   type="submit"
@@ -308,7 +293,7 @@ const TicketPlans = () => {
       {/* Processing Overlay */}
       {processingState && !showRegistrationModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-8 shadow-xl flex items-center space-x-4 transform animate-fadeIn">
+          <div className="bg-white rounded-2xl p-8 shadow-xl flex items-center space-x-4">
             <div className="relative">
               <div className="w-12 h-12 border-4 border-amber-200 border-t-amber-500 rounded-full animate-spin"></div>
               <div className="absolute inset-0 flex items-center justify-center">

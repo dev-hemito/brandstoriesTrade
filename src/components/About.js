@@ -12,21 +12,7 @@ const AboutSection = () => {
           {/* Content Section */}
           <div className="w-full space-y-4 text-center">
             <p className="text-black leading-relaxed">
-              In a first-of-its-kind initiative, stage has been set for the
-              two-day long Kerala Traders and Investors Conclave.
-              Sens Promos Private Limited, Brand Stories, the organizer of the event, aims to create
-              investment-friendly communities comprising regular
-              stock traders, beginners as well as long-term investors.
-              The conclave will encompass live training, special
-              classes, investment mentoring sessions, seminars,
-              discussions and training strategies.
-              It will also serve avenues for interactions with mentors
-              from outside and within Kerala, from whom stock
-              enthusiasts as well as beginners can have first-hand
-              learning experience on major trading strategies.
-              The event must be viewed as a prime opportunity for
-              potential investors to master the art of right investments
-              from stock veterans and experts.
+            Malabar Biggest Traders Conclave 2025 hosted by Brand Stories Business Magazine, is a transformative one-day event exclusively tailored for traders to unlock their potential and excel in the fast-paced world of stock trading. This thoughtfully curated platform offers expert-led sessions, strategy-focused seminars, and mentorship opportunities designed to equip participants with actionable insights into market dynamics, trading techniques, and risk management strategies. Whether you're a beginner looking to build a strong foundation or an experienced trader aiming to refine your approach, the conclave connects you with industry veterans and trading experts who will guide you toward smarter, more confident decisions. Take the next step in your trading journey and be part of this game-changing experience!
             </p>
           </div>
         </div>

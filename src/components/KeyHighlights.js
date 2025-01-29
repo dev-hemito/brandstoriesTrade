@@ -59,40 +59,28 @@ const FeatureSection = () => {
   const features = [
     {
       icon: TrendingUp,
-      title: "Live Trading Sessions",
-      description: "Experience real-time market insights with professional traders guiding you through live market conditions",
+      title: "Build Your Trading Network",
+      description: "Expand your professional circle by connecting with seasoned traders, investors, and market enthusiasts. Forge valuable relationships that can open doors to collaborative opportunities and shared insights.",
       color: "from-blue-600 to-cyan-400"
     },
     {
       icon: Users,
-      title: "Network with Top Mentors",
-      description: "Connect directly with industry leaders who've achieved remarkable success in trading",
+      title: "Masterclasses with Industry Experts",
+      description: "Learn from the best in the business through exclusive masterclasses. Gain actionable strategies, tips, and techniques directly from top traders who have mastered the art of navigating volatile markets.",
       color: "from-purple-600 to-pink-400"
     },
     {
       icon: Mic2,
-      title: "Powerful Speakers",
-      description: "Gain insights from thought leaders shaping the future of trading and investment",
+      title: "Real-Time Market Analysis & Insights",
+      description: "Stay ahead of the curve with live market analysis and expert insights. Understand market trends, identify opportunities, and make informed decisions with real-time guidance from professionals.",
       color: "from-amber-500 to-orange-400"
     },
     {
       icon: Users2,
-      title: "Panel Discussions",
-      description: "Engage in dynamic conversations addressing current market trends and opportunities",
+      title: "Access to Career Opportunities in Trading",
+      description: "Discover exciting career paths in trading and investment. Network with industry leaders and explore opportunities to kickstart or advance your career in the financial markets.",
       color: "from-green-500 to-emerald-400"
     },
-    {
-      icon: Gift,
-      title: "Gift & Goodies",
-      description: "Take home exclusive trading tools and premium resources to enhance your journey",
-      color: "from-red-500 to-rose-400"
-    },
-    {
-      icon: GlassWater,
-      title: "Gala Dinner",
-      description: "Network in luxury while building lasting connections with industry professionals",
-      color: "from-indigo-600 to-blue-400"
-    }
   ];
 
   return (
@@ -116,7 +104,7 @@ const FeatureSection = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {features.map((feature, index) => (
               <FeatureCard key={index} feature={feature} index={index} />
             ))}

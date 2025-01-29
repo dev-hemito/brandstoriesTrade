@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindful Rejuvenation - Rehabilitation Center</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-green-800 flex items-center space-x-2">
+                    <img src="/api/placeholder/150/50" alt="Mind Logo" class="h-12">
+                </div>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-500 hover:text-gray-700" onclick="toggleMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-green-600">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600">About</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600">Services</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600">Facilities</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600">Gallery</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600">Contact</a>
+                </nav>
+            </div>
+        </div>
+        <!-- Mobile Navigation -->
+        <nav id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="max-w-7xl mx-auto px-4 py-2">
+                <a href="#" class="block py-2 text-gray-700 hover:text-green-600">Home</a>
+                <a href="#" class="block py-2 text-gray-700 hover:text-green-600">About</a>
+                <a href="#" class="block py-2 text-gray-700 hover:text-green-600">Services</a>
+                <a href="#" class="block py-2 text-gray-700 hover:text-green-600">Facilities</a>
+                <a href="#" class="block py-2 text-gray-700 hover:text-green-600">Gallery</a>
+                <a href="#" class="block py-2 text-gray-700 hover:text-green-600">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Form -->
+    <section class="pt-20 bg-gradient-to-r from-green-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4 py-16">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">No.1 Neuropsychiatric Centre in Kerala</h1>
+                    <p class="text-lg text-gray-600 mb-8">Your journey to health, recovery and insight begins here. We provide comprehensive care for mental health and rehabilitation.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-6">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Book Your Appointment</h3>
+                    <form onsubmit="handleSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" name="name" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-green-500">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Phone</label>
+                            <input type="tel" name="phone" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-green-500">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-green-500">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Message</label>
+                            <textarea name="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-green-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300">
+                            Book Appointment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">About Us</h2>
+                    <p class="text-gray-600 mb-6">
+                        Mindful rejuvenation is designed as a unique and intensive program which includes accurate diagnosis and 
+                        personalized treatment for individuals with psychiatric disorders. This service combines the roots of 
+                        neurology and psychiatry to treat a patient for better optimal outcomes.
+                    </p>
+                    <a href="#" class="inline-block bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300">
+                        Learn More
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="/api/placeholder/300/400" alt="About 1" class="rounded-lg shadow-md">
+                    <img src="/api/placeholder/300/400" alt="About 2" class="rounded-lg shadow-md mt-8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Services</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Neuropsychiatric Clinic</h3>
+                    <p class="text-gray-600">Accurate diagnosis and treatment for brain disorders.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Counselling</h3>
+                    <p class="text-gray-600">We work for your mental health by counselling.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Residential Rehab</h3>
+                    <p class="text-gray-600">Residential rehab from Alcohol, Cannabis, etc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Facilities</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/api/placeholder/400/300" alt="24/7 Doctor Support" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">24/7 Doctor Support</h3>
+                        <p class="text-gray-600">Always available to provide support and assistance.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/api/placeholder/400/300" alt="AC/Non-AC Rooms" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">AC/Non-AC Rooms</h3>
+                        <p class="text-gray-600">Comfortable accommodation options for all needs.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/api/placeholder/400/300" alt="Gym Facilities" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Gym Facilities</h3>
+                        <p class="text-gray-600">Stay physically fit during your recovery journey.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/api/placeholder/400/300" alt="24/7 Doctor Support" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">24/7 Doctor Support</h3>
+                        <p class="text-gray-600">Always available to provide support and assistance.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/api/placeholder/400/300" alt="AC/Non-AC Rooms" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">AC/Non-AC Rooms</h3>
+                        <p class="text-gray-600">Comfortable accommodation options for all needs.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/api/placeholder/400/300" alt="Gym Facilities" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Gym Facilities</h3>
+                        <p class="text-gray-600">Stay physically fit during your recovery journey.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="/api/placeholder/150/50" alt="Mind Logo" class="mb-4 bg-white p-2 rounded">
+                    <p class="text-gray-300">A unique and intensive programme for individuals seeking help for mental illness.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Services</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Facilities</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Alphonse hospital, Karukutty, Angamaly</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone"></i>
+                            <span>7306150312</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-envelope"></i>
+                            <span>mindfulrejuvenation@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white text-xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white text-xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Mindful Rejuvenation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            console.log('Form submitted:', data);
+            // Add your form submission logic here
+            alert('Thank you for your submission! We will contact you soon.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

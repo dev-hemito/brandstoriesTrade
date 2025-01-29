@@ -12,9 +12,19 @@ import SpeakersShowcase from '@/components/SpeakerShowcase'
 import EventItinerary from '@/components/Intinerary'
 import Footer from '@/components/Footer'
 import PlansPayments from '@/components/PlansPayment'
+import Schedule from '@/components/traders-conclave/Schedule'
+import {
+
+  day1Schedule,
+  day2Schedule,
+  upcomingEvents
+} from '@/data/traders-conclave-data';
+import UpcomingEvents from '@/components/traders-conclave/UpcomingEvents'
+import SeasonalGallery from '@/components/SeasonalGallery'
+import HeroSection from '@/components/HeroSection'
 
 const Page = () => {
-  const words = "South India's Biggest Traders and Investors Conclave".split(" ")
+  const words = "Malabar's Biggest Traders Conclave 2025".split(" ")
 
   const container = {
     hidden: { opacity: 0 },
@@ -50,7 +60,7 @@ const Page = () => {
   return (
     <div>
       <Header />
-      <Hero />
+   <HeroSection/>
       <motion.div
         className='overflow-hidden relative z-10 md:py-32 py-16'
         initial="hidden"
@@ -92,7 +102,9 @@ const Page = () => {
       <PlansPayments />
       <AttendeesShowcase />
       <SpeakersShowcase />
-      <EventItinerary />
+      <Schedule day1={day1Schedule} day2={day2Schedule} />
+      <UpcomingEvents events={upcomingEvents} />
+      <SeasonalGallery/>
       <Footer />
     </div>
   )

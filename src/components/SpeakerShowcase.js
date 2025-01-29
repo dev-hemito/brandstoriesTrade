@@ -6,120 +6,42 @@ import Image from 'next/image';
 const SpeakersShowcase = () => {
   const speakers = [
 
-    {
-      name: "Santosh Kumar Pasi",
-      role: "Founder",
-      company: "Pasi Technologies",
-      image: "/santosh.png"
-    },
-    {
-      name: "Praful Kulkarni",
-      role: "Founder",
-      company: "AlphaLeo Capital",
-      image: "/praful.jpg"
-    },
-    {
-      name: "Kushal Jain",
-      role: "Co-founder",
-      company: "Algofox",
-      image: "/kushal.jpg"
-    },
-    {
-      name: "Nikhil Gopalakrishnan",
-      role: "CEO",
-      company: "Pentad Securities",
-      image: "/nikhil.jpg"
-    },
-    {
-      name: "Hari Prasad",
-      role: "Founder & CEO",
-      company: "LiveLong Wealth",
-      image: "/hari.jpg"
-    },
+
 
     {
       name: "Sunil Mathai",
       role: "Founder",
       company: "TradeTalks",
-      image: "/sunil.jpg"
-    },
-    
-    {
-      name: "Milan Parikh",
-      role: "Co-Founder & MD",
-      company: "Jainam",
-      image: "/milan.jpg"
-    },
-    {
-      name: "Uthara Ramakrishnan",
-      role: "",
-      company: "Artha Financial Services",
-      image: "/uthara.jpg"
-    },
-    {
-      name: "Silby Poulose",
-      role: "Founder",
-      company: "Fintalks",
-      image: "/silby.jpg"
+      image: "/malabarSpeakers/sunil.jpg"
     },
 
 
-    {
-      name: "Giby Mathew",
-      role: "Chief Business Officer",
-      company: "Muthoot Securities",
-      image: "/giby.jpg"
-    },
-
-    {
-      name: "Akshay Agarwal",
-      role: "Managing Director",
-      company: "Acumen Capital Market India Ltd.",
-      image: "/akshay.jpg"
-    },
-
-    {
-      name: "Ajay Suresh Kedia",
-      role: "Director",
-      company: "Kedia Advisory",
-      image: "/Ajay.jpg"
-    },
-
-    {
-      name: "Sivakumar Jayachandran",
-      role: "Founder",
-      company: "Oi Pulse & 1Cliq",
-      image: "/sivkumar.jpg"
-    },
-    {
-      name: "Anil Kumar K A",
-      role: "Asst. Vice President",
-      company: "Aliceblue",
-      image: "/anilkumar.jpg"
-    },
 
     {
       name: "Siyad Ellickal",
       role: "Founder & CEO",
       company: "Bizmate Trading",
-      image: "/siyad.jpg"
+      image: "/malabarSpeakers/siyad.jpg"
+    },
+    {
+      name: "Saketh Ramakrishna",
+      role: "Co-founder & CIO",
+      company: "Optionables Fintech LLP",
+      image: "/malabarSpeakers/saketh.jpg"
+    },
+    {
+      name: "Shijumon Antony",
+      role: "Founder & CEO",
+      company: "NSEIT",
+      image: "/malabarSpeakers/shijumon.jpg"
+    },
+    {
+      name: "Sharique Samsudheen",
+      role: "Founder & CEO",
+      company: "Marketfeed",
+      image: "/malabarSpeakers/sharique.jpg"
     },
 
-
-
-    // {
-    //   name: "Nikhil Mathew",
-    //   role: "Founder",
-    //   company: "Oharipadanam",
-    //   image: "/nikhilmathew.jpg"
-    // },
-
-    // {
-    //   name:"Sharique Samsudheen",
-    //   role: "Founder & CEO",
-    //   company: "Marketfeed",
-    //   image: "/sharique.jpg"
-    // },
 
 
 
