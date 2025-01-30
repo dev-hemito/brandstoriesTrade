@@ -92,7 +92,7 @@ export const metadata = {
     description: 'South India\'s biggest Traders and Investors Conclave. The conclave will encompass live training, special classes, investment mentoring sessions, seminars, discussions and training strategies.',
     images: [
       {
-        url: '/traders.png',
+        url: '/traderslogonew.png',
         width: 1200,
         height: 630,
         alt: 'Brand Stories - Kerala Traders Investors Conclave 2025',
@@ -104,17 +104,17 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Brand Stories - Kerala Traders Investors Conclave 2025',
     description: 'South India\'s biggest Traders and Investors Conclave',
-    images: ['/traders.png'],
+    images: ['/traderslogonew.png'],
   },
   icons: {
     icon: [
-      { url: '/traders.png', type: 'image/png', sizes: '32x32' },
-      { url: '/traders.png', type: 'image/png', sizes: '16x16' }
+      { url: '/traderslogonew.png', type: 'image/png', sizes: '32x32' },
+      { url: '/traderslogonew.png', type: 'image/png', sizes: '16x16' }
     ],
     apple: [
-      { url: '/traders.png', sizes: '180x180', type: 'image/png' },
+      { url: '/traderslogonew.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/traders.png',
+    shortcut: '/traderslogonew.png',
   },
   manifest: '/manifest.json',
 };
