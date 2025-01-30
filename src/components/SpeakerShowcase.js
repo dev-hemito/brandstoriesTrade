@@ -5,30 +5,6 @@ import Image from 'next/image';
 
 const SpeakersShowcase = () => {
   const speakers = [
-
-
-
-    {
-      name: "Sunil Mathai",
-      role: "Founder",
-      company: "TradeTalks",
-      image: "/malabarSpeakers/sunil.jpg"
-    },
-
-
-
-    {
-      name: "Siyad Ellickal",
-      role: "Founder & CEO",
-      company: "Bizmate Trading",
-      image: "/malabarSpeakers/siyad.jpg"
-    },
-    {
-      name: "Saketh Ramakrishna",
-      role: "Co-founder & CIO",
-      company: "Optionables Fintech LLP",
-      image: "/malabarSpeakers/saketh.jpg"
-    },
     {
       name: "Shijumon Antony",
       role: "Founder & CEO",
@@ -41,6 +17,28 @@ const SpeakersShowcase = () => {
       company: "Marketfeed",
       image: "/malabarSpeakers/sharique.jpg"
     },
+    {
+      name: "Saketh Ramakrishna",
+      role: "Co-founder & CIO",
+      company: "Optionables Fintech LLP",
+      image: "/malabarSpeakers/saketh.jpg"
+    },  
+
+    {
+      name: "Sunil Mathai",
+      role: "Founder",
+      company: "TradeTalks",
+      image: "/malabarSpeakers/sunil.jpg"
+    },
+
+    {
+      name: "Siyad Ellickal",
+      role: "Founder & CEO",
+      company: "Bizmate Trading",
+      image: "/malabarSpeakers/siyad.jpg"
+    },
+
+
 
 
 

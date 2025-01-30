@@ -72,7 +72,7 @@ const Page = () => {
           {words.map((word, index) => (
             <motion.span
               key={index}
-              className="relative inline-block md:text-9xl text-5xl font-bold mx-2"
+              className="relative inline-block md:text-7xl text-5xl font-bold mx-2"
               variants={child}
             >
               <span className="absolute inset-0 text-amber-500 clip-text">
@@ -102,7 +102,7 @@ const Page = () => {
       <PlansPayments />
       <AttendeesShowcase />
       <SpeakersShowcase />
-      <Schedule day1={day1Schedule} day2={day2Schedule} />
+      <Schedule day1={day1Schedule}  />
       <UpcomingEvents events={upcomingEvents} />
       <SeasonalGallery/>
       <Footer />

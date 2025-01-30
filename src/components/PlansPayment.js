@@ -6,8 +6,8 @@ const TicketPlans = () => {
     {
       id: 'base',
       name: 'Single Day Pass',
-      price: 3000,
-      description: 'Perfect for individuals looking to experience our premier trading summit',
+      price: 1500,
+      description: 'Early bird Offer : 1200',
       features: [
         { icon: Clock, text: 'Full day access to all sessions' },
         { icon: Coffee, text: 'Lunch, Tea & Coffee included' },

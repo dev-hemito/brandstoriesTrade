@@ -4,7 +4,7 @@ const AboutSection = () => {
   return (
     <div className="w-ful text-white md:px-5 mx-auto" id='about'>
       <div className="container mx-auto px-4">
-        <h2 className="text-orange-400 text-center text-4xl mb-8 font-serif">About</h2>
+        <h2 className="text-orange-400 text-center text-4xl mb-8 font-serif">About Traders Conclave 2025</h2>
 
         <div className="flex flex-col lg:flex-row gap-8 items-center">
 

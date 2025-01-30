@@ -67,16 +67,7 @@ const Schedule = ({ day1, day2 }) => {
             >
               Day 1 - January 8th
             </button>
-            <button 
-              onClick={() => setActiveDay('day2')}
-              className={`flex-1 py-3 px-6 rounded-lg font-medium transition-colors ${
-                activeDay === 'day2' 
-                  ? 'bg-green-500 text-white' 
-                  : 'text-gray-600 hover:bg-gray-100'
-              }`}
-            >
-              Day 2 - January 9th
-            </button>
+            
           </div>
 
           {/* Schedule Content */}
@@ -94,11 +85,7 @@ const Schedule = ({ day1, day2 }) => {
                   ))}
                 </div>
               ) : (
-                <div className="space-y-4">
-                  {day2.map((item, index) => (
-                    <ScheduleItem key={index} item={item} />
-                  ))}
-                </div>
+             <></>
               )}
             </motion.div>
           </AnimatePresence>

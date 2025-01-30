@@ -109,149 +109,106 @@ export const speakers = [
  ];
  export const day1Schedule = [
   {
-    time: '8:30 AM - 10:00 AM',
+    time: '08:00 AM - 09:00 AM',
     session: 'Registration',
-    duration: '90 Min'
+    duration: '60 Min'
   },
   {
-    time: '10:00 AM - 10:30 AM', 
-    session: 'Lightening the Lamp & Keynote Session',
-    duration: '30 Min'
-  },
-  {
-    time: '10:30 AM - 11:00 AM',
+    time: '09:00 AM - 09:10 AM',
     session: 'Welcome Speech',
-    speaker: 'Sami K Haridas',
-    duration: '30 Min'
+    duration: '10 Min'
   },
   {
-    time: '11:00 AM - 12:00 PM',
-    session: 'Speaker sessions',
-    speaker: 'Shijimon',
-    topic: 'Live Trading sessions',
-    duration: '60 Min'
+    time: '09:10 AM - 09:15 AM',
+    session: 'Lamp Lightning',
+    duration: '5 Min'
   },
   {
-    time: '12:00 AM - 12:40 PM',
-    session: 'Speaker Session',
-    speaker: 'Kushal Jain',
-    topic: 'Strategy to trading stock option with 82% Accuracy',
-    duration: '40 Min'
-  },
-  {
-    time: '12:40 PM - 01:20 PM',
-    session: 'Speaker Session',
-    speaker: 'Hariprasad',
-    topic: 'Momentum Investing',
-    duration: '40 MIN'
-  },
-  {
-    time: '01:20 PM - 03:00 PM',
-    session: 'Lunch break',
-    duration: '100 Min'
-  },
-  {
-    time: '03:00 PM - 03:20 PM',
-    session: 'Sponsor Session',
-    speaker: 'Title Sponsor',
-    duration: '20 Min'
-  },
-  {
-    time: '03:20 PM - 04:00 PM',
-    session: 'Speaker Session',
-    speaker: 'Uthara Ramakrishnan',
-    topic: 'Opportunities and Challenges in Emerging Market Investing',
-    duration: '40 Min'
-  },
-  {
-    time: '04:00 PM - 05:00 PM',
-    session: 'Panel Discussion',
-    topic: 'Decoding the Indian Stock Market: Key Strategies for Sustainable Growth',
-    duration: '60 Min'
-  },
-  {
-    time: '05:00 PM - 05:20 PM',
-    session: 'Sponsor Session',
-    speaker: 'Powered by Sponsor',
-    duration: '20 MIN'
-  },
-  {
-    time: '05:20 PM - 06:00 PM',
-    session: 'Speaker Session',
-    speaker: 'Milan Parik',
-    topic: 'Navigating Global Economic Trends: Impacts on Indian Markets',
-    duration: '40 Min'
-  }
- ];
- export const day2Schedule = [
-  {
-    time: '10:00 AM - 10:40 AM',
-    session: 'Speaker sessions',
-    speaker: 'Praful Kulkarni',
-    topic: 'Options and Futures: Strategies for Hedging and Speculative Gains',
-    duration: '40 Min'
-  },
-  {
-    time: '10:40 AM - 10:55 AM',
-    session: 'Sponsor Session',
-    topic: 'Co-powered by',
+    time: '09:15 AM - 09:30 AM',
+    session: 'Inaugural Function',
     duration: '15 Min'
   },
   {
-    time: '11:00 AM - 11:30 AM',
-    session: 'Speaker sessions',
-    speaker: 'Nikhil Gopalakrishnan',
+    time: '09:30 AM - 10:30 AM',
+    session: 'Speaker Session',
+    speaker: 'Saketh Ramakrishna',
+    role: 'Co-Founder & CIO – Optionables Fintech LLP',
+    duration: '60 Min'
+  },
+  {
+    time: '10:30 AM - 11:10 AM',
+    session: 'Speaker Session',
+    speaker: 'Sunil Mathai',
+    role: 'Founder – Tradetalks',
+    duration: '40 Min'
+  },
+  {
+    time: '11:10 AM - 11:30 AM',
+    session: 'Sponsor Session',
+    speaker: 'Firstock',
+    duration: '20 Min'
+  },
+  {
+    time: '11:30 AM - 12:00 PM',
+    session: 'Tea Break',
     duration: '30 Min'
   },
   {
-    time: '11:30 AM - 12:10 PM',
-    session: 'Speaker sessions',
-    speaker: 'Santhosh pasi',
-    topic: 'Options adjustment in real time applications',
-    duration: '40 Min'
-  },
-  {
-    time: '12:00 PM - 12:40 PM',
+    time: '12:00 PM - 01:00 PM',
     session: 'Speaker Session',
-    speaker: 'Sunil Mathai',
-    duration: '40 Min'
+    duration: '60 Min'
   },
   {
-    time: '12:40 PM - 01:00 PM',
+    time: '01:00 PM - 01:30 PM',
     session: 'Sponsor Session',
-    speaker: 'Tradejini Financial Services',
-    duration: '20 MIN'
+    speaker: 'Delta Exchange',
+    duration: '30 Min'
   },
   {
-    time: '01:00 PM - 02:30 PM',
-    session: 'Lunch break',
-    duration: '90 Min'
+    time: '01:30 PM - 02:30 PM',
+    session: 'Lunch Break',
+    duration: '60 Min'
   },
   {
     time: '02:30 PM - 03:30 PM',
-    session: 'Panel Session',
-    speaker: 'Sponsors and Speakers',
+    session: 'Speaker Session',
+    speaker: 'Shijumon Antony',
+    role: 'NSEIT LIMITED',
     duration: '60 Min'
   },
   {
     time: '03:30 PM - 04:00 PM',
     session: 'Speaker Session',
-    speaker: 'Akshay Agarwal',
-    topic: 'Dividend Investing: Building Wealth with Consistent Returns',
+    speaker: 'Siyad Ellickal',
+    role: 'Founder & CEO – Bizmate trading',
     duration: '30 Min'
   },
   {
-    time: '04:00PM - 04:30 PM',
+    time: '04:00 PM - 04:15 PM',
+    session: 'Sponsor Session',
+    duration: '15 Min'
+  },
+  {
+    time: '04:15 PM - 04:45 PM',
+    session: 'Tea Break',
+    duration: '30 Min'
+  },
+  {
+    time: '04:45 PM - 05:00 PM',
+    session: 'Sponsor Session',
+    duration: '15 Min'
+  },
+  {
+    time: '05:00 PM - 05:45 PM',
     session: 'Speaker Session',
-    duration: '30 Min'
+    duration: '45 Min'
   },
   {
-    time: '04:30PM - 04:45 PM',
-    session: 'Windup with Vote of Thanks',
-    speaker: 'Sujeesh K.S',
+    time: '05:45 PM - 06:00 PM',
+    session: 'Vote of Thanks & Wind up',
     duration: '15 Min'
   }
- ];
+];
 
  export const upcomingEvents = [
   {

@@ -28,10 +28,10 @@ const Header = () => {
                     <div className="flex-shrink-0">
                         <Link href="/">
                             <Image
-                                src='/traders.png'
+                                src='/brandstorieslogo.png'
                                 width={2000}
                                 height={2000}
-                                className="w-32 md:w-32 h-auto"
+                                className="h-6 w-auto md:h-8"
                                 alt="brand Stories"
                             />
                         </Link>
@@ -54,8 +54,8 @@ const Header = () => {
 
                     {/* Right Logo - Desktop */}
                     <Image
-                        src="/money.png"
-                        className="md:h-10 h-7 w-auto object-contain hidden md:block"
+                        src="/traderslogonew.png"
+                        className="h-24 w-auto object-contain hidden md:block"
                         width={5000}
                         height={5000}
                         alt="Money Icon"
@@ -63,7 +63,7 @@ const Header = () => {
                     />
                     {/* <div className="hidden md:block flex-shrink-0">
                         <Image 
-                            src='/money.png' 
+                            src='/traderslogonew.png' 
                             width={2000} 
                             height={2000} 
                             className="w-auto h-12" 
@@ -75,15 +75,15 @@ const Header = () => {
                     <div className="md:hidden flex items-center space-x-2">
 
                         <Image
-                            src="/money.png"
-                            className="md:h-10 h-7 w-auto object-contain"
+                            src="/traderslogonew.png"
+                            className=" h-24 w-auto object-contain"
                             width={5000}
                             height={5000}
                             alt="Money Icon"
                             priority
                         />
                         {/* <Image 
-                            src='/money.png' 
+                            src='/traderslogonew.png' 
                             width={2000} 
                             height={2000} 
                             className="w-28 h-auto" 
