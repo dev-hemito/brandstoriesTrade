@@ -5,7 +5,7 @@ const HeroSection = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   return (
-    <div className="relative bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white">
+    <div className="relative md:overflow-hidden  bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white">
       {/* Background with improved overlay */}
      
 
@@ -76,12 +76,12 @@ const HeroSection = () => {
             {/* Right Content - Featured Image/Stats */}
             <div className="relative mt-12 lg:mt-0">
               {/* Floating Stats Cards */}
-              <div className="absolute z-10 md:-left-8 md:top-0 -left-5 -top-14 bg-white/10 backdrop-blur-xl rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
+              <div className="absolute z-10 md:-left-8 md:-top-10 -left-5 -top-14 bg-white/10 backdrop-blur-xl rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
                 <h3 className="text-5xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">1000+</h3>
                 <p className="text-blue-100">Expected Attendees</p>
               </div>
 
-              <div className="absolute z-10 md:-right-8 md:bottom-0 -bottom-20 -right-5 bg-white/10 backdrop-blur-xl rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
+              <div className="absolute z-10 md:-right-3 md:-bottom-10 -bottom-20 -right-5 bg-white/10 backdrop-blur-xl rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
                 <h3 className="text-5xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">10+</h3>
                 <p className="text-blue-100">Expert Speakers</p>
               </div>
