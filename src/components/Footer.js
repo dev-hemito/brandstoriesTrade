@@ -89,18 +89,18 @@ const Footer = () => {
                   <span>info@thebrandstories.co.in</span>
                 </a>
                 <a 
-                  href="tel:+918129839102" 
+                  href="tel:+919746095931" 
                   className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-200 group"
                 >
                   <Phone className="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform duration-200" />
-                  <span>+91 812 983 9102</span>
+                  <span>+91 9746095931</span>
                 </a>
                 <a 
-                  href="tel:+919995185190" 
+                  href="tel:+918129096038" 
                   className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-200 group"
                 >
                   <Phone className="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform duration-200" />
-                  <span>+91 999 518 5190</span>
+                  <span>+91 8129096038</span>
                 </a>
                 
                 <div className="flex items-start space-x-3 text-gray-400 group pt-2">

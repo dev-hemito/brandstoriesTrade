@@ -17,6 +17,13 @@ const SpeakersShowcase = () => {
       company: "Marketfeed",
       image: "/malabarSpeakers/sharique.jpg"
     },
+    
+    {
+      name: "Sunil Mathai",
+      role: "Founder",
+      company: "TradeTalks",
+      image: "/malabarSpeakers/sunil.jpg"
+    },
     {
       name: "Saketh Ramakrishna",
       role: "Co-founder & CIO",
@@ -24,12 +31,6 @@ const SpeakersShowcase = () => {
       image: "/malabarSpeakers/saketh.jpg"
     },  
 
-    {
-      name: "Sunil Mathai",
-      role: "Founder",
-      company: "TradeTalks",
-      image: "/malabarSpeakers/sunil.jpg"
-    },
 
     {
       name: "Siyad Ellickal",

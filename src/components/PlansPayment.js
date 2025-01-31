@@ -6,14 +6,14 @@ const TicketPlans = () => {
     {
       id: 'base',
       name: 'Single Day Pass',
-      price: 1500,
-      description: 'Early bird Offer : 1200',
+      price: 1200,
+      originalPrice: 1500,
       features: [
         { icon: Clock, text: 'Full day access to all sessions' },
         { icon: Coffee, text: 'Lunch, Tea & Coffee included' },
         { icon: Users, text: 'Networking opportunities' }
       ],
-      highlight: 'Limited Time Offer',
+      highlight: 'Early Bird Offer',
       bgcolor: 'bg-gradient-to-br from-amber-50 to-amber-100',
       borderColor: 'border-amber-200',
       soldOut: false
@@ -119,7 +119,7 @@ const TicketPlans = () => {
       }
 
     } catch (error) {
-      console.error('Registration error:', error);
+      console.log('Registration error:', error);
       setErrors({ general: error.message || 'Something went wrong. Please try again.' });
       setLoading(false);
     }
@@ -168,11 +168,10 @@ const TicketPlans = () => {
                       </div>
                       <div>
                         <h3 className="text-3xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
-                        <p className="text-gray-600">{pkg.description}</p>
                       </div>
                       <div className="flex items-baseline gap-2">
                         <span className="text-4xl font-bold text-amber-500">₹{pkg.price.toLocaleString()}</span>
-                        <span className="text-gray-500">/person</span>
+                        <span className="text-xl text-gray-500 line-through">₹{pkg.originalPrice.toLocaleString()}</span>
                       </div>
                     </div>
 
@@ -230,7 +229,10 @@ const TicketPlans = () => {
                 </div>
                 <div className="mt-4 md:mt-0 text-right">
                   <p className="text-amber-500 font-medium">{selectedPackage?.name}</p>
-                  <p className="text-2xl font-bold text-gray-800">₹{selectedPackage?.price.toLocaleString()}</p>
+                  <div className="flex items-center justify-end gap-2">
+                    <p className="text-2xl font-bold text-gray-800">₹{selectedPackage?.price.toLocaleString()}</p>
+                    <p className="text-gray-500 line-through">₹{selectedPackage?.originalPrice.toLocaleString()}</p>
+                  </div>
                 </div>
               </div>
 

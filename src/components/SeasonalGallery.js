@@ -64,7 +64,7 @@ const SeasonalGallery = () => {
                   ? 'bg-white text-gray-900 shadow-sm' 
                   : 'text-gray-600 hover:text-gray-900'}`}
             >
-              Season 1
+              Kerala Traders Summit 2024
             </button>
             <button
               onClick={() => setActiveSeason('season2')}
@@ -73,7 +73,7 @@ const SeasonalGallery = () => {
                   ? 'bg-white text-gray-900 shadow-sm' 
                   : 'text-gray-600 hover:text-gray-900'}`}
             >
-              Season 2
+             Traders & Investors Conclave 2025
             </button>
           </div>
         </div>
@@ -95,8 +95,8 @@ const SeasonalGallery = () => {
                   className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute top-3 right-3 bg-black/70 text-white px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm">
-                  {activeSeason === 'season1' ? 'S1' : 'S2'}
+                <div className="absolute top-3 right-3 bg-yellow-400/70 text-white px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm">
+                  {activeSeason === 'season1' ? 'Kerala Traders Summit 2024' : 'Traders & Investors Conclave 2025'}
                 </div>
               </div>
             </div>

@@ -80,7 +80,7 @@ export default RootLayout;
 
 // Metadata (typically in a separate file or exported separately)
 export const metadata = {
-  title: "Brand Stories - Kerala Traders Investors Conclave 2025",
+  title: "Brand Stories - Malabar Biggest Traders Summit 2025",
   description: "South India's biggest Traders and Investors Conclave. The conclave will encompass live training, special classes, investment mentoring sessions, seminars, discussions and training strategies.",
   keywords: 'traders conclave, investors meet, kerala trading, investment strategies, financial training, south india trading',
   viewport: 'width=device-width, initial-scale=1',
@@ -88,21 +88,21 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    title: 'Brand Stories - Kerala Traders Investors Conclave 2025',
+    title: 'Brand Stories - Malabar Biggest Traders Summit 2025',
     description: 'South India\'s biggest Traders and Investors Conclave. The conclave will encompass live training, special classes, investment mentoring sessions, seminars, discussions and training strategies.',
     images: [
       {
         url: '/traderslogonew.png',
         width: 1200,
         height: 630,
-        alt: 'Brand Stories - Kerala Traders Investors Conclave 2025',
+        alt: 'Brand Stories - Malabar Biggest Traders Summit 2025',
       },
     ],
-    siteName: 'Brand Stories - Kerala Traders Investors Conclave 2025',
+    siteName: 'Brand Stories - Malabar Biggest Traders Summit 2025',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Brand Stories - Kerala Traders Investors Conclave 2025',
+    title: 'Brand Stories - Malabar Biggest Traders Summit 2025',
     description: 'South India\'s biggest Traders and Investors Conclave',
     images: ['/traderslogonew.png'],
   },

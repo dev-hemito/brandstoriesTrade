@@ -1,31 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Play, X, Calendar, MapPin } from 'lucide-react';
+
+const CountdownTimer = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const eventDate = new Date('2025-02-23T00:00:00');
+
+    const timer = setInterval(() => {
+      const now = new Date();
+      const difference = eventDate.getTime() - now.getTime();
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / 1000 / 60) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
+
+        setTimeLeft({ days, hours, minutes, seconds });
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="flex gap-4 my-8">
+      <div className="bg-white/5 px-6 py-4 rounded-xl backdrop-blur-sm text-center">
+        <div className="text-3xl font-bold text-blue-400">{timeLeft.days}</div>
+        <div className="text-sm text-blue-200">Days</div>
+      </div>
+      <div className="bg-white/5 px-6 py-4 rounded-xl backdrop-blur-sm text-center">
+        <div className="text-3xl font-bold text-blue-400">{timeLeft.hours}</div>
+        <div className="text-sm text-blue-200">Hours</div>
+      </div>
+      <div className="bg-white/5 px-6 py-4 rounded-xl backdrop-blur-sm text-center">
+        <div className="text-3xl font-bold text-blue-400">{timeLeft.minutes}</div>
+        <div className="text-sm text-blue-200">Minutes</div>
+      </div>
+      <div className="bg-white/5 px-6 py-4 rounded-xl backdrop-blur-sm text-center">
+        <div className="text-3xl font-bold text-blue-400">{timeLeft.seconds}</div>
+        <div className="text-sm text-blue-200">Seconds</div>
+      </div>
+    </div>
+  );
+};
 
 const HeroSection = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   return (
-    <div className="relative md:overflow-hidden  bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white">
-      {/* Background with improved overlay */}
-     
-
-      {/* Main Content */}
+    <div className="relative md:overflow-hidden bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white">
       <div className="relative min-h-screen flex items-center py-20">
         <div className="container mx-auto px-6 pt-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Content */}
             <div className="space-y-4">
-              {/* Sponsor Logo */}
-              <div className="inline-block md:bg-white/10 md:p-4 pt-4 rounded-lg backdrop-blur-sm">
-                <span className="text-sm font-medium mb-2 block text-blue-200">Title Sponsor</span>
+              <div className="md:bg-white/10 md:p-4 flex items-center gap-3 pt-4 rounded-lg backdrop-blur-sm">
+                <span className="text-sm font-medium mb-2 block text-blue-200">Title Sponsors</span>
                 <img
                   src="/firstock.jpeg"
                   alt="Firstock Logo"
-                  className="h-12 object-cover rounded"
+                  className="h-12 object-contain rounded"
+                />
+                <img
+                  src="/indiadelta.jpeg"
+                  alt="Firstock Logo"
+                  className="h-12 object-contain rounded"
                 />
               </div>
 
-              {/* Title with Animation */}
               <div className="space-y-4">
                 <h2 className="text-blue-400 text-xl font-medium tracking-wide">
                   The Ultimate Trading Experience
@@ -38,7 +86,6 @@ const HeroSection = () => {
                 </h1>
               </div>
 
-              {/* Event Details */}
               <div className="flex flex-wrap gap-8 text-lg">
                 <div className="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm">
                   <Calendar className="w-5 h-5 text-blue-400" />
@@ -50,12 +97,9 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              {/* Description */}
-              <p className="text-xl text-blue-100 max-w-xl leading-relaxed">
-                Join Kerala's premier trading summit for expert insights, strategies, and networking opportunities.
-              </p>
+              {/* Added Countdown Timer here */}
+              <CountdownTimer />
 
-              {/* CTA Buttons */}
               <div className="flex flex-wrap gap-6">
                 <button
                   onClick={() => setShowVideo(true)}
@@ -73,20 +117,28 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Right Content - Featured Image/Stats */}
             <div className="relative mt-12 lg:mt-0">
-              {/* Floating Stats Cards */}
-              <div className="absolute z-10 md:-left-8 md:-top-10 -left-5 -top-14 bg-white/10 backdrop-blur-xl rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
-                <h3 className="text-5xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">1000+</h3>
+              <div className="absolute z-10 min-h-32 md:-left-8 md:-top-10 -left-5 -top-14 bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
+                <h3 className="text-2xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">1000+</h3>
                 <p className="text-blue-100">Expected Attendees</p>
               </div>
-
-              <div className="absolute z-10 md:-right-3 md:-bottom-10 -bottom-20 -right-5 bg-white/10 backdrop-blur-xl rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
-                <h3 className="text-5xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">10+</h3>
+              <div className="absolute z-10 min-h-32 md:-right-3 md:-top-10 -right-5 -top-14 bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
+                <h3 className="text-2xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">100+</h3>
+                <p className="text-blue-100">VCS & investors</p>
+              </div>
+              <div className="absolute z-10 min-h-32 md:-right-3 md:-bottom-10 -bottom-20 -right-5 bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
+                <h3 className="text-2xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">10+</h3>
                 <p className="text-blue-100">Expert Speakers</p>
               </div>
+              <div className="absolute z-10 min-h-32 md:-left-3 md:-bottom-10 -bottom-20 -left-5 bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
+                <h3 className="text-2xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">20+</h3>
+                <p className="text-blue-100">Stalls</p>
+              </div>
+              <div className="absolute z-10 min-h-32 md:left-32 md:-bottom-10 -bottom-20 left-24 bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
+                <h3 className="text-2xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">500+</h3>
+                <p className="text-blue-100">HNIS & Family offices</p>
+              </div>
 
-              {/* Main Image */}
               <div className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl">
                 <img
                   src="/back.jpg"
@@ -100,7 +152,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Video Modal */}
       {showVideo && (
         <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 backdrop-blur-xl">
           <button

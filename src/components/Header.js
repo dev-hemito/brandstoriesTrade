@@ -28,10 +28,10 @@ const Header = () => {
                     <div className="flex-shrink-0">
                         <Link href="/">
                             <Image
-                                src='/brandstorieslogo.png'
+                                src='/image.png'
                                 width={2000}
                                 height={2000}
-                                className="h-6 w-auto md:h-8"
+                                className="h-12 w-auto md:h-12"
                                 alt="brand Stories"
                             />
                         </Link>
@@ -54,8 +54,8 @@ const Header = () => {
 
                     {/* Right Logo - Desktop */}
                     <Image
-                        src="/traderslogonew.png"
-                        className="h-24 w-auto object-contain hidden md:block"
+                        src="/LOGO.tif"
+                        className="h-20 w-auto object-contain hidden md:block"
                         width={5000}
                         height={5000}
                         alt="Money Icon"
@@ -75,8 +75,8 @@ const Header = () => {
                     <div className="md:hidden flex items-center space-x-2">
 
                         <Image
-                            src="/traderslogonew.png"
-                            className=" h-24 w-auto object-contain"
+                            src="/LOGO.tif"
+                            className=" h-16 w-auto object-contain"
                             width={5000}
                             height={5000}
                             alt="Money Icon"

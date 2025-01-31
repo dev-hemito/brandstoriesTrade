@@ -65,7 +65,7 @@ const Schedule = ({ day1, day2 }) => {
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
-              Day 1 - January 8th
+              Day 1 - Feb 23, 2025
             </button>
             
           </div>

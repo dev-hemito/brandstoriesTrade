@@ -214,7 +214,7 @@ export const speakers = [
   {
     date: 'MAY 2025',
     location: 'Calicut',
-    description: '1500 Members, 1 Day Event',
+    description: '1000+ Members, 1 Day Event',
     image: '/api/placeholder/400/300'
   },
   {
