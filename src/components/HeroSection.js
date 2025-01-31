@@ -68,9 +68,9 @@ const HeroSection = () => {
                     className="h-12 object-contain rounded"
                   /> & 
                   <img
-                    src="/indiadelta.jpeg"
+                    src="/logo - Delta.Exchange.svg"
                     alt="Firstock Logo"
-                    className="h-12 object-contain rounded"
+                    className="h-12 object-contain bg-white p-1 rounded"
                   />
                 </div>
                 <span className=" font-medium mb-2 block text-center text-blue-200">Presents</span>
@@ -84,7 +84,7 @@ const HeroSection = () => {
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
                   Malabar Biggest
                   <span className="block bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
-                    Traders Conclave
+                    Traders Summit
                   </span>
                 </h1>
               </div>

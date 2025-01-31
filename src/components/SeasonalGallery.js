@@ -92,7 +92,7 @@ const SeasonalGallery = () => {
                   ? 'bg-white text-gray-900 shadow-sm' 
                   : 'text-gray-600 hover:text-gray-900'}`}
             >
-             Traders & Investors Conclave 2025
+             Traders & Investors Summit 2025
             </button>
           </div>
         </div>

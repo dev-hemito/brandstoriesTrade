@@ -24,7 +24,7 @@ import SeasonalGallery from '@/components/SeasonalGallery'
 import HeroSection from '@/components/HeroSection'
 
 const Page = () => {
-  const words = "Malabar's Biggest Traders Conclave 2025".split(" ")
+  const words = "Malabar's Biggest Traders Summit 2025".split(" ")
 
   const container = {
     hidden: { opacity: 0 },

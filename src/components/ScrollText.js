@@ -53,7 +53,7 @@ const ScrollText = () => {
     "Traders",
     "and",
     "Investors",
-    "Conclave"
+    "Summit"
   ]
 
   return (

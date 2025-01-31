@@ -76,7 +76,7 @@ const Hero = () => {
               {/* Center Content */}
               {/* <div className="md:w-1/3 text-center py-4 ">
               <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight">
-                Kerala Traders & Investors Conclave
+                Kerala Traders & Investors Summit
               </h1>
               <div className="text-lg md:text-xl text-yellow-400 font-medium">
                 Hotel Gokulam Park, Kochi
