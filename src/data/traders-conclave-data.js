@@ -211,16 +211,11 @@ export const speakers = [
 ];
 
  export const upcomingEvents = [
-  {
-    date: 'MAY 2025',
-    location: 'Calicut',
-    description: '1000+ Members, 1 Day Event',
-    image: '/api/placeholder/400/300'
-  },
+
   {
     date: 'NOVEMBER 2025',
     location: 'Dubai, UAE', 
     description: '500 Members, 2 Days Event',
-    image: '/api/placeholder/400/300'
+    image: '/dbai.webp'
   }
  ];
