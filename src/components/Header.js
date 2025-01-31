@@ -31,7 +31,7 @@ const Header = () => {
                                 src='/image.png'
                                 width={2000}
                                 height={2000}
-                                className="h-12 w-auto md:h-12"
+                                className="h-10 w-auto md:h-12"
                                 alt="brand Stories"
                             />
                         </Link>
@@ -76,7 +76,7 @@ const Header = () => {
 
                         <Image
                             src="/LOGO.tif"
-                            className=" h-16 w-auto object-contain"
+                            className=" md:h-16 h-12 w-auto object-contain"
                             width={5000}
                             height={5000}
                             alt="Money Icon"
