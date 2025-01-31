@@ -22,20 +22,39 @@ const SeasonalGallery = () => {
       { url: "/gallery/_AKH5537.JPG" },
   
     ],
-    season2: [
+     season2: [
       { url: "/gallery/s2/1.jpg" },
       { url: "/gallery/s2/2.jpg" },
       { url: "/gallery/s2/3.jpg" },
       { url: "/gallery/s2/4.jpg" },
       { url: "/gallery/s2/5.jpg" },
+      { url: "/gallery/s2/6.jpg" },
+      { url: "/gallery/s2/7.jpg" },
       { url: "/gallery/s2/8.jpg" },
+      { url: "/gallery/s2/9.jpg" },
       { url: "/gallery/s2/10.jpg" },
+      { url: "/gallery/s2/11.jpg" },
+      { url: "/gallery/s2/12.jpg" },
       { url: "/gallery/s2/13.jpg" },
+      { url: "/gallery/s2/14.jpg" },
+      { url: "/gallery/s2/15.jpg" },
+      { url: "/gallery/s2/16.jpg" },
+      { url: "/gallery/s2/17.jpg" },
+      { url: "/gallery/s2/18.jpg" },
+      { url: "/gallery/s2/19.jpg" },
+      { url: "/gallery/s2/20.jpg" },
       { url: "/gallery/s2/21.jpg" },
+      { url: "/gallery/s2/22.jpg" },
+      { url: "/gallery/s2/23.jpg" },
+      { url: "/gallery/s2/24.jpg" },
+      { url: "/gallery/s2/25.jpg" },
+      { url: "/gallery/s2/26.jpg" },
+      { url: "/gallery/s2/27.jpg" },
+      { url: "/gallery/s2/28.jpg" },
+      { url: "/gallery/s2/29.jpg" },
       { url: "/gallery/s2/30.jpg" },
       { url: "/gallery/s2/49.jpg" },
       { url: "/gallery/s2/50.jpg" },
-      
     ]
   };
 

@@ -57,7 +57,7 @@ const HeroSection = () => {
   return (
     <div className="relative md:overflow-hidden bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white">
       <div className="relative min-h-screen flex items-center py-20">
-        <div className="container mx-auto px-6 pt-10">
+        <div className="container mx-auto md:px-6 px-3 pt-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-4">
               <div className="md:bg-white/10 md:p-4 flex items-center gap-3 pt-4 rounded-lg backdrop-blur-sm">
@@ -97,7 +97,6 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              {/* Added Countdown Timer here */}
               <CountdownTimer />
 
               <div className="flex flex-wrap gap-6">
@@ -118,27 +117,6 @@ const HeroSection = () => {
             </div>
 
             <div className="relative mt-12 lg:mt-0">
-              <div className="absolute z-10 min-h-32 md:-left-8 md:-top-10 -left-5 -top-14 bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
-                <h3 className="text-2xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">1000+</h3>
-                <p className="text-blue-100">Expected Attendees</p>
-              </div>
-              <div className="absolute z-10 min-h-32 md:-right-3 md:-top-10 -right-5 -top-14 bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
-                <h3 className="text-2xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">100+</h3>
-                <p className="text-blue-100">VCS & investors</p>
-              </div>
-              <div className="absolute z-10 min-h-32 md:-right-3 md:-bottom-10 -bottom-20 -right-5 bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
-                <h3 className="text-2xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">10+</h3>
-                <p className="text-blue-100">Expert Speakers</p>
-              </div>
-              <div className="absolute z-10 min-h-32 md:-left-3 md:-bottom-10 -bottom-20 -left-5 bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
-                <h3 className="text-2xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">20+</h3>
-                <p className="text-blue-100">Stalls</p>
-              </div>
-              <div className="absolute z-10 min-h-32 md:left-32 md:-bottom-10 -bottom-20 left-24 bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
-                <h3 className="text-2xl font-bold bg-gradient-to-r text-yellow-400 text-transparent bg-clip-text mb-2">500+</h3>
-                <p className="text-blue-100">HNIS & Family offices</p>
-              </div>
-
               <div className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl">
                 <img
                   src="/back.jpg"
@@ -146,6 +124,30 @@ const HeroSection = () => {
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+              </div>
+              
+              {/* Feature cards moved below the image */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+                <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
+                  <h3 className="text-2xl font-bold text-yellow-400 mb-2">1000+</h3>
+                  <p className="text-blue-100">Expected Attendees</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
+                  <h3 className="text-2xl font-bold text-yellow-400 mb-2">100+</h3>
+                  <p className="text-blue-100">VCS & investors</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
+                  <h3 className="text-2xl font-bold text-yellow-400 mb-2">10+</h3>
+                  <p className="text-blue-100">Expert Speakers</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
+                  <h3 className="text-2xl font-bold text-yellow-400 mb-2">20+</h3>
+                  <p className="text-blue-100">Stalls</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20 md:col-span-2">
+                  <h3 className="text-2xl font-bold text-yellow-400 mb-2">500+</h3>
+                  <p className="text-blue-100">HNIS & Family offices</p>
+                </div>
               </div>
             </div>
           </div>
