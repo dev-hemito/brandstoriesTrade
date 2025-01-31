@@ -130,7 +130,7 @@ const HeroSection = () => {
               </div>
 
               {/* Feature cards moved below the image */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+              <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mt-8">
                 <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
                   <h3 className="text-2xl font-bold text-yellow-400 mb-2">1000+</h3>
                   <p className="text-blue-100">Expected Attendees</p>
@@ -144,13 +144,10 @@ const HeroSection = () => {
                   <p className="text-blue-100">Expert Speakers</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20">
-                  <h3 className="text-2xl font-bold text-yellow-400 mb-2">20+</h3>
-                  <p className="text-blue-100">Stalls</p>
+                  <h3 className="text-2xl font-bold text-yellow-400 mb-2">4000</h3>
+                  <p className="text-blue-100">worth gifts</p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 transform hover:-translate-y-2 transition-transform duration-300 border border-white/20 md:col-span-2">
-                  <h3 className="text-2xl font-bold text-yellow-400 mb-2">500+</h3>
-                  <p className="text-blue-100">HNIS & Family offices</p>
-                </div>
+               
               </div>
             </div>
           </div>
