@@ -27,6 +27,8 @@ export async function POST(request) {
       );
     }
 
+    console.log('Requesting payment status for orderId:', orderId);
+
     // Make request to your payment verification endpoint
     const verificationResponse = await fetch(
       `${process.env.BACKEND_URL}/api/check-payment-status`,
@@ -39,7 +41,17 @@ export async function POST(request) {
       }
     );
 
+    if (!verificationResponse.ok) {
+      const errorData = await verificationResponse.json();
+      console.error('Error from backend:', errorData);
+      return NextResponse.json(
+        { error: 'Payment verification failed', message: errorData.message },
+        { status: verificationResponse.status }
+      );
+    }
+
     const paymentData = await verificationResponse.json();
+    console.log('Payment status response:', paymentData);
 
     return NextResponse.json(paymentData);
   } catch (error) {
