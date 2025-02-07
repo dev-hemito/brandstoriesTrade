@@ -44,8 +44,7 @@ const TicketPlans = () => {
 
   const handlePackageSelect = (pkg) => {
     if (pkg.soldOut) return;
-    setSelectedPackage(pkg);
-    setShowRegistrationModal(true);
+    window.location.href = 'https://rzp.io/rzp/XiEC4GR8';
   };
 
   const handleInputChange = (e) => {
